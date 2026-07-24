@@ -39,4 +39,4 @@ Edita `secciones.json` y añade una entrada con el nombre del archivo. Si no lo 
 el índice usa el `<title>` del propio HTML y la fecha del archivo.
 
 ---
-Documento de trabajo interno de MyCoco (Origen Corporación Biotech S.L.).
+Documento de trabajo interno de MyCoco · Sara Gascón Durán.
