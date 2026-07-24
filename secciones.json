@@ -1,0 +1,16 @@
+{
+  "_ayuda": "Metadatos opcionales por seccion. La clave es el nombre del archivo HTML dentro de /secciones. Si un archivo no aparece aqui, el generador usa el <title> del HTML y la fecha del archivo. Campos: titulo, descripcion, categoria, fecha (YYYY-MM-DD), destacado (true/false).",
+  "investigacion-aragon-subvenciones-2026-07-24.html": {
+    "titulo": "Investigación Aragón — Subvenciones, premios, foros y oncología",
+    "descripcion": "Mapa de convocatorias de impacto social y salud, premios, foros y ecosistema oncológico en Aragón para financiar y aliar a MyCoco.",
+    "categoria": "Financiación",
+    "fecha": "2026-07-24"
+  },
+  "mycoco-lineas-actuacion.html": {
+    "titulo": "Líneas de actuación de MyCoco",
+    "descripcion": "Ejes del movimiento: comunidad, observatorio de datos, acompañamiento en la decisión, representación y divulgación.",
+    "categoria": "Estrategia",
+    "fecha": "2026-07-08",
+    "destacado": true
+  }
+}

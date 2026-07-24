@@ -1,0 +1,562 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <meta name="robots" content="noindex, nofollow">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MyCoco · Investigación Aragón — Subvenciones, premios, foros y oncología</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --beige:#EED8C1;
+    --beige-claro:#F7ECE0;
+    --marron:#3F1910;
+    --teja:#99492C;
+    --salmon:#E3A175;
+    --rosa:#C6979D;
+    --verde:#5B7352;
+    --blanco:#FFFDFB;
+    --sombra:0 6px 24px rgba(63,25,16,.10);
+    --sombra-suave:0 2px 10px rgba(63,25,16,.07);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'Poppins',sans-serif;
+    color:var(--marron);
+    background:var(--beige-claro);
+    line-height:1.6;
+    font-weight:300;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,h4{font-family:'Cormorant',serif;font-weight:600;line-height:1.15;color:var(--marron)}
+  a{color:var(--teja);text-decoration:none;border-bottom:1px solid rgba(153,73,44,.3)}
+  a:hover{border-bottom-color:var(--teja)}
+
+  /* HEADER */
+  header{
+    background:linear-gradient(135deg,var(--marron) 0%,#5a271a 60%,var(--teja) 100%);
+    color:var(--beige);
+    padding:64px 24px 56px;
+    position:relative;
+    overflow:hidden;
+  }
+  header::after{
+    content:"";position:absolute;right:-80px;top:-80px;width:320px;height:320px;
+    border-radius:50%;background:radial-gradient(circle,var(--rosa) 0%,transparent 70%);opacity:.35;
+  }
+  .wrap{max-width:1040px;margin:0 auto}
+  .eyebrow{
+    font-family:'Poppins';font-weight:500;letter-spacing:.28em;text-transform:uppercase;
+    font-size:.72rem;color:var(--salmon);margin-bottom:18px;
+  }
+  header h1{font-size:clamp(2.4rem,5vw,3.8rem);color:var(--beige);max-width:800px}
+  header .sub{font-weight:300;font-size:1.05rem;color:#f3ddc9;max-width:680px;margin-top:16px}
+  .meta-tags{margin-top:28px;display:flex;gap:12px;flex-wrap:wrap}
+  .meta-tags span{
+    background:rgba(238,216,193,.14);border:1px solid rgba(238,216,193,.3);
+    padding:7px 15px;border-radius:40px;font-size:.8rem;font-weight:400;color:var(--beige);
+  }
+
+  main{max-width:1040px;margin:0 auto;padding:0 24px 80px}
+
+  /* INTRO / AVISO */
+  .aviso{
+    background:var(--blanco);border-left:4px solid var(--verde);
+    border-radius:10px;padding:22px 26px;margin:40px 0;box-shadow:var(--sombra-suave);
+    font-size:.95rem;
+  }
+  .aviso strong{color:var(--verde)}
+
+  /* SECCIONES */
+  section{margin-top:56px;scroll-margin-top:24px}
+  .sec-head{display:flex;align-items:baseline;gap:14px;border-bottom:2px solid var(--rosa);padding-bottom:12px;margin-bottom:8px}
+  .sec-head h2{font-size:clamp(1.8rem,3.5vw,2.5rem)}
+  .sec-num{font-family:'Cormorant';font-size:1.6rem;color:var(--salmon);font-weight:700}
+  .sec-desc{color:#6a4a3d;font-size:.95rem;margin:10px 0 26px;max-width:760px}
+
+  /* CARDS */
+  .card{
+    background:var(--blanco);border-radius:14px;padding:26px 28px;margin-bottom:18px;
+    box-shadow:var(--sombra-suave);border:1px solid rgba(198,151,157,.18);
+    transition:transform .15s ease,box-shadow .15s ease;
+  }
+  .card:hover{transform:translateY(-2px);box-shadow:var(--sombra)}
+  .card-top{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;flex-wrap:wrap}
+  .card h3{font-size:1.5rem;margin-bottom:2px}
+  .card .org{font-size:.8rem;font-weight:500;letter-spacing:.05em;text-transform:uppercase;color:var(--teja);margin-bottom:10px}
+  .card p{font-size:.93rem;margin-bottom:10px;color:#4a2c20}
+  .card .encaje{
+    background:var(--beige);border-radius:8px;padding:11px 15px;font-size:.86rem;margin:12px 0;
+    color:var(--marron);
+  }
+  .card .encaje b{color:var(--teja)}
+  .datos{display:flex;flex-wrap:wrap;gap:8px 20px;font-size:.84rem;margin-top:12px;color:#5a3a2c}
+  .datos span b{color:var(--marron);font-weight:500}
+
+  /* BADGES DE ESTADO */
+  .badge{
+    display:inline-block;padding:5px 13px;border-radius:30px;font-size:.72rem;font-weight:600;
+    letter-spacing:.03em;white-space:nowrap;font-family:'Poppins';
+  }
+  .b-abierta{background:#e3 efe0;background:#e6efe2;color:#3f5636;border:1px solid var(--verde)}
+  .b-proxima{background:#fbe9d8;color:#8a4a1f;border:1px solid var(--salmon)}
+  .b-cerrada{background:#f0e2e4;color:#8a5860;border:1px solid var(--rosa)}
+  .b-permanente{background:#efe6d6;color:#7a5a28;border:1px solid #c9a86a}
+
+  /* TABLA PRIORIDADES */
+  .prio{background:var(--blanco);border-radius:14px;overflow:hidden;box-shadow:var(--sombra);border:1px solid rgba(198,151,157,.2)}
+  table{width:100%;border-collapse:collapse;font-size:.88rem}
+  th{background:var(--marron);color:var(--beige);text-align:left;padding:14px 16px;font-family:'Poppins';font-weight:500;font-size:.8rem;letter-spacing:.04em}
+  td{padding:13px 16px;border-bottom:1px solid rgba(198,151,157,.2);vertical-align:top;color:#4a2c20}
+  tr:last-child td{border-bottom:none}
+  tr:nth-child(even) td{background:rgba(238,216,193,.22)}
+  .tabla-scroll{overflow-x:auto}
+
+  /* CONTACTOS ONCO */
+  .contacto{border-left:3px solid var(--salmon);padding-left:16px;margin:14px 0}
+  .contacto b{color:var(--teja)}
+
+  /* FOOTER */
+  footer{background:var(--marron);color:var(--beige);padding:44px 24px;text-align:center;font-size:.85rem}
+  footer .tag{font-family:'Cormorant';font-size:1.6rem;color:var(--salmon);font-style:italic;margin-bottom:10px}
+  footer a{color:var(--salmon)}
+
+  .fuentes{font-size:.8rem;color:#6a4a3d;margin-top:10px}
+  .fuentes a{color:var(--teja)}
+
+  ul.clean{list-style:none;margin:8px 0}
+  ul.clean li{padding-left:22px;position:relative;margin-bottom:7px;font-size:.92rem;color:#4a2c20}
+  ul.clean li::before{content:"›";position:absolute;left:4px;color:var(--rosa);font-weight:700}
+
+  @media(max-width:640px){
+    header{padding:44px 20px 40px}
+    .card{padding:20px}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <div class="eyebrow">Movimiento MyCoco · Financiación e incidencia territorial</div>
+    <h1>Subvenciones, premios, foros y oncología en Aragón</h1>
+    <p class="sub">Mapa de oportunidades en Zaragoza, Huesca y Teruel para financiar el movimiento, ganar visibilidad y tejer alianzas clínicas. Ninguna mujer debería decidir sola sobre su cuerpo tras una mastectomía — y ningún proyecto que la acompaña debería hacerlo sin recursos.</p>
+    <div class="meta-tags">
+      <span>📅 Actualizado a 24 de julio de 2026</span>
+      <span>📍 Aragón · Zaragoza · Huesca · Teruel</span>
+      <span>🔎 Fuentes oficiales verificadas</span>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <div class="aviso">
+    <strong>Antes de empezar — lee esto.</strong> La mayoría de subvenciones de acción social y salud exigen ser <b>entidad sin ánimo de lucro legalmente constituida</b> (asociación o fundación), inscrita en el registro correspondiente y con una <b>antigüedad de 1–2 años</b>. MyCoco opera hoy bajo <b>Origen Corporación Biotech S.L.</b> (sociedad mercantil): para acceder a la mayor parte de las ayudas del tercer sector conviene valorar <b>constituir una asociación/fundación MyCoco</b> o canalizar la solicitud a través de una entidad aliada elegible (p. ej. AECC, una asociación de pacientes). Los <b>premios de emprendimiento</b> y varias convocatorias privadas sí admiten a empresas. Cada ficha indica el encaje. Este documento es una guía de trabajo, no asesoramiento jurídico: confirma bases y requisitos en cada enlace oficial antes de presentar.
+  </div>
+
+  <!-- PRIORIDADES -->
+  <section id="prioridades">
+    <div class="sec-head"><span class="sec-num">00</span><h2>Qué hacer ahora</h2></div>
+    <p class="sec-desc">Priorizado por urgencia y encaje con el movimiento a fecha de hoy.</p>
+    <div class="prio tabla-scroll">
+      <table>
+        <thead>
+          <tr><th>Acción</th><th>Oportunidad</th><th>Plazo</th><th>Estado</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><b>Urgente</b> — decidir esta semana</td>
+            <td>Alfabetización en salud y ayuda mutua de pacientes (Gobierno de Aragón)</td>
+            <td>Hasta <b>4 ago 2026</b></td>
+            <td><span class="badge b-abierta">Abierta</span></td>
+          </tr>
+          <tr>
+            <td><b>Vigilar BOPZ</b> a diario</td>
+            <td>Acción Social 2026–2027 Ayto. Zaragoza (incluye salud, crónicas e igualdad)</td>
+            <td>15 días hábiles tras publicación</td>
+            <td><span class="badge b-proxima">Inminente</span></td>
+          </tr>
+          <tr>
+            <td>Reservar en agenda</td>
+            <td>Premio Persona Joven Empresaria de Aragón / EmprendedorXXI</td>
+            <td>Otoño 2026</td>
+            <td><span class="badge b-proxima">Próxima</span></td>
+          </tr>
+          <tr>
+            <td>Networking / incidencia</td>
+            <td>Jornada Aragonesa de Humanización en Cáncer de Mama + contacto Unidades de Mama</td>
+            <td>Recurrente (anual, mayo)</td>
+            <td><span class="badge b-permanente">Continua</span></td>
+          </tr>
+          <tr>
+            <td>Planificar 2027</td>
+            <td>0,7% IRPF, Salud Pública, IAM mujeres, Fundación Ibercaja, Diputaciones</td>
+            <td>Cerradas este año</td>
+            <td><span class="badge b-cerrada">Cerrada 2026</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- 1. SUBVENCIONES AUTONÓMICAS -->
+  <section id="autonomicas">
+    <div class="sec-head"><span class="sec-num">01</span><h2>Subvenciones — Gobierno de Aragón</h2></div>
+    <p class="sec-desc">Ayudas autonómicas para entidades sin ánimo de lucro en salud, acción social y mujer.</p>
+
+    <div class="card">
+      <div class="card-top">
+        <div><div class="org">Dpto. de Sanidad · Gobierno de Aragón</div><h3>Alfabetización en salud y ayuda mutua de pacientes</h3></div>
+        <span class="badge b-abierta">Abierta · hasta 4 ago</span>
+      </div>
+      <p>Financia proyectos que ayudan a pacientes y personas cuidadoras a entender su enfermedad y a acompañarse mutuamente. Es <b>la convocatoria más alineada con el ADN de MyCoco</b>: decisión informada, alfabetización en salud y ayuda entre iguales (madrinas).</p>
+      <div class="encaje"><b>Encaje MyCoco:</b> altísimo. Guía de opciones postmastectomía, red de madrinas y observatorio encajan de lleno. Requiere ser asociación/federación/fundación de personas afectadas, sin ánimo de lucro, con sede y actividad en Aragón.</div>
+      <div class="datos">
+        <span><b>Plazo:</b> 15 jul – 4 ago 2026</span>
+        <span><b>Beneficiarios:</b> entidades sin ánimo de lucro (pacientes/familiares)</span>
+        <span><b>Normativa:</b> Orden SAN/335/2016</span>
+      </div>
+      <p class="fuentes">Fuente: <a href="https://www.aragon.es/tramitador/-/tramite/subvenciones-a-proyectos-de-alfabetizacion-en-salud-y-ayuda-mutua-de-pacientes-y-personas-cuidadoras/convocatoria-2026">aragon.es — Convocatoria 2026 (nº 11624)</a></p>
+    </div>
+
+    <div class="card">
+      <div class="card-top">
+        <div><div class="org">Dpto. de Bienestar Social · Gobierno de Aragón</div><h3>Fines de interés social — 0,7% del IRPF e Impuesto de Sociedades</h3></div>
+        <span class="badge b-cerrada">Cerrada · vuelve 2027</span>
+      </div>
+      <p>La gran línea del tercer sector de acción social. Programas de interés social financiados con la casilla solidaria. Cuantías relevantes y tramitación por plataforma propia.</p>
+      <div class="encaje"><b>Encaje MyCoco:</b> alto para el eje comunidad/acompañamiento, si se opera como entidad del tercer sector. Anótalo para <b>mayo–junio 2027</b>.</div>
+      <div class="datos">
+        <span><b>Plazo 2026:</b> 20 may – 16 jun (cerrado)</span>
+        <span><b>Normativa:</b> Orden BSF/567/2026</span>
+        <span><b>Tramitación:</b> ptsis.aragon.es</span>
+      </div>
+      <p class="fuentes">Fuente: <a href="https://www.aragon.es/-/convocatoria-subvenciones-programas-de-interes-social-con-cargo-irpf">aragon.es — Programas de interés social 0,7% IRPF</a></p>
+    </div>
+
+    <div class="card">
+      <div class="card-top">
+        <div><div class="org">Dirección General de Salud Pública · Gobierno de Aragón</div><h3>Salud pública — promoción de la salud (entidades sin ánimo de lucro)</h3></div>
+        <span class="badge b-cerrada">Cerrada · vuelve 2027</span>
+      </div>
+      <p>Proyectos de promoción de la salud y prevención. Plazo 2026 finalizó el 7 de julio. Útil para financiar divulgación y talleres del movimiento.</p>
+      <div class="encaje"><b>Encaje MyCoco:</b> medio-alto para la línea de divulgación y prevención. Vigilar apertura 2027 (suele salir en primavera).</div>
+      <div class="datos"><span><b>Plazo 2026:</b> hasta 7 jul (cerrado)</span><span><b>Beneficiarios:</b> entidades sin ánimo de lucro</span></div>
+      <p class="fuentes">Fuente: <a href="https://www.aragon.es/tramitador/-/tramite/subvenciones-salud-publica-entidades-animo-lucro-desarrollen-proyectos-promocion-salud-prevencion-adicciones-vih-sida">aragon.es — Subvenciones de salud pública</a></p>
+    </div>
+
+    <div class="card">
+      <div class="card-top">
+        <div><div class="org">Instituto Aragonés de la Mujer (IAM)</div><h3>Subvenciones a entidades formadas por mujeres</h3></div>
+        <span class="badge b-cerrada">Convocatoria 2026 fuera de plazo</span>
+      </div>
+      <p>Ayudas para entidades de mujeres y por la igualdad. La edición 2026 (Orden IGualdad/812/2021, ~285.000 € en ediciones recientes) ya está fuera de plazo. Encaje directo con el carácter feminista del movimiento.</p>
+      <div class="encaje"><b>Encaje MyCoco:</b> alto si existe asociación de mujeres. Contacta al IAM para conocer el calendario de la próxima convocatoria. <b>Tel. 976 716 720</b> (9–14 h) · <a href="mailto:iam@aragon.es">iam@aragon.es</a></div>
+      <p class="fuentes">Fuente: <a href="https://www.aragon.es/tramitador/-/tramite/ayudas-a-entidades-formadas-por-mujeres">aragon.es — Entidades formadas por mujeres</a> · <a href="https://www.aragon.es/-/ayudas-y-subvenciones">IAM — Ayudas y subvenciones</a></p>
+    </div>
+
+    <div class="card">
+      <div class="card-top">
+        <div><div class="org">Instituto Aragonés de Servicios Sociales (IASS)</div><h3>Subvenciones de acción social del IASS</h3></div>
+        <span class="badge b-permanente">Revisar calendario</span>
+      </div>
+      <p>Paraguas de convocatorias del IASS para entidades del tercer sector (colectivos vulnerables, enfermedad crónica, etc.). Consultar líneas activas periódicamente.</p>
+      <div class="encaje"><b>Encaje MyCoco:</b> medio, según línea. Revisar en cada apertura.</div>
+      <p class="fuentes">Fuente: <a href="https://www.aragon.es/-/subvenciones-actuales-del-instituto-aragones-de-servicios-sociales">aragon.es — Subvenciones actuales del IASS</a></p>
+    </div>
+  </section>
+
+  <!-- 2. LOCALES -->
+  <section id="locales">
+    <div class="sec-head"><span class="sec-num">02</span><h2>Subvenciones — Ayuntamientos y Diputaciones</h2></div>
+    <p class="sec-desc">Zaragoza, Huesca y Teruel. Casi todas exigen tener sede y desarrollar la actividad en el territorio correspondiente.</p>
+
+    <div class="card">
+      <div class="card-top">
+        <div><div class="org">Ayuntamiento de Zaragoza · Políticas Sociales</div><h3>Convocatoria de Acción Social 2026–2027</h3></div>
+        <span class="badge b-proxima">Inminente · vigilar BOPZ</span>
+      </div>
+      <p>3.372.518 € para proyectos de intervención social de entidades sin ánimo de lucro que actúen en Zaragoza. Entre los <b>12 ámbitos</b> hay tres que encajan con MyCoco: <b>Promoción de la Salud y Bienestar Emocional</b>, <b>Apoyo a Personas con Enfermedades Crónicas</b> e <b>Igualdad y Violencias Machistas</b>.</p>
+      <div class="encaje"><b>Encaje MyCoco:</b> muy alto. Cada entidad presenta un proyecto (1.500–140.000 €), a ejecutar entre 2026 y 2027. En cuanto se publique en el BOPZ se abre un plazo de <b>solo 15 días hábiles</b>: hay que estar preparadas.</div>
+      <div class="datos">
+        <span><b>Dotación:</b> 3,37 M€</span>
+        <span><b>Importe/proyecto:</b> 1.500 – 140.000 €</span>
+        <span><b>Ejecución:</b> 1 ene 2026 – 31 dic 2027</span>
+      </div>
+      <p class="fuentes">Fuentes: <a href="https://www.zaragoza.es/sede/servicio/tramite/37679">zaragoza.es — Subvenciones en Acción Social</a> · <a href="https://diariodezaragoza.es/el-ayuntamiento-de-zaragoza-destina-337-millones-de-euros-a-la-nueva-convocatoria-de-subvenciones-de-accion-social-2026-2027/">Diario de Zaragoza (jul 2026)</a></p>
+    </div>
+
+    <div class="card">
+      <div class="card-top">
+        <div><div class="org">Diputación Provincial de Huesca</div><h3>Subvenciones de Acción Social</h3></div>
+        <span class="badge b-cerrada">Cerrada · vuelve primavera 2027</span>
+      </div>
+      <p>Ayudas a entidades sociales, recursos para discapacidad y asociaciones de personas con patologías crónicas. Plazo 2026: 30 abr – 28 may. Exige estar inscrita en el registro municipal de asociaciones con un año de antelación y tener sede y actividad en la provincia.</p>
+      <div class="encaje"><b>Encaje MyCoco:</b> medio; relevante si hay implantación/actividad en Huesca. Planificar 2027.</div>
+      <p class="fuentes">Fuente: <a href="https://www.dphuesca.es/subvenciones-sociales">dphuesca.es — Asuntos sociales</a> · <a href="https://www.huesca.es/w/subvenciones-accion-social">Ayto. de Huesca — Acción Social</a></p>
+    </div>
+
+    <div class="card">
+      <div class="card-top">
+        <div><div class="org">Diputación Provincial de Teruel</div><h3>Subvenciones de Acción Social</h3></div>
+        <span class="badge b-permanente">Programa anual</span>
+      </div>
+      <p>Programa anual para servicios de acción social: discapacidad física y psíquica, enfermedades crónicas, adicciones e inserción social. Requiere actividad en la provincia de Teruel.</p>
+      <div class="encaje"><b>Encaje MyCoco:</b> medio; útil para actividades divulgativas en Teruel o alianzas locales. Vigilar apertura anual.</div>
+      <p class="fuentes">Fuente: <a href="https://www.dpteruel.es/DPTweb/abierta-la-convocatoria-de-subvenciones-de-accion-social-de-la-diputacion-de-teruel/">dpteruel.es — Convocatoria de Acción Social</a></p>
+    </div>
+  </section>
+
+  <!-- 3. PRIVADAS -->
+  <section id="privadas">
+    <div class="sec-head"><span class="sec-num">03</span><h2>Convocatorias privadas y fundaciones</h2></div>
+    <p class="sec-desc">Fundaciones con fuerte presencia en Aragón y convocatorias sociales de empresa.</p>
+
+    <div class="card">
+      <div class="card-top">
+        <div><div class="org">Fundación Ibercaja</div><h3>Convocatoria de Proyectos Sociales (XXI edición)</h3></div>
+        <span class="badge b-cerrada">Cerrada · vuelve inicios 2027</span>
+      </div>
+      <p>Hasta <b>20.000 € por proyecto</b> para entidades sin ánimo de lucro que fomenten la igualdad de oportunidades. Con sede en Zaragoza, es un aliado natural. Plazo 2026 cerró el 18 de marzo; requiere 2 años de antigüedad y experiencia demostrada.</p>
+      <div class="encaje"><b>Encaje MyCoco:</b> alto (crecimiento personal, colectivos vulnerables). Anótalo para <b>enero–marzo 2027</b>. Ojo al requisito de 2 años como entidad.</div>
+      <div class="datos"><span><b>Máximo:</b> 20.000 €</span><span><b>Ejecución:</b> 12 meses</span><span><b>Plazo 2026:</b> hasta 18 mar (cerrado)</span></div>
+      <p class="fuentes">Fuente: <a href="https://www.fundacionibercaja.es/convocatorias/convocatoria-2026-fundacion-ibercaja-de-proyectos-sociales-zaragoza/">fundacionibercaja.es — Proyectos Sociales 2026</a></p>
+    </div>
+
+    <div class="card">
+      <div class="card-top">
+        <div><div class="org">Fundación Iberdrola España</div><h3>Convocatoria Social 2026 — línea mujeres</h3></div>
+        <span class="badge b-permanente">Anual · revisar plazo</span>
+      </div>
+      <p>Líneas para infancia, discapacidad y <b>mujeres</b> (autonomía y empleabilidad, especialmente afectadas por violencia). Plazos hasta julio en la edición 2026.</p>
+      <div class="encaje"><b>Encaje MyCoco:</b> medio; la línea de autonomía de la mujer puede conectar con el relato de decisión informada. Confirmar bases y encaje temático exacto.</div>
+      <p class="fuentes">Fuente: <a href="https://ecosistemastartup.com/emprendimiento-con-impacto-salud-mujeres-e-infancia-en-2026/">Panorámica de convocatorias con impacto 2026</a></p>
+    </div>
+
+    <div class="card">
+      <div class="card-top">
+        <div><div class="org">Fundación Bayer</div><h3>Mujeres Emprendedoras que transforman la salud</h3></div>
+        <span class="badge b-permanente">Revisar convocatoria</span>
+      </div>
+      <p>Identifica y potencia a mujeres que generan impacto en salud y alimentación, con herramientas y redes para escalar. Encaje con el perfil de Sara y con la dimensión de innovación social de MyCoco.</p>
+      <div class="encaje"><b>Encaje MyCoco:</b> medio-alto para la línea de emprendimiento/innovación en salud liderada por mujeres. Admite proyectos, no solo ONG.</div>
+      <p class="fuentes">Fuente: <a href="https://www.conosur.bayer.com/es-es/novedades/historias/2026/mujeres-que-innovan-para-cambiar-el-mundo">Fundación Bayer — Mujeres Emprendedoras 2026</a></p>
+    </div>
+  </section>
+
+  <!-- 4. PREMIOS EMPRENDIMIENTO -->
+  <section id="emprendimiento">
+    <div class="sec-head"><span class="sec-num">04</span><h2>Premios de jóvenes emprendedores</h2></div>
+    <p class="sec-desc">Reconocimiento, visibilidad y dotación económica. Aquí sí encaja perfectamente el perfil de Sara y de MyCoco como empresa/proyecto.</p>
+
+    <div class="card">
+      <div class="card-top">
+        <div><div class="org">IAF · AJE Zaragoza · Ibercaja · Gobierno de Aragón</div><h3>Premio a la Persona Joven Empresaria de Aragón</h3></div>
+        <span class="badge b-proxima">Bienal · otoño</span>
+      </div>
+      <p>Reconoce a jóvenes que han creado y consolidado su empresa impulsando innovación y creando empleo y riqueza en Aragón. La XIV edición se entregó en octubre bajo el lema "La magia de emprender".</p>
+      <div class="encaje"><b>Encaje MyCoco:</b> muy alto por perfil (fundadora joven, innovación social en salud). Contacta con <b>AJE Zaragoza</b> y el <b>IAF</b> para conocer la próxima convocatoria y requisitos de edad.</div>
+      <p class="fuentes">Fuentes: <a href="https://ajezaragoza.com/">AJE Zaragoza</a> · <a href="https://ecosistemamas.ibercaja.es/agenda/xiv-premio-a-la-persona-joven-empresaria-de-aragon-la-magia-de-emprender/">Ecosistema MÁS Ibercaja</a></p>
+    </div>
+
+    <div class="card">
+      <div class="card-top">
+        <div><div class="org">CaixaBank · Fundación Emprender en Aragón</div><h3>Premios EmprendedorXXI</h3></div>
+        <span class="badge b-permanente">Anual</span>
+      </div>
+      <p>Más de 400.000 € en premios en dos fases: autonómica (un ganador por comunidad) y sectorial (cinco ganadores). Identifica empresas con mayor potencial de crecimiento.</p>
+      <div class="encaje"><b>Encaje MyCoco:</b> alto en la fase Aragón; la dimensión de impacto social + salud es diferencial. Vigilar apertura anual de candidaturas.</div>
+      <p class="fuentes">Fuente: <a href="https://www.caixabank.com/es/actualidad/noticias/la-caixa-y-la-fundacion-emprender-en-aragon-presentan-la-10-edicion-de-los-premios-emprendedorxxi--1775-c-24115--">CaixaBank — Premios EmprendedorXXI Aragón</a></p>
+    </div>
+
+    <div class="card">
+      <div class="card-top">
+        <div><div class="org">AJE Zaragoza · Ibercaja · Gobierno de Aragón</div><h3>Premios AJE Aragón · Programa "Aterrizaje de Talento"</h3></div>
+        <span class="badge b-permanente">Anual</span>
+      </div>
+      <p>Los Premios AJE reconocen la trayectoria empresarial joven; "Aterrizaje de Talento" es un programa de detección de talento joven (16–25 años). Buen punto de entrada a la red de emprendimiento aragonesa.</p>
+      <div class="encaje"><b>Encaje MyCoco:</b> alto como palanca de red y visibilidad local. Seguir la agenda de <a href="https://aragonemprende.com/eventos/premios-aje/">Aragón Emprende</a>.</div>
+      <p class="fuentes">Fuentes: <a href="https://aragonemprende.com/portfolio-category/premios-reconocimientos/">Aragón Emprende — Premios</a> · <a href="https://www.zaragoza.es/sede/servicio/noticia/353447">Ayto. Zaragoza — Aterrizaje de Talento</a></p>
+    </div>
+
+    <div class="card">
+      <div class="card-top">
+        <div><div class="org">Ámbito nacional (elegible desde Aragón)</div><h3>Impact Social Cup · Madrid Impacta · Premio Emprendedoras</h3></div>
+        <span class="badge b-permanente">Complementarios</span>
+      </div>
+      <p>Certámenes de emprendimiento social e impacto con categorías de <b>Salud y Bienestar</b> y liderazgo femenino. Aunque algunos son municipales (Madrid), sirven de referencia y varios admiten candidaturas de fuera.</p>
+      <div class="encaje"><b>Encaje MyCoco:</b> medio; útiles para ampliar visibilidad nacional y comparar la propuesta. Verificar en cada uno la elegibilidad territorial.</div>
+      <p class="fuentes">Fuentes: <a href="https://impactsocialcup.com/">Impact Social Cup 2026</a> · <a href="https://www.eldiariodemadrid.es/articulo/madrid/madrid-premio-madrid-impacta/20260407105716126624.html">Madrid Impacta 2026</a></p>
+    </div>
+  </section>
+
+  <!-- 5. FOROS PARTICIPACIÓN -->
+  <section id="foros">
+    <div class="sec-head"><span class="sec-num">05</span><h2>Foros de participación e incidencia</h2></div>
+    <p class="sec-desc">Espacios para llevar la voz del movimiento a las políticas públicas — el eje de "incidencia" de MyCoco.</p>
+
+    <div class="card">
+      <div class="card-top">
+        <div><div class="org">Gobierno de Aragón · LAAAB</div><h3>Aragón Participa / Laboratorio de Aragón Gobierno Abierto</h3></div>
+        <span class="badge b-permanente">Registro abierto</span>
+      </div>
+      <p>Plataforma de procesos participativos para elaborar y evaluar políticas públicas. Cualquier persona o entidad puede registrarse y participar. Es la vía institucional para introducir la <b>decisión compartida y la representación postmastectomía</b> en la agenda pública aragonesa.</p>
+      <div class="encaje"><b>Encaje MyCoco:</b> alto para incidencia. Regístrate y sigue los procesos abiertos (especialmente los de salud, igualdad y participación).</div>
+      <p class="fuentes">Fuentes: <a href="https://gobiernoabierto.aragon.es/agoab/participacion">Aragón Gobierno Abierto — Participación</a> · <a href="http://aragonparticipa.aragon.es/como-participar">Aragón Participa — Cómo participar</a></p>
+    </div>
+
+    <div class="card">
+      <div class="card-top">
+        <div><div class="org">Gobierno de Aragón · FAMCP · entidades locales</div><h3>Foro Aragonés para la Participación Ciudadana en el ámbito local</h3></div>
+        <span class="badge b-permanente">Continuo</span>
+      </div>
+      <p>Instrumento de debate y reflexión sobre participación ciudadana local, formado por el Gobierno de Aragón, la Federación Aragonesa de Municipios, Comarcas y Provincias y entidades comprometidas.</p>
+      <div class="encaje"><b>Encaje MyCoco:</b> medio; útil para conectar con ayuntamientos y comarcas para talleres y divulgación.</div>
+      <p class="fuentes">Fuente: <a href="https://gobiernoabierto.aragon.es/agoab/participacion/foro-aragones">Aragón Gobierno Abierto — Foro aragonés</a></p>
+    </div>
+
+    <div class="card">
+      <div class="card-top">
+        <div><div class="org">Consejo de Salud / Consejo de la Mujer</div><h3>Órganos de participación sectorial (salud y mujer)</h3></div>
+        <span class="badge b-permanente">Vía de entrada</span>
+      </div>
+      <p>Aragón y sus municipios cuentan con consejos consultivos de salud y de la mujer donde las entidades del tercer sector tienen voz. Solicitar formar parte o ser escuchadas es una palanca de incidencia de bajo coste.</p>
+      <div class="encaje"><b>Encaje MyCoco:</b> alto a medio plazo. Consultar al IAM y al Dpto. de Sanidad las vías de participación de asociaciones de pacientes.</div>
+    </div>
+  </section>
+
+  <!-- 6. ONCOLOGIA -->
+  <section id="oncologia">
+    <div class="sec-head"><span class="sec-num">06</span><h2>Oncología — jornadas, unidades y contactos clave</h2></div>
+    <p class="sec-desc">Alianzas clínicas para complementar (no competir con) hospitales y sociedades científicas. La puerta de entrada a referentes y a la red de profesionales del movimiento.</p>
+
+    <div class="card">
+      <div class="card-top">
+        <div><div class="org">IISA + AECC · Fundación Ibercaja</div><h3>Jornada Aragonesa de Humanización en Cáncer de Mama</h3></div>
+        <span class="badge b-permanente">Anual · mayo</span>
+      </div>
+      <p>Encuentro anual (V edición: 5 de mayo de 2026, Patio de la Infanta) organizado por el Instituto de Investigación Sanitaria de Aragón con la AECC. Está avalada por las sociedades aragonesas de cirugía, radiología, oncología radioterápica, ginecología y por el Colegio de Médicos de Zaragoza.</p>
+      <div class="encaje"><b>Encaje MyCoco:</b> altísimo. Es <b>el</b> espacio para presentar el observatorio, tejer contactos con oncólogos y proponer que "humanización" incluya la <b>decisión corporal informada</b>. Objetivo: participar o intervenir en la VI edición (mayo 2027).</div>
+      <p class="fuentes">Fuentes: <a href="https://www.contraelcancer.es/es/actualidad/noticias/v-jornada-aragonesa-humanizacion-cancer-mama-zaragoza">AECC — V Jornada</a> · <a href="https://www.fundacionibercaja.es/actividades/congresos-y-jornadas/v-jornada-aragonesa-de-humanizacion-en-cancer-de-mama-en-zaragoza-zaragoza/">Fundación Ibercaja</a></p>
+    </div>
+
+    <div class="card">
+      <div class="card-top">
+        <div><div class="org">Hospital Universitario Miguel Servet · Zaragoza</div><h3>Comité / Unidad de Mama</h3></div>
+        <span class="badge b-permanente">Contacto clínico</span>
+      </div>
+      <p>Comité de Mama con más de 25 años de trayectoria; ~385 casos nuevos de cáncer de mama al año y equipo multidisciplinar (cirugía, ginecología, cirugía plástica, anatomía patológica, oncología médica y radioterápica, enfermería, rehabilitación, psiquiatría).</p>
+      <div class="contacto"><b>Referente:</b> Dr. Antonio Antón, jefe de Oncología Médica y responsable del proceso de mama. Vía de entrada para acuerdos de derivación y decisión compartida.</div>
+      <div class="encaje"><b>Encaje MyCoco:</b> alto. Hospital de referencia para el piloto MVP (1 hospital + 1 asociación + 1 sociedad científica).</div>
+      <p class="fuentes">Fuente: <a href="https://www.aragonhoy.es/sanidad/comite-mama-hospital-miguel-servet-18106">Aragón Hoy — Comité de Mama Miguel Servet</a></p>
+    </div>
+
+    <div class="card">
+      <div class="card-top">
+        <div><div class="org">AECC — Sede de Zaragoza / Aragón</div><h3>Asociación Española Contra el Cáncer</h3></div>
+        <span class="badge b-permanente">Aliado prioritario</span>
+      </div>
+      <p>Aliado clave por capilaridad territorial, apoyo psicológico y social gratuito y su propio observatorio. Coorganiza la jornada de humanización.</p>
+      <div class="contacto">
+        <b>Sede Zaragoza:</b> Plaza San Francisco, 6 · 50002 Zaragoza<br>
+        <b>Tel:</b> 900 100 036 · <b>Email:</b> <a href="mailto:zaragoza@aecc.es">zaragoza@aecc.es</a><br>
+        <b>Dirección en Aragón:</b> Patxi García Izuel
+      </div>
+      <div class="encaje"><b>Encaje MyCoco:</b> aliado prioritario. Explorar convenio de colaboración, derivación y coorganización de actividades.</div>
+      <p class="fuentes">Fuente: <a href="https://www.contraelcancer.es/es/sobre-nosotros/donde-estamos/sede-zaragoza">contraelcancer.es — Sede de Zaragoza</a></p>
+    </div>
+
+    <div class="card">
+      <div class="card-top">
+        <div><div class="org">IISA · Hospital Clínico Lozano Blesa · Sociedades científicas</div><h3>Investigación y red profesional</h3></div>
+        <span class="badge b-permanente">Ampliar red</span>
+      </div>
+      <p>El Instituto de Investigación Sanitaria de Aragón (IISA) canaliza investigación en cáncer de mama y organiza la jornada de humanización. El Hospital Clínico Lozano Blesa cuenta también con unidad de mama. Sociedades avaladoras: cirugía, radiología, oncología radioterápica y ginecología aragonesas, más el Colegio de Médicos de Zaragoza (ICOMZ).</p>
+      <div class="encaje"><b>Encaje MyCoco:</b> medio-alto para dar rigor científico al observatorio y sumar avales. Contactar vía la jornada anual.</div>
+      <p class="fuentes">Fuentes: <a href="https://www.iisaragon.es/tag/asociacion-espanola-contra-el-cancer-en-zaragoza/">IISA — AECC Zaragoza</a></p>
+    </div>
+  </section>
+
+  <!-- 7. EDICIONES ANTERIORES / ENCAJE -->
+  <section id="encaje">
+    <div class="sec-head"><span class="sec-num">07</span><h2>Ediciones anteriores: ¿encaja MyCoco?</h2></div>
+    <p class="sec-desc">Qué proyectos han ganado o han sido financiados en años previos, y qué nos dice sobre nuestras opciones reales. La conclusión es alentadora: hay precedentes claros de <b>proyectos de salud femenina, medtech liderado por mujeres y entidades de cáncer</b> reconocidos y financiados.</p>
+
+    <div class="card">
+      <div class="card-top">
+        <div><div class="org">Precedente muy relevante</div><h3>Salud de la mujer y cáncer de mama ya premiados</h3></div>
+        <span class="badge b-abierta">Encaje alto</span>
+      </div>
+      <ul class="clean">
+        <li><b>"Cosas que sí importan"</b> (Women'secret + Dexeus Mujer) — sujetador postquirúrgico asequible para mujeres con cáncer de mama. Premio Cinco Días a la Innovación en RSC. <b>Territorio casi idéntico al de la línea de prótesis/producto de MyCoco.</b></li>
+        <li><b>Premios INNOVA en Salud de la Mujer</b> — certamen dedicado a modelos asistenciales de salud femenina: un espacio hecho a medida para el relato de decisión informada postmastectomía.</li>
+        <li><b>Fundación Bayer — Mujeres Emprendedoras</b> — reconoce a mujeres que transforman la salud (ver ficha 03).</li>
+        <li><b>Lirio Bionics</b> (Premios SECOT 2026) — prótesis con IA: demuestra que el jurado premia tecnología sanitaria con impacto.</li>
+      </ul>
+      <div class="encaje"><b>Lectura para MyCoco:</b> los premios de <b>salud de la mujer e innovación social sanitaria</b> son el terreno donde el proyecto compite con más ventaja. Merece la pena preparar una candidatura sólida a INNOVA Salud de la Mujer y a Bayer.</div>
+      <p class="fuentes">Fuentes: <a href="https://www.dexeus.com/quienes-somos/sala-de-prensa/comunicados-de-prensa/premios-cinco-dias">Dexeus — Premios Cinco Días</a> · <a href="https://www.premiosinnovamujer.com/">Premios INNOVA en Salud de la Mujer</a> · <a href="https://emprendedores.es/sostenibilidad/premios-secot-2026-reconocen-seis-proyectos-impacto-social-sostenible/">Premios SECOT 2026</a></p>
+    </div>
+
+    <div class="card">
+      <div class="card-top">
+        <div><div class="org">Premios EmprendedorXXI · Aragón</div><h3>Historial: medtech y liderazgo femenino ya han ganado</h3></div>
+        <span class="badge b-proxima">Encaje medio-alto</span>
+      </div>
+      <p>Palmarés reciente en Aragón: EXXN Engineering (2025), Zepren Solutions (2024), CROPI (2023), Moso 3D — liderado por <b>Marta Burillo</b> (2022), Abora Solar (2019). Entre los apoyados históricos figura <b>Dive Medical</b>, dispositivo médico oftalmológico con CEO <b>Mabel Gimeno</b>.</p>
+      <div class="encaje"><b>Lectura para MyCoco:</b> hay <b>precedente de startups sanitarias y de mujeres al frente</b> ganando en Aragón. El perfil predominante es tecnológico/escalable, así que aquí conviene presentar la <b>cara medtech de MyCoco</b> (prótesis externa 3D + app), no el relato de movimiento social. Desde 2007, 232 empresas se han beneficiado del programa.</p>
+      <p class="fuentes">Fuentes: <a href="https://aragonemprende.com/exxn-engineering-start-up-ganadora-de-los-premios-emprendexxi-en-aragon/">Aragón Emprende — EmprendeXXI</a> · <a href="https://www.emprendedorxxi.es/es/ganadores/2019">EmprendedorXXI — Ganadores</a></p>
+    </div>
+
+    <div class="card">
+      <div class="card-top">
+        <div><div class="org">Premio Persona Joven Empresaria de Aragón</div><h3>Historial: empresas consolidadas, con vía joven</h3></div>
+        <span class="badge b-proxima">Encaje medio · categoría Futuro</span>
+      </div>
+      <p>Ganadores previos: Panishop, Podoactiva, Imascono, La Zarola, Number 16 School, Verker RRHH… — en su mayoría empresas consolidadas y no del ámbito social/salud. Requisito general: menores de 41 años, empresa registrada y operando en Aragón con <b>mínimo 3 años</b>, <b>salvo el "Premio Futuro"</b> para proyectos más jóvenes.</p>
+      <div class="encaje"><b>Lectura para MyCoco:</b> el premio principal exige trayectoria; si el proyecto tiene menos de 3 años, la vía natural es el <b>"Premio Futuro"</b>. El ángulo diferencial (impacto social + salud femenina) puede destacar frente a un palmarés muy convencional.</div>
+      <p class="fuentes">Fuentes: <a href="https://www.hoyaragon.es/articulo/noticias-aragon/premio-persona-joven-empresaria-aragon-aje-2025/20250911150359108279.html">Hoy Aragón — Requisitos y ganadores</a></p>
+    </div>
+
+    <div class="card">
+      <div class="card-top">
+        <div><div class="org">Fundación Ibercaja · Proyectos Sociales</div><h3>Historial: entidades de cáncer ya financiadas</h3></div>
+        <span class="badge b-proxima">Encaje alto · como entidad no lucrativa</span>
+      </div>
+      <p>Entre los proyectos apoyados figuran <b>Fundación Josep Carreras contra la Leucemia</b>, <b>FARO</b> (familias y niños con cáncer) y <b>Fundación Menudos Corazones</b>. El foco es integración de colectivos vulnerables.</p>
+      <div class="encaje"><b>Lectura para MyCoco:</b> las <b>entidades de cáncer sí encajan y son financiadas</b>, pero son fundaciones/asociaciones consolidadas. Refuerza el argumento de constituir una entidad no lucrativa MyCoco para acceder a esta y otras vías del tercer sector.</div>
+      <p class="fuentes">Fuentes: <a href="https://www.ibercaja.es/tu-dinero-con-corazon/proyectos-solidarios/proyectos-solidarios-detalle/proyectos-apoyados-anteriormente/">Ibercaja — Proyectos apoyados anteriormente</a></p>
+    </div>
+
+    <div class="aviso" style="border-left-color:var(--verde);margin:22px 0 0">
+      <strong>Veredicto de encaje.</strong> MyCoco tiene <b>doble puerta de entrada</b>: (1) como <b>proyecto de innovación en salud de la mujer</b> —donde hay precedentes casi idénticos (sujetador postquirúrgico Dexeus, medtech femenino en EmprendeXXI)— y (2) como <b>entidad social del tercer sector del cáncer</b> —donde las fundaciones de cáncer son financiadas de forma habitual—. La estrategia ganadora es <b>adaptar el relato a cada convocatoria</b>: cara medtech/emprendedora para los premios de empresa; cara movimiento/comunidad para las subvenciones sociales.
+    </div>
+  </section>
+
+  <div class="aviso" style="border-left-color:var(--rosa);margin-top:56px">
+    <strong>Próximos pasos sugeridos.</strong>
+    <ul class="clean" style="margin-top:10px">
+      <li>Decidir esta semana si presentar a <b>Alfabetización en salud</b> (cierra el 4 de agosto) — sola o con una entidad aliada elegible.</li>
+      <li>Configurar una alerta del <b>BOPZ</b> para no perder la apertura de Acción Social 2026–2027 de Zaragoza (solo 15 días hábiles).</li>
+      <li>Escribir a <b>AJE Zaragoza / IAF</b> y a <b>AECC Zaragoza</b> para presentar MyCoco y explorar premios y convenio.</li>
+      <li>Valorar con asesoría la <b>constitución de una asociación/fundación MyCoco</b> para desbloquear las subvenciones del tercer sector en 2027.</li>
+      <li>Reservar la <b>Jornada de Humanización en Cáncer de Mama</b> (mayo 2027) como hito de incidencia y networking.</li>
+    </ul>
+  </div>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="tag">Siéntete tú misma</div>
+    <p>MyCoco · Investigación de financiación e incidencia en Aragón<br>
+    Documento de trabajo interno · datos verificados en fuentes oficiales a <b>24 de julio de 2026</b>.</p>
+    <p class="fuentes" style="color:#d9b99e;margin-top:14px">Los importes y plazos pueden variar; confirma siempre las bases en el enlace oficial de cada convocatoria antes de presentar. Este material no constituye asesoramiento jurídico ni fiscal.</p>
+  </div>
+</footer>
+
+</body>
+</html>

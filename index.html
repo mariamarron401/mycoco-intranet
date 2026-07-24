@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>MyCoco · Intranet de trabajo</title>
+  <meta name="description" content="Espacio de trabajo interno de MyCoco: secciones, informes y documentos en desarrollo.">
+  <link rel="icon" href="assets/logo-redondo.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --beige:#EED8C1; --marron:#3F1910; --teja:#99492C;
+      --salmon:#E3A175; --rosa:#C6979D; --verde:#5B7352;
+      --beige-claro:#F7ECE0; --sombra:0 8px 30px rgba(63,25,16,.10);
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{
+      font-family:'Poppins',system-ui,sans-serif;
+      color:var(--marron);
+      background:var(--beige-claro);
+      line-height:1.6;
+      -webkit-font-smoothing:antialiased;
+    }
+    a{color:inherit;text-decoration:none}
+    .cabecera{
+      background:linear-gradient(160deg,var(--beige) 0%,#F7ECE0 100%);
+      border-bottom:1px solid rgba(63,25,16,.08);
+      padding:48px 24px 40px;
+      text-align:center;
+    }
+    .cabecera img{height:64px;width:auto;margin-bottom:20px}
+    .cabecera h1{
+      font-family:'Cormorant',serif;
+      font-weight:600;
+      font-size:clamp(2rem,5vw,3rem);
+      line-height:1.1;
+      letter-spacing:.5px;
+    }
+    .cabecera .tagline{
+      font-style:italic;font-family:'Cormorant',serif;
+      color:var(--teja);font-size:1.25rem;margin-top:4px;
+    }
+    .cabecera .lema{
+      max-width:640px;margin:18px auto 0;
+      font-size:.98rem;color:var(--marron);opacity:.85;
+    }
+    .meta-barra{
+      max-width:1080px;margin:0 auto;padding:20px 24px 0;
+      display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;
+      align-items:center;font-size:.85rem;color:var(--teja);
+    }
+    .meta-barra .chip{
+      background:#fff;border:1px solid rgba(63,25,16,.10);
+      padding:6px 14px;border-radius:999px;box-shadow:var(--sombra);
+    }
+    main{max-width:1080px;margin:0 auto;padding:24px 24px 80px}
+    .rejilla{
+      display:grid;gap:22px;
+      grid-template-columns:repeat(auto-fill,minmax(300px,1fr));
+      margin-top:20px;
+    }
+    .tarjeta{
+      background:#fff;border-radius:18px;padding:26px 24px 20px;
+      box-shadow:var(--sombra);border:1px solid rgba(63,25,16,.06);
+      display:flex;flex-direction:column;gap:10px;
+      transition:transform .18s ease, box-shadow .18s ease;
+      position:relative;overflow:hidden;
+    }
+    .tarjeta::before{
+      content:"";position:absolute;top:0;left:0;right:0;height:4px;
+      background:linear-gradient(90deg,var(--teja),var(--salmon),var(--rosa));
+    }
+    .tarjeta:hover{transform:translateY(-4px);box-shadow:0 14px 40px rgba(63,25,16,.16)}
+    .tarjeta--destacada{border-color:var(--salmon)}
+    .tarjeta__cat{
+      align-self:flex-start;font-size:.72rem;font-weight:600;
+      text-transform:uppercase;letter-spacing:.08em;
+      color:#fff;background:var(--cat,#99492C);
+      padding:4px 12px;border-radius:999px;
+    }
+    .tarjeta__titulo{
+      font-family:'Cormorant',serif;font-weight:600;
+      font-size:1.5rem;line-height:1.15;color:var(--marron);
+    }
+    .tarjeta__desc{font-size:.92rem;color:#5c4438;flex-grow:1}
+    .tarjeta__pie{
+      font-size:.8rem;color:var(--teja);margin-top:6px;
+      display:flex;justify-content:space-between;align-items:center;
+    }
+    .tarjeta__flecha{font-size:1.1rem;transition:transform .18s ease}
+    .tarjeta:hover .tarjeta__flecha{transform:translateX(4px)}
+    .vacio{color:var(--teja);font-style:italic;padding:40px 0}
+    .seccion-titulo{
+      font-family:'Cormorant',serif;font-size:1.6rem;font-weight:600;
+      margin-top:8px;
+    }
+    footer{
+      text-align:center;padding:32px 24px 48px;
+      font-size:.82rem;color:var(--teja);
+      border-top:1px solid rgba(63,25,16,.08);
+    }
+    footer .aviso{max-width:620px;margin:8px auto 0;opacity:.8}
+    @media (max-width:520px){.cabecera{padding:36px 18px 28px}}
+  </style>
+</head>
+<body>
+  <header class="cabecera">
+    <img src="assets/logo-mycoco.png" alt="MyCoco">
+    <h1>Intranet de trabajo</h1>
+    <p class="tagline">Siéntete tú misma</p>
+    <p class="lema">Espacio interno con las secciones, informes y documentos que vamos desarrollando para el movimiento. Comparte esta URL con quien quieras darle acceso.</p>
+  </header>
+
+  <div class="meta-barra">
+    <span class="chip">2 sección(es) publicadas</span>
+    <span class="chip">Actualizado: 24 de julio de 2026</span>
+  </div>
+
+  <main>
+    <div class="rejilla">
+      <a class="tarjeta tarjeta--destacada" href="secciones/mycoco-lineas-actuacion.html">
+        <span class="tarjeta__cat" style="--cat:#3F1910">Estrategia</span>
+        <h2 class="tarjeta__titulo">Líneas de actuación de MyCoco</h2>
+        <p class="tarjeta__desc">Ejes del movimiento: comunidad, observatorio de datos, acompañamiento en la decisión, representación y divulgación.</p>
+        <span class="tarjeta__pie">8 de julio de 2026 <span class="tarjeta__flecha">→</span></span>
+      </a>
+      <a class="tarjeta" href="secciones/investigacion-aragon-subvenciones-2026-07-24.html">
+        <span class="tarjeta__cat" style="--cat:#99492C">Financiación</span>
+        <h2 class="tarjeta__titulo">Investigación Aragón — Subvenciones, premios, foros y oncología</h2>
+        <p class="tarjeta__desc">Mapa de convocatorias de impacto social y salud, premios, foros y ecosistema oncológico en Aragón para financiar y aliar a MyCoco.</p>
+        <span class="tarjeta__pie">24 de julio de 2026 <span class="tarjeta__flecha">→</span></span>
+      </a>
+    </div>
+  </main>
+
+  <footer>
+    <p><strong>MyCoco</strong> — Movimiento social · Origen Corporación Biotech S.L.</p>
+    <p class="aviso">Documento de trabajo interno. Contenido en desarrollo, no destinado a difusión pública. Las cifras de salud aquí recogidas requieren verificación con fuente antes de su publicación.</p>
+  </footer>
+</body>
+</html>
