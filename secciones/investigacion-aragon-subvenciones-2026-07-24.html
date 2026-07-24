@@ -4,6 +4,7 @@
     <meta name="robots" content="noindex, nofollow">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<base target="_blank">
 <title>MyCoco · Investigación Aragón — Subvenciones, premios, foros y oncología</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -61,6 +62,37 @@
   }
 
   main{max-width:1040px;margin:0 auto;padding:0 24px 80px}
+
+  /* BANNER URGENTE */
+  .urgente{
+    background:linear-gradient(135deg,#fff 0%,var(--beige-claro) 100%);
+    border:2px solid var(--teja);border-radius:16px;padding:28px 30px;margin:40px 0 8px;
+    box-shadow:var(--sombra);position:relative;overflow:hidden;
+  }
+  .urgente::before{content:"";position:absolute;left:0;top:0;bottom:0;width:6px;background:var(--teja)}
+  .urgente .kicker{
+    display:inline-flex;align-items:center;gap:8px;font-family:'Poppins';font-weight:600;
+    font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;color:var(--teja);margin-bottom:14px;
+  }
+  .urgente h2{font-size:clamp(1.6rem,3vw,2.1rem);margin-bottom:4px}
+  .urgente .lead{font-size:.95rem;color:#5a3a2c;margin-bottom:20px}
+  .deadline-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}
+  .dl{
+    background:var(--blanco);border:1px solid rgba(198,151,157,.28);border-radius:12px;
+    padding:18px 18px 16px;display:flex;flex-direction:column;gap:6px;
+  }
+  .dl.top{border-color:var(--teja);border-width:2px;background:#fff7f0}
+  .dl .when{display:flex;align-items:baseline;gap:8px}
+  .dl .when .fecha{font-family:'Cormorant';font-weight:700;font-size:1.8rem;color:var(--teja);line-height:1}
+  .dl .when .rest{font-size:.78rem;color:#7a5a4c;font-weight:500}
+  .dl .dias{
+    align-self:flex-start;background:var(--teja);color:var(--beige);font-family:'Poppins';
+    font-weight:600;font-size:.72rem;padding:3px 11px;border-radius:20px;letter-spacing:.03em;
+  }
+  .dl.warn .dias{background:var(--salmon);color:var(--marron)}
+  .dl h4{font-family:'Poppins';font-weight:600;font-size:.95rem;color:var(--marron);margin-top:4px}
+  .dl p{font-size:.83rem;color:#5a3a2c;margin:0}
+  .dl a{font-size:.82rem;font-weight:500}
 
   /* INTRO / AVISO */
   .aviso{
@@ -153,6 +185,36 @@
 </header>
 
 <main>
+
+  <div class="urgente">
+    <div class="kicker">⏳ Presentar ya · lo que necesitas ahora</div>
+    <h2>Convocatorias abiertas con fecha límite</h2>
+    <p class="lead">Ordenadas por urgencia. La primera es la más importante y la que mejor encaja con MyCoco — cierra en pocos días.</p>
+    <div class="deadline-grid">
+      <div class="dl top">
+        <div class="when"><span class="fecha">4 ago</span><span class="rest">2026 · lunes</span></div>
+        <span class="dias">Quedan 11 días</span>
+        <h4>Alfabetización en salud y ayuda mutua de pacientes</h4>
+        <p>Gobierno de Aragón. La que <b>más encaja</b>: decisión informada, madrinas y observatorio. Abierta desde el 15 jul.</p>
+        <a href="borrador-solicitud-alfabetizacion-salud-2026.html" style="font-weight:600">📝 Abrir borrador de solicitud →</a>
+        <a href="https://www.aragon.es/tramitador/-/tramite/subvenciones-a-proyectos-de-alfabetizacion-en-salud-y-ayuda-mutua-de-pacientes-y-personas-cuidadoras/convocatoria-2026" style="margin-top:2px">Ir a la convocatoria oficial →</a>
+      </div>
+      <div class="dl warn">
+        <div class="when"><span class="fecha">BOPZ</span><span class="rest">15 días hábiles<br>tras publicarse</span></div>
+        <span class="dias">Vigilar a diario</span>
+        <h4>Acción Social 2026–2027 · Ayto. de Zaragoza</h4>
+        <p>3,37 M€ (hasta 140.000 €/proyecto). Incluye salud, enfermedades crónicas e igualdad. Publicación inminente.</p>
+        <a href="https://www.zaragoza.es/sede/servicio/tramite/37679">Ver trámite →</a>
+      </div>
+      <div class="dl">
+        <div class="when"><span class="fecha">Otoño</span><span class="rest">2026</span></div>
+        <span class="dias">Preparar candidatura</span>
+        <h4>Premios de emprendimiento (Joven Empresaria / EmprendedorXXI)</h4>
+        <p>Reservar en agenda. Encaje alto por perfil de fundadora e innovación en salud femenina.</p>
+        <a href="#emprendimiento" target="_self">Ver detalle ↓</a>
+      </div>
+    </div>
+  </div>
 
   <div class="aviso">
     <strong>Antes de empezar — lee esto.</strong> La mayoría de subvenciones de acción social y salud exigen ser <b>entidad sin ánimo de lucro legalmente constituida</b> (asociación o fundación), inscrita en el registro correspondiente y con una <b>antigüedad de 1–2 años</b>. MyCoco opera hoy como <b>iniciativa de Sara Gascón Durán</b>, todavía sin entidad sin ánimo de lucro propia: para acceder a la mayor parte de las ayudas del tercer sector conviene valorar <b>constituir una asociación/fundación MyCoco</b> o canalizar la solicitud a través de una entidad aliada elegible (p. ej. AECC, una asociación de pacientes). Los <b>premios de emprendimiento</b> y varias convocatorias privadas sí admiten a empresas. Cada ficha indica el encaje. Este documento es una guía de trabajo, no asesoramiento jurídico: confirma bases y requisitos en cada enlace oficial antes de presentar.

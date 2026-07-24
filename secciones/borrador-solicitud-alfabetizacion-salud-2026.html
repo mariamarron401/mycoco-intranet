@@ -1,0 +1,325 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <meta name="robots" content="noindex, nofollow">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<base target="_blank">
+<title>MyCoco · Borrador de solicitud — Alfabetización en salud 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --beige:#EED8C1;--beige-claro:#F7ECE0;--marron:#3F1910;--teja:#99492C;
+    --salmon:#E3A175;--rosa:#C6979D;--verde:#5B7352;--blanco:#FFFDFB;
+    --sombra:0 6px 24px rgba(63,25,16,.10);--sombra-suave:0 2px 10px rgba(63,25,16,.07);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:'Poppins',sans-serif;color:var(--marron);background:var(--beige-claro);line-height:1.65;font-weight:300;-webkit-font-smoothing:antialiased}
+  h1,h2,h3,h4{font-family:'Cormorant',serif;font-weight:600;line-height:1.15;color:var(--marron)}
+  a{color:var(--teja);text-decoration:none;border-bottom:1px solid rgba(153,73,44,.3)}
+  a:hover{border-bottom-color:var(--teja)}
+
+  header{background:linear-gradient(135deg,var(--marron) 0%,#5a271a 60%,var(--teja) 100%);color:var(--beige);padding:56px 24px 48px;position:relative;overflow:hidden}
+  header::after{content:"";position:absolute;right:-80px;top:-80px;width:300px;height:300px;border-radius:50%;background:radial-gradient(circle,var(--rosa) 0%,transparent 70%);opacity:.35}
+  .wrap{max-width:900px;margin:0 auto}
+  .eyebrow{font-weight:500;letter-spacing:.26em;text-transform:uppercase;font-size:.7rem;color:var(--salmon);margin-bottom:16px}
+  header h1{font-size:clamp(2rem,4.5vw,3rem);color:var(--beige);max-width:760px}
+  header .sub{font-weight:300;font-size:1rem;color:#f3ddc9;max-width:640px;margin-top:14px}
+  .meta-tags{margin-top:24px;display:flex;gap:10px;flex-wrap:wrap}
+  .meta-tags span{background:rgba(238,216,193,.14);border:1px solid rgba(238,216,193,.3);padding:6px 13px;border-radius:40px;font-size:.76rem;font-weight:400;color:var(--beige)}
+
+  main{max-width:900px;margin:0 auto;padding:0 24px 80px}
+
+  .aviso{background:var(--blanco);border-left:4px solid var(--salmon);border-radius:10px;padding:20px 24px;margin:36px 0;box-shadow:var(--sombra-suave);font-size:.92rem}
+  .aviso strong{color:var(--teja)}
+  .aviso.verde{border-left-color:var(--verde)}
+  .aviso.verde strong{color:var(--verde)}
+
+  section{margin-top:44px;scroll-margin-top:20px}
+  .sec-head{display:flex;align-items:baseline;gap:12px;border-bottom:2px solid var(--rosa);padding-bottom:10px;margin-bottom:16px}
+  .sec-head h2{font-size:clamp(1.5rem,3vw,2rem)}
+  .sec-num{font-family:'Cormorant';font-size:1.4rem;color:var(--salmon);font-weight:700}
+
+  p{font-size:.95rem;margin-bottom:12px;color:#3f2318}
+  .card{background:var(--blanco);border-radius:12px;padding:22px 24px;margin-bottom:14px;box-shadow:var(--sombra-suave);border:1px solid rgba(198,151,157,.18)}
+  h3{font-size:1.25rem;margin:6px 0 8px}
+  h4{font-family:'Poppins';font-weight:600;font-size:1rem;color:var(--teja);margin:14px 0 6px}
+
+  ul,ol{margin:8px 0 12px 4px;padding-left:20px}
+  li{font-size:.93rem;margin-bottom:6px;color:#3f2318}
+  ul.clean{list-style:none;padding-left:0}
+  ul.clean li{padding-left:22px;position:relative}
+  ul.clean li::before{content:"›";position:absolute;left:4px;color:var(--rosa);font-weight:700}
+
+  /* placeholder a rellenar */
+  .ph{background:#fff2e2;border:1px dashed var(--salmon);border-radius:5px;padding:1px 7px;color:#8a4a1f;font-weight:500;font-size:.9em}
+
+  table{width:100%;border-collapse:collapse;font-size:.9rem;margin:6px 0 4px}
+  th{background:var(--marron);color:var(--beige);text-align:left;padding:11px 14px;font-family:'Poppins';font-weight:500;font-size:.8rem}
+  td{padding:10px 14px;border-bottom:1px solid rgba(198,151,157,.2);vertical-align:top;color:#3f2318}
+  tr:last-child td{border-bottom:none}
+  tr:nth-child(even) td{background:rgba(238,216,193,.22)}
+  .tabla-scroll{overflow-x:auto;border-radius:10px;border:1px solid rgba(198,151,157,.2)}
+  td.tot{font-weight:600;color:var(--marron);background:var(--beige)!important}
+
+  .fuentes{font-size:.78rem;color:#6a4a3d;margin-top:8px}
+  blockquote{border-left:3px solid var(--verde);padding:8px 0 8px 16px;margin:12px 0;font-style:italic;color:#4a2c20;font-family:'Cormorant';font-size:1.15rem}
+
+  .check li{margin-bottom:9px}
+  footer{background:var(--marron);color:var(--beige);padding:38px 24px;text-align:center;font-size:.84rem}
+  footer .tag{font-family:'Cormorant';font-size:1.5rem;color:var(--salmon);font-style:italic;margin-bottom:8px}
+
+  @media(max-width:640px){header{padding:40px 20px 36px}.card{padding:18px}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <div class="eyebrow">Movimiento MyCoco · Borrador de solicitud</div>
+    <h1>Decidir con información: alfabetización en salud y apoyo mutuo ante la mastectomía en Aragón</h1>
+    <p class="sub">Borrador de memoria técnica para la convocatoria 2026 de subvenciones a proyectos de alfabetización en salud y ayuda mutua de pacientes y personas cuidadoras (Gobierno de Aragón).</p>
+    <div class="meta-tags">
+      <span>📅 Cierre: 4 de agosto de 2026</span>
+      <span>🏛️ Dpto. de Sanidad · Gobierno de Aragón</span>
+      <span>📄 Borrador v1 · a revisar</span>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <div class="aviso">
+    <strong>Cómo usar este borrador.</strong> Es un <b>documento de trabajo</b> para que Sara lo revise, complete y adapte al formulario oficial. Los textos en <span class="ph">[corchetes naranjas]</span> son datos que debes rellenar o confirmar (cifras, importes, fechas exactas, datos de la entidad). Antes de presentar: <b>(1)</b> descarga las bases y el modelo oficial de solicitud desde la <a href="https://www.aragon.es/tramitador/-/tramite/subvenciones-a-proyectos-de-alfabetizacion-en-salud-y-ayuda-mutua-de-pacientes-y-personas-cuidadoras/convocatoria-2026">página de la convocatoria</a>; <b>(2)</b> verifica que la entidad solicitante cumple los requisitos; <b>(3)</b> ajusta presupuesto y cronograma al modelo. No es asesoramiento jurídico.
+  </div>
+
+  <div class="aviso">
+    <strong>Requisito de elegibilidad — leer primero.</strong> La convocatoria se dirige a <b>asociaciones, federaciones y fundaciones de personas afectadas por una enfermedad o discapacidad y/o familiares, sin ánimo de lucro, legalmente constituidas, con sede y actividad en Aragón</b> (Orden SAN/335/2016). Si MyCoco opera hoy como sociedad mercantil, valora presentar a través de una <b>entidad aliada elegible</b> (p. ej. AECC u otra asociación de pacientes) o acelerar la constitución de una <b>asociación/fundación MyCoco</b>. Confírmalo antes de invertir tiempo en la solicitud.
+  </div>
+
+  <!-- 1 -->
+  <section id="entidad">
+    <div class="sec-head"><span class="sec-num">1</span><h2>Datos de la entidad solicitante</h2></div>
+    <div class="tabla-scroll">
+      <table>
+        <tr><th style="width:38%">Campo</th><th>A cumplimentar</th></tr>
+        <tr><td>Denominación de la entidad</td><td><span class="ph">[Asociación / Fundación MyCoco — o entidad aliada solicitante]</span></td></tr>
+        <tr><td>CIF</td><td><span class="ph">[CIF]</span></td></tr>
+        <tr><td>Naturaleza jurídica</td><td>Entidad sin ánimo de lucro <span class="ph">[asociación / federación / fundación]</span></td></tr>
+        <tr><td>Nº y fecha de inscripción en registro</td><td><span class="ph">[Registro de Asociaciones de Aragón nº ___, fecha ___]</span></td></tr>
+        <tr><td>Domicilio en Aragón</td><td><span class="ph">[dirección, localidad, provincia]</span></td></tr>
+        <tr><td>Representante legal</td><td>Sara Gascón — <span class="ph">[cargo]</span></td></tr>
+        <tr><td>Persona de contacto</td><td><span class="ph">[nombre]</span> · <span class="ph">[email]</span> · <span class="ph">[teléfono]</span></td></tr>
+        <tr><td>Ámbito de actuación</td><td>Comunidad Autónoma de Aragón (Zaragoza, Huesca y Teruel)</td></tr>
+      </table>
+    </div>
+  </section>
+
+  <!-- 2 -->
+  <section id="proyecto">
+    <div class="sec-head"><span class="sec-num">2</span><h2>Identificación y resumen del proyecto</h2></div>
+    <div class="card">
+      <h4>Título</h4>
+      <p>Decidir con información: programa de alfabetización en salud y red de apoyo mutuo para mujeres ante la mastectomía en Aragón.</p>
+      <h4>Resumen ejecutivo</h4>
+      <p>El proyecto acompaña a mujeres que han vivido o van a vivir una mastectomía para que comprendan <b>todas</b> sus opciones —reconstrucción inmediata o diferida, cierre plano, prótesis externa o esperar— y puedan decidir de forma informada, acompañada y libre de presión. Combina <b>materiales de alfabetización en salud en lenguaje claro</b>, <b>talleres presenciales y online</b> en las tres provincias, y una <b>red de apoyo mutuo entre iguales ("madrinas")</b> formada por mujeres mastectomizadas que acompañan a otras desde la experiencia vivida. MyCoco no defiende una opción sobre otra: defiende que todas sean conocidas, comprendidas y respetadas.</p>
+      <blockquote>Ninguna mujer debería tener que decidir sola sobre su cuerpo después de una mastectomía.</blockquote>
+      <h4>Duración prevista</h4>
+      <p><span class="ph">[fecha inicio]</span> – <span class="ph">[fecha fin, dentro del ejercicio subvencionable]</span> · Importe solicitado: <span class="ph">[€ ]</span> · Coste total del proyecto: <span class="ph">[€ ]</span>.</p>
+    </div>
+  </section>
+
+  <!-- 3 -->
+  <section id="justificacion">
+    <div class="sec-head"><span class="sec-num">3</span><h2>Justificación y necesidad detectada</h2></div>
+    <p>España mide bien el tumor y la supervivencia, pero <b>muy mal la calidad de la decisión corporal</b> y la vida cotidiana tras la mastectomía. Ese vacío deja a muchas mujeres decidiendo sin información suficiente, sin referentes y sin tiempo. Los datos disponibles lo confirman:</p>
+    <ul>
+      <li><b>37.682 nuevos casos</b> de cáncer de mama femenino estimados en España en 2025 (REDECAN).</li>
+      <li>En el mejor estudio disponible (cohorte andaluza, mastectomías 2010-2013), solo el <b>29% de las mujeres se reconstruye</b>, con una <b>demora media de 763 días</b> en la reconstrucción diferida — un tiempo en el que la mujer vive sin información ni acompañamiento estructurado sobre sus alternativas.</li>
+      <li>El <b>82,3% de profesionales</b> encuestados declara <b>no tener formación en decisión compartida</b> y el <b>66% no la aplica</b> habitualmente; las barreras señaladas son la falta de tiempo, de instrumentos y la dificultad de comprensión de la información por parte de la paciente (estudio en Andalucía).</li>
+      <li>El impacto no termina con la cirugía: entre supervivientes, <b>50,8%</b> refiere preocupación por su apariencia y <b>52,9%</b> problemas relacionados con la sexualidad (Informe AECC de Supervivientes de cáncer de mama, 2025).</li>
+      <li>Apenas existen datos públicos sobre quienes eligen <b>no reconstruirse</b>, sobre el uso real de <b>prótesis externas</b> o sobre el <b>arrepentimiento/satisfacción</b> con la decisión.</li>
+    </ul>
+    <p>La necesidad es clara: <b>herramientas de alfabetización en salud en lenguaje comprensible</b> y <b>apoyo mutuo entre iguales</b> que reduzcan el conflicto decisional y legitimen todas las opciones. En Aragón, este acompañamiento estructurado y neutral entre opciones no existe hoy de forma articulada.</p>
+    <p class="fuentes">Fuentes: REDECAN (2025); estudio de reconstrucción SSPA Andalucía (scielo.isciii.es); Informe AECC de Supervivientes de Mama (2025); estudios españoles sobre decisión compartida. Todas las cifras deben citarse con fuente y fecha en la memoria final.</p>
+  </section>
+
+  <!-- 4 -->
+  <section id="objetivos">
+    <div class="sec-head"><span class="sec-num">4</span><h2>Objetivos</h2></div>
+    <div class="card">
+      <h4>Objetivo general</h4>
+      <p>Mejorar la <b>competencia en salud (health literacy)</b> y la capacidad de decisión autónoma de las mujeres ante la mastectomía en Aragón, y fortalecer su bienestar mediante el apoyo mutuo entre iguales.</p>
+      <h4>Objetivos específicos</h4>
+      <ol>
+        <li>Elaborar y difundir <b>materiales de alfabetización en salud en lenguaje claro</b> sobre todas las opciones postmastectomía, validados con criterio profesional y sin promover ninguna opción sobre otra.</li>
+        <li>Realizar <b>talleres de alfabetización en salud</b> presenciales y online en Zaragoza, Huesca y Teruel.</li>
+        <li>Crear y formar una <b>red de apoyo mutuo ("madrinas")</b> de mujeres mastectomizadas que acompañen a otras.</li>
+        <li>Reducir el <b>conflicto decisional</b> y aumentar la sensación de estar informada y legitimada para expresar preferencias.</li>
+        <li>Recoger, de forma anonimizada y con base legal (RGPD), <b>información sobre la experiencia decisional</b> que alimente el observatorio y mejore la atención.</li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- 5 -->
+  <section id="poblacion">
+    <div class="sec-head"><span class="sec-num">5</span><h2>Población destinataria</h2></div>
+    <ul class="clean">
+      <li><b>Directa:</b> mujeres de Aragón que han pasado o van a pasar por una mastectomía (por cáncer, mastectomía profiláctica BRCA1/2, patología mamaria severa).</li>
+      <li><b>Personas cuidadoras y familiares</b> que participan en el acompañamiento y la decisión.</li>
+      <li><b>Indirecta:</b> profesionales sanitarios de las unidades de mama como aliados y prescriptores del material.</li>
+    </ul>
+    <p>Estimación de personas alcanzadas: <span class="ph">[nº participantes en talleres]</span> presenciales/online y <span class="ph">[nº]</span> personas a través de materiales y difusión.</p>
+  </section>
+
+  <!-- 6 -->
+  <section id="actividades">
+    <div class="sec-head"><span class="sec-num">6</span><h2>Actividades</h2></div>
+
+    <div class="card">
+      <h3>A1 · Guía de opciones postmastectomía en lenguaje claro</h3>
+      <p>Elaboración de una guía —digital e imprimible— que explique con rigor y sin tecnicismos las opciones: reconstrucción inmediata/diferida, cierre plano estético, prótesis externa y esperar; con preguntas para llevar a la consulta y criterios de decisión compartida (marco Ottawa/IPDAS). Revisión por profesionales aliados.</p>
+    </div>
+    <div class="card">
+      <h3>A2 · Talleres de alfabetización en salud (Zaragoza, Huesca, Teruel)</h3>
+      <p>Ciclo de talleres presenciales y online sobre comprensión del diagnóstico, opciones corporales, sexualidad, autoestima, duelo corporal y toma de decisiones, facilitados por profesionales y mujeres con experiencia. <span class="ph">[nº talleres por provincia]</span>.</p>
+    </div>
+    <div class="card">
+      <h3>A3 · Red de apoyo mutuo entre iguales ("madrinas")</h3>
+      <p>Captación, formación y acompañamiento de mujeres mastectomizadas que acompañan a otras que afrontan la decisión, con protocolo de derivación a recursos profesionales cuando sea necesario. Ayuda mutua estructurada y segura, complementaria —nunca sustitutiva— de la atención sanitaria.</p>
+    </div>
+    <div class="card">
+      <h3>A4 · Recogida anonimizada de la experiencia decisional</h3>
+      <p>Encuesta breve, voluntaria y anonimizada sobre tiempos, información recibida, presión percibida y satisfacción con la decisión, con base legal RGPD. Alimenta el observatorio y permite medir el impacto.</p>
+    </div>
+  </section>
+
+  <!-- 7 -->
+  <section id="metodologia">
+    <div class="sec-head"><span class="sec-num">7</span><h2>Metodología</h2></div>
+    <ul class="clean">
+      <li><b>Neutralidad entre opciones:</b> ninguna alternativa corporal se presenta como superior; todas, con igual dignidad.</li>
+      <li><b>Lenguaje claro y basado en evidencia:</b> todo contenido de salud contrastado, con fuente, sin promesas ni alarmismo; sin consejo médico individual.</li>
+      <li><b>Participación de la experiencia vivida:</b> las madrinas y las participantes co-crean los materiales.</li>
+      <li><b>Perspectiva de género y feminista:</b> autonomía corporal como eje.</li>
+      <li><b>RGPD y anonimización</b> en todo dato de personas (categoría especial de salud).</li>
+    </ul>
+  </section>
+
+  <!-- 8 -->
+  <section id="cronograma">
+    <div class="sec-head"><span class="sec-num">8</span><h2>Cronograma</h2></div>
+    <p>Orientativo; ajustar a las fechas subvencionables que fije la resolución.</p>
+    <div class="tabla-scroll">
+      <table>
+        <tr><th>Actividad</th><th>Mes 1</th><th>Mes 2</th><th>Mes 3</th><th>Mes 4</th><th>Mes 5</th><th>Mes 6</th></tr>
+        <tr><td>A1 · Guía en lenguaje claro</td><td>●</td><td>●</td><td>●</td><td></td><td></td><td></td></tr>
+        <tr><td>A2 · Talleres</td><td></td><td></td><td>●</td><td>●</td><td>●</td><td>●</td></tr>
+        <tr><td>A3 · Red de madrinas</td><td></td><td>●</td><td>●</td><td>●</td><td>●</td><td>●</td></tr>
+        <tr><td>A4 · Recogida de datos</td><td></td><td></td><td>●</td><td>●</td><td>●</td><td>●</td></tr>
+        <tr><td>Evaluación y memoria</td><td></td><td></td><td></td><td></td><td>●</td><td>●</td></tr>
+      </table>
+    </div>
+  </section>
+
+  <!-- 9 -->
+  <section id="recursos">
+    <div class="sec-head"><span class="sec-num">9</span><h2>Recursos humanos y materiales</h2></div>
+    <ul class="clean">
+      <li><b>Coordinación del proyecto</b> (MyCoco).</li>
+      <li><b>Profesionales colaboradores</b>: psicología, sexología, fisioterapia, enfermería, oncología/cirugía (revisión de contenidos y talleres).</li>
+      <li><b>Red de madrinas</b> formada y supervisada.</li>
+      <li><b>Diseño y maquetación</b> de materiales (marca MyCoco: Cormorant + Poppins, paleta oficial).</li>
+      <li><b>Espacios</b> para talleres en las tres provincias (cesión de aliados) y plataforma online.</li>
+    </ul>
+  </section>
+
+  <!-- 10 -->
+  <section id="presupuesto">
+    <div class="sec-head"><span class="sec-num">10</span><h2>Presupuesto estimado</h2></div>
+    <p>Estructura orientativa; ajustar importes al modelo oficial y a los conceptos subvencionables.</p>
+    <div class="tabla-scroll">
+      <table>
+        <tr><th style="width:60%">Concepto</th><th>Importe (€)</th></tr>
+        <tr><td>Elaboración, diseño e impresión de materiales (A1)</td><td><span class="ph">[€]</span></td></tr>
+        <tr><td>Talleres: honorarios de profesionales y desplazamientos (A2)</td><td><span class="ph">[€]</span></td></tr>
+        <tr><td>Formación y coordinación de la red de madrinas (A3)</td><td><span class="ph">[€]</span></td></tr>
+        <tr><td>Recogida y análisis de datos / plataforma (A4)</td><td><span class="ph">[€]</span></td></tr>
+        <tr><td>Coordinación y gestión del proyecto</td><td><span class="ph">[€]</span></td></tr>
+        <tr><td>Difusión y comunicación</td><td><span class="ph">[€]</span></td></tr>
+        <tr><td class="tot">TOTAL</td><td class="tot"><span class="ph">[€]</span></td></tr>
+      </table>
+    </div>
+    <p class="fuentes">Indica también cofinanciación / otras subvenciones para el mismo proyecto, si las hubiera.</p>
+  </section>
+
+  <!-- 11 -->
+  <section id="evaluacion">
+    <div class="sec-head"><span class="sec-num">11</span><h2>Evaluación e indicadores</h2></div>
+    <p>Indicadores de cambio, no de vanidad:</p>
+    <ul>
+      <li>% de participantes que declara <b>entender mejor sus opciones</b> tras el programa (encuesta pre-post).</li>
+      <li>Cambio en el <b>conflicto decisional</b> (escala validada, pre-post).</li>
+      <li>% que se siente <b>más legitimada</b> para expresar sus preferencias.</li>
+      <li>Nº de <b>trayectorias corporales</b> representadas en materiales y testimonios.</li>
+      <li>Nº de <b>talleres</b>, participantes y provincias cubiertas.</li>
+      <li>Nº de <b>acompañamientos</b> de madrinas y de derivaciones a recursos profesionales.</li>
+    </ul>
+  </section>
+
+  <!-- 12 -->
+  <section id="sostenibilidad">
+    <div class="sec-head"><span class="sec-num">12</span><h2>Continuidad y sostenibilidad</h2></div>
+    <p>Los materiales quedan disponibles de forma abierta y reutilizable; la red de madrinas es autosostenible con supervisión periódica; los datos alimentan el observatorio MyCoco, base para futuras convocatorias y alianzas. El proyecto es escalable a nuevas ediciones y a otras CCAA.</p>
+  </section>
+
+  <!-- 13 -->
+  <section id="alianzas">
+    <div class="sec-head"><span class="sec-num">13</span><h2>Alianzas y avales</h2></div>
+    <p>MyCoco complementa —no sustituye— a hospitales, asociaciones y sociedades científicas. Alianzas a movilizar y, si es posible, avalar por carta de apoyo:</p>
+    <ul class="clean">
+      <li><b>AECC Zaragoza</b> — apoyo psicológico y social, capilaridad territorial.</li>
+      <li><b>Unidades de Mama</b> del Hospital Miguel Servet y del Hospital Clínico Lozano Blesa.</li>
+      <li><b>IISA</b> (Instituto de Investigación Sanitaria de Aragón) y sociedades científicas (SESPM, AEPCIMA, SECPRE).</li>
+      <li><b>Instituto Aragonés de la Mujer</b> y entidades feministas locales.</li>
+    </ul>
+    <p class="fuentes">Adjuntar cartas de apoyo/aval a la solicitud siempre que sea posible: refuerzan mucho la valoración.</p>
+  </section>
+
+  <!-- CHECKLIST -->
+  <section id="documentacion">
+    <div class="sec-head"><span class="sec-num">✓</span><h2>Documentación a adjuntar (checklist)</h2></div>
+    <div class="card">
+      <ul class="clean check">
+        <li>Modelo oficial de solicitud cumplimentado y firmado por el representante legal.</li>
+        <li>CIF de la entidad y estatutos / acta de constitución.</li>
+        <li>Acreditación de inscripción en el registro correspondiente.</li>
+        <li>Memoria técnica del proyecto (este borrador, completado).</li>
+        <li>Presupuesto detallado por conceptos.</li>
+        <li>Certificados de estar al corriente con Hacienda y Seguridad Social (o autorización de consulta).</li>
+        <li>Declaración responsable de otras ayudas solicitadas/recibidas para el mismo fin.</li>
+        <li>Cartas de apoyo/aval de entidades aliadas (recomendado).</li>
+      </ul>
+      <p class="fuentes">Confirma la lista exacta en las bases oficiales de la convocatoria antes de presentar.</p>
+    </div>
+  </section>
+
+  <div class="aviso verde" style="margin-top:44px">
+    <strong>Siguiente paso.</strong> Cuando confirmes la entidad solicitante y los importes, puedo <b>pasar este borrador al lenguaje y estructura del modelo oficial</b>, calcular el presupuesto por conceptos y redactar las <b>cartas de apoyo</b> para AECC y las unidades de mama. Recuerda: cierre <b>4 de agosto de 2026</b>.
+  </div>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="tag">Siéntete tú misma</div>
+    <p>MyCoco · Borrador de solicitud — Alfabetización en salud y ayuda mutua 2026<br>
+    Documento de trabajo interno · a revisar y completar antes de presentar · 24 de julio de 2026.</p>
+  </div>
+</footer>
+
+</body>
+</html>
