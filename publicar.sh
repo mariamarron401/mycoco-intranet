@@ -41,6 +41,14 @@ if git diff --cached --quiet; then
 else
   MSG="Actualiza intranet ($(date '+%Y-%m-%d %H:%M'))"
   git commit -m "$MSG"
+  # Otra sesión puede haber subido cambios: sincronizar antes de publicar.
+  # -X ours conserva los archivos nuevos del remoto y solo resuelve los
+  # conflictos de contenido a favor de nuestra versión (contenido + barra + noindex).
+  git fetch origin main --quiet || true
+  if ! git merge -X ours origin/main -m "Merge remoto antes de publicar" --quiet 2>/dev/null; then
+    git merge --abort 2>/dev/null || true
+    echo "  ⚠ No se pudo fusionar automáticamente con el remoto; revisa a mano (git status)."
+  fi
   git push
   echo "✓ Publicado. En 1-2 min estará visible en:"
   echo "  https://mariamarron401.github.io/mycoco-intranet/"
