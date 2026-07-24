@@ -137,6 +137,8 @@
   .b-proxima{background:#fbe9d8;color:#8a4a1f;border:1px solid var(--salmon)}
   .b-cerrada{background:#f0e2e4;color:#8a5860;border:1px solid var(--rosa)}
   .b-permanente{background:#efe6d6;color:#7a5a28;border:1px solid #c9a86a}
+  .b-revisar{background:#f3e4e6;color:#8a5860;border:1px dashed var(--rosa)}
+  .card.tentativa{border:1px dashed var(--rosa);background:#fffafb}
 
   /* TABLA PRIORIDADES */
   .prio{background:var(--blanco);border-radius:14px;overflow:hidden;box-shadow:var(--sombra);border:1px solid rgba(198,151,157,.2)}
@@ -170,6 +172,7 @@
 </style>
 </head>
 <body>
+<div id="mycoco-topbar" style="position:sticky;top:0;z-index:2147483647;display:flex;align-items:center;gap:12px;padding:8px 16px;background:#3F1910;color:#EED8C1;font-family:'Poppins',system-ui,sans-serif;box-shadow:0 2px 14px rgba(63,25,16,.28);border-bottom:1px solid rgba(238,216,193,.15)"><a href="../index.html" target="_self" style="display:flex;align-items:center;gap:8px;color:#EED8C1;text-decoration:none;border:0;flex:0 0 auto"><img src="../assets/logo-redondo.png" alt="MyCoco" style="height:30px;width:30px;border-radius:50%;display:block"><span style="font-family:'Cormorant',serif;font-weight:700;font-size:1.2rem;line-height:1">MyCoco</span></a><a href="../index.html" target="_self" style="color:#EED8C1;text-decoration:none;border:0;font-size:.82rem;opacity:.85;flex:0 0 auto">&larr; Intranet</a><nav style="margin-left:auto;display:flex;gap:2px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;max-width:64%"><a href="../index.html#movimiento" target="_self" style="color:#EED8C1;text-decoration:none;border:0;white-space:nowrap;font-size:.82rem;padding:6px 11px;border-radius:999px">El movimiento</a><a href="../index.html#marca" target="_self" style="color:#EED8C1;text-decoration:none;border:0;white-space:nowrap;font-size:.82rem;padding:6px 11px;border-radius:999px">Identidad</a><a href="../index.html#datos" target="_self" style="color:#EED8C1;text-decoration:none;border:0;white-space:nowrap;font-size:.82rem;padding:6px 11px;border-radius:999px">Observatorio</a><a href="../index.html#secciones" target="_self" style="color:#EED8C1;text-decoration:none;border:0;white-space:nowrap;font-size:.82rem;padding:6px 11px;border-radius:999px">Secciones</a></nav></div>
 
 <header>
   <div class="wrap">
@@ -443,6 +446,22 @@
       <p>Los Premios AJE reconocen la trayectoria empresarial joven; "Aterrizaje de Talento" es un programa de detección de talento joven (16–25 años). Buen punto de entrada a la red de emprendimiento aragonesa.</p>
       <div class="encaje"><b>Encaje MyCoco:</b> alto como palanca de red y visibilidad local. Seguir la agenda de <a href="https://aragonemprende.com/eventos/premios-aje/">Aragón Emprende</a>.</div>
       <p class="fuentes">Fuentes: <a href="https://aragonemprende.com/portfolio-category/premios-reconocimientos/">Aragón Emprende — Premios</a> · <a href="https://www.zaragoza.es/sede/servicio/noticia/353447">Ayto. Zaragoza — Aterrizaje de Talento</a></p>
+    </div>
+
+    <div class="card tentativa">
+      <div class="card-top">
+        <div><div class="org">Instituto Aragonés de la Juventud (IAJ)</div><h3>Premios CREAR — Jóvenes Creadores Aragoneses (modalidad tecnológica)</h3></div>
+        <span class="badge b-revisar">Encaje por definir</span>
+      </div>
+      <p>Certamen anual del IAJ (IX edición 2026, Orden DBF/799/2026). Dotación total de <b>30.000 €</b>: dos primeros premios de 5.000 €, cuatro segundos de 3.000 € y ocho terceros de 1.000 €. Para creadores/as de <b>14 a 35 años</b>, naturales o empadronados/as en Aragón. La <b>modalidad tecnológica</b> premia trabajos de ciencia aplicada a la creación digital, ingeniería, robótica o nuevas tecnologías que supongan una <b>aportación innovadora para mejorar la calidad de vida de las personas</b>.</p>
+      <div class="encaje" style="background:#fbe9ec;border:1px dashed var(--rosa)"><b>⚠️ Encaje aún por confirmar.</b> CREAR premia <b>obras/trabajos de creación</b> de jóvenes, no proyectos sociales ni empresas. No está claro que MyCoco como movimiento encaje directamente. <b>La vía a explorar es enfocarlo desde la tecnología</b>: presentar como obra tecnológica el <b>desarrollo de la prótesis externa 3D y de los pezones/aréolas</b> (diseño, impresión 3D, materiales, personalización) como innovación que mejora la calidad de vida tras la mastectomía. Antes de decidir, hay que: <b>(1)</b> leer las bases de la modalidad tecnológica; <b>(2)</b> verificar que la obra no haya sido premiada antes en otros certámenes; <b>(3)</b> confirmar quién sería el/la autor/a (14-35, empadronada en Aragón); <b>(4)</b> ajustar el relato al criterio de "obra creativa/tecnológica".</div>
+      <div class="datos">
+        <span><b>Convocante:</b> IAJ · Gobierno de Aragón</span>
+        <span><b>Dotación:</b> 30.000 € (14 premios)</span>
+        <span><b>Edad:</b> 14–35 años</span>
+        <span><b>Norma:</b> Orden DBF/799/2026</span>
+      </div>
+      <p class="fuentes">Fuentes: <a href="https://www.aragon.es/-/premios-del-instituto-aragones-de-la-juventud-certamen-crear">aragon.es — Certamen CREAR</a> · <a href="https://www.aragonhoy.es/bienestar-social-familia/convocada-viii-edicion-premio-jovenes-creadores-aragoneses-2025-101095">Aragón Hoy — Premio Jóvenes Creadores</a></p>
     </div>
 
     <div class="card">

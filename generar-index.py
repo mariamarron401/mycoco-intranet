@@ -66,14 +66,69 @@ def extraer_de_html(ruta):
     return titulo, desc, contenido
 
 
-def asegurar_noindex(ruta, contenido):
-    if re.search(r'name=["\']robots["\']', contenido, re.I):
-        return
-    nuevo = re.sub(r"(<head[^>]*>)", r"\1\n    " + NOINDEX, contenido, count=1, flags=re.I)
-    if nuevo == contenido:
-        return
-    with open(ruta, "w", encoding="utf-8") as f:
-        f.write(nuevo)
+def preparar_seccion(ruta, contenido, titulo_fallback="MyCoco · Sección"):
+    """Garantiza en cada seccion: (1) meta noindex, (2) fuentes de marca y (3) la
+    barra de navegacion fija de MyCoco, siempre visible aunque se abra la seccion
+    como pagina suelta. Maneja tanto documentos HTML completos como fragmentos
+    (sin <html>/<head>/<body>), envolviendolos en un documento valido.
+    Reescribe el archivo solo si cambia. Idempotente."""
+    nuevo = contenido
+    es_completo = bool(re.search(r"<body[^>]*>", nuevo, re.I)) or bool(re.search(r"<html", nuevo, re.I))
+
+    if es_completo:
+        # noindex en el <head>
+        if not re.search(r'name=["\']robots["\']', nuevo, re.I):
+            nuevo = re.sub(r"(<head[^>]*>)", r"\1\n    " + NOINDEX, nuevo, count=1, flags=re.I)
+        # fuentes de marca (por si la seccion no las carga)
+        if "fonts.googleapis.com/css2?family=Cormorant" not in nuevo and "@font-face" not in nuevo:
+            nuevo = re.sub(r"(<head[^>]*>)", r"\1\n    " + FUENTES_MARCA, nuevo, count=1, flags=re.I)
+        # barra de navegacion fija tras <body>
+        if 'id="mycoco-topbar"' not in nuevo:
+            nuevo = re.sub(r"(<body[^>]*>)", r"\1\n" + BARRA_NAV, nuevo, count=1, flags=re.I)
+    else:
+        # Fragmento: envolver en documento completo
+        mt = re.search(r"<title>(.*?)</title>", nuevo, re.I | re.S)
+        titulo = mt.group(1).strip() if mt else titulo_fallback
+        cuerpo = re.sub(r"<title>.*?</title>", "", nuevo, count=1, flags=re.I | re.S)
+        fuentes = "" if "@font-face" in cuerpo else "\n    " + FUENTES_MARCA
+        nuevo = (
+            "<!doctype html>\n<html lang=\"es\">\n<head>\n"
+            "    <meta charset=\"utf-8\">\n"
+            "    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n"
+            "    " + NOINDEX + fuentes + "\n"
+            "    <title>" + titulo + "</title>\n"
+            "</head>\n<body>\n" + BARRA_NAV + "\n" + cuerpo + "\n</body>\n</html>\n"
+        )
+
+    if nuevo != contenido:
+        with open(ruta, "w", encoding="utf-8") as f:
+            f.write(nuevo)
+
+
+FUENTES_MARCA = ('<link rel="preconnect" href="https://fonts.googleapis.com">'
+                 '<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>'
+                 '<link href="https://fonts.googleapis.com/css2?family=Cormorant:wght@600;700&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">')
+
+# Barra superior fija e independiente del CSS de cada seccion (estilos en linea).
+# target="_self" evita que el <base target="_blank"> de las secciones abra pestañas nuevas al volver.
+BARRA_NAV = (
+'<div id="mycoco-topbar" style="position:sticky;top:0;z-index:2147483647;'
+'display:flex;align-items:center;gap:12px;padding:8px 16px;'
+'background:#3F1910;color:#EED8C1;font-family:\'Poppins\',system-ui,sans-serif;'
+'box-shadow:0 2px 14px rgba(63,25,16,.28);border-bottom:1px solid rgba(238,216,193,.15)">'
+  '<a href="../index.html" target="_self" style="display:flex;align-items:center;gap:8px;color:#EED8C1;text-decoration:none;border:0;flex:0 0 auto">'
+    '<img src="../assets/logo-redondo.png" alt="MyCoco" style="height:30px;width:30px;border-radius:50%;display:block">'
+    '<span style="font-family:\'Cormorant\',serif;font-weight:700;font-size:1.2rem;line-height:1">MyCoco</span>'
+  '</a>'
+  '<a href="../index.html" target="_self" style="color:#EED8C1;text-decoration:none;border:0;font-size:.82rem;opacity:.85;flex:0 0 auto">&larr; Intranet</a>'
+  '<nav style="margin-left:auto;display:flex;gap:2px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;max-width:64%">'
+    '<a href="../index.html#movimiento" target="_self" style="color:#EED8C1;text-decoration:none;border:0;white-space:nowrap;font-size:.82rem;padding:6px 11px;border-radius:999px">El movimiento</a>'
+    '<a href="../index.html#marca" target="_self" style="color:#EED8C1;text-decoration:none;border:0;white-space:nowrap;font-size:.82rem;padding:6px 11px;border-radius:999px">Identidad</a>'
+    '<a href="../index.html#datos" target="_self" style="color:#EED8C1;text-decoration:none;border:0;white-space:nowrap;font-size:.82rem;padding:6px 11px;border-radius:999px">Observatorio</a>'
+    '<a href="../index.html#secciones" target="_self" style="color:#EED8C1;text-decoration:none;border:0;white-space:nowrap;font-size:.82rem;padding:6px 11px;border-radius:999px">Secciones</a>'
+  '</nav>'
+'</div>'
+)
 
 
 def fecha_legible(iso):
@@ -91,7 +146,7 @@ def recopilar():
     for archivo in archivos:
         ruta = os.path.join(DIR_SECCIONES, archivo)
         t_html, d_html, contenido = extraer_de_html(ruta)
-        asegurar_noindex(ruta, contenido)
+        preparar_seccion(ruta, contenido, t_html or archivo)
         m = meta.get(archivo, {})
         fecha_iso = m.get("fecha") or date.fromtimestamp(os.path.getmtime(ruta)).isoformat()
         secciones.append({
@@ -174,7 +229,7 @@ PLANTILLA = r"""<!doctype html>
       line-height:1.65; -webkit-font-smoothing:antialiased;
     }
     a{color:inherit;text-decoration:none}
-    h1,h2,h3,.serif{font-family:'Cormorant',serif}
+    h1,h2,h3,.serif{font-family:'Cormorant',serif;font-weight:700}
     .contenedor{max-width:var(--ancho);margin:0 auto;padding:0 24px}
     .eyebrow{
       font-size:.76rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;
@@ -182,7 +237,7 @@ PLANTILLA = r"""<!doctype html>
     }
     section{padding:88px 0}
     .seccion-h2{
-      font-size:clamp(1.9rem,4vw,2.8rem);font-weight:600;line-height:1.1;
+      font-size:clamp(1.9rem,4vw,2.8rem);font-weight:700;line-height:1.1;
       color:var(--marron);margin-bottom:16px;letter-spacing:.3px;
     }
     .seccion-intro{max-width:640px;color:var(--tinta);font-size:1.02rem;margin-bottom:44px}
@@ -226,7 +281,7 @@ PLANTILLA = r"""<!doctype html>
     }
     .hero__logo{height:96px;width:auto;margin-bottom:26px}
     .hero h1{
-      font-size:clamp(2.4rem,6vw,4rem);font-weight:600;line-height:1.06;
+      font-size:clamp(2.4rem,6vw,4rem);font-weight:700;line-height:1.06;
       max-width:900px;margin:0 auto;letter-spacing:.4px;
     }
     .hero .tagline{
