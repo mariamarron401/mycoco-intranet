@@ -1,0 +1,5 @@
+# Intranet MyCoco — publica por enlace, fuera de buscadores.
+/*
+  X-Robots-Tag: noindex, nofollow, noarchive
+  Referrer-Policy: strict-origin-when-cross-origin
+  X-Content-Type-Options: nosniff
