@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <meta name="robots" content="noindex, nofollow">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Chatbot de acompañamiento · piloto interno</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant:wght@600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--beige:#EED8C1;--claro:#F8EDE2;--marron:#3F1910;--teja:#99492C;--salmon:#E3A175;--malva:#C6979D;--verde:#5B7352;--blanco:#fffdfb}
+*{box-sizing:border-box}
+body{margin:0;background:var(--beige);color:var(--marron);font-family:Poppins,system-ui,sans-serif;font-size:17px;line-height:1.65}
+.env{max-width:820px;margin:0 auto;padding:2rem 1.25rem 4rem}
+h1,h2,h3{font-family:Cormorant,Georgia,serif;font-weight:700;line-height:1.15;margin:2.2rem 0 .6rem}
+h1{font-size:2.4rem;margin-top:0} h2{font-size:1.7rem} h3{font-size:1.25rem}
+p,li{margin:0 0 .9rem}
+.entradilla{font-size:1.12rem;border-left:4px solid var(--malva);padding-left:1rem;margin:1.2rem 0 2rem}
+.caja{background:var(--blanco);border-radius:16px;padding:1.2rem 1.4rem;margin:1.2rem 0;box-shadow:0 2px 14px rgba(63,25,16,.09)}
+.caja.aviso{background:#fff4ec;border-left:5px solid var(--teja)}
+.caja.ok{border-left:5px solid var(--verde)}
+a{color:var(--teja)}
+table{width:100%;border-collapse:collapse;margin:1rem 0;font-size:.95rem}
+th,td{text-align:left;padding:.55rem .5rem;border-bottom:1px solid rgba(63,25,16,.15);vertical-align:top}
+th{font-size:.78rem;text-transform:uppercase;letter-spacing:.04em;color:var(--teja)}
+code{background:var(--claro);padding:.12rem .4rem;border-radius:5px;font-size:.9em;overflow-wrap:anywhere}
+pre{background:var(--marron);color:var(--claro);padding:1rem;border-radius:12px;overflow-x:auto;font-size:.85rem}
+.enlace{display:block;background:var(--marron);color:#fff;text-decoration:none;border-radius:14px;padding:1rem 1.2rem;margin:.6rem 0;font-weight:500}
+.enlace span{display:block;font-weight:300;font-size:.85rem;opacity:.85;margin-top:.2rem}
+ul.limpia{list-style:none;padding:0}
+ul.limpia li{padding-left:1.6rem;position:relative}
+ul.limpia li::before{content:"—";position:absolute;left:0;color:var(--malva);font-weight:700}
+.pendiente li::before{content:"○";color:var(--teja)}
+.hecho li::before{content:"●";color:var(--verde)}
+</style>
+</head>
+<body>
+<div id="mycoco-topbar" style="position:sticky;top:0;z-index:2147483647;display:flex;align-items:center;gap:12px;padding:8px 16px;background:#3F1910;color:#EED8C1;font-family:'Poppins',system-ui,sans-serif;box-shadow:0 2px 14px rgba(63,25,16,.28);border-bottom:1px solid rgba(238,216,193,.15)"><a href="../index.html" target="_self" style="display:flex;align-items:center;gap:8px;color:#EED8C1;text-decoration:none;border:0;flex:0 0 auto"><img src="../assets/logo-redondo.png" alt="MyCoco" style="height:30px;width:30px;border-radius:50%;display:block"><span style="font-family:'Cormorant',serif;font-weight:700;font-size:1.2rem;line-height:1">MyCoco</span></a><a href="../index.html" target="_self" style="color:#EED8C1;text-decoration:none;border:0;font-size:.82rem;opacity:.85;flex:0 0 auto">&larr; Intranet</a><nav style="margin-left:auto;display:flex;gap:2px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;max-width:64%"><a href="../index.html#movimiento" target="_self" style="color:#EED8C1;text-decoration:none;border:0;white-space:nowrap;font-size:.82rem;padding:6px 11px;border-radius:999px">El movimiento</a><a href="../index.html#marca" target="_self" style="color:#EED8C1;text-decoration:none;border:0;white-space:nowrap;font-size:.82rem;padding:6px 11px;border-radius:999px">Identidad</a><a href="../index.html#datos" target="_self" style="color:#EED8C1;text-decoration:none;border:0;white-space:nowrap;font-size:.82rem;padding:6px 11px;border-radius:999px">Observatorio</a><a href="../index.html#secciones" target="_self" style="color:#EED8C1;text-decoration:none;border:0;white-space:nowrap;font-size:.82rem;padding:6px 11px;border-radius:999px">Secciones</a></nav></div>
+<div class="env">
+
+<h1>Chatbot de acompañamiento y recursos</h1>
+<p class="entradilla">Piloto interno construido a partir de la especificación funcional
+de PPR (v0.1, 7 de septiembre de 2026). <strong>No está abierto a personas usuarias</strong>
+y no debe enlazarse desde la web pública hasta cerrar las puertas de validación.</p>
+
+<div class="caja aviso">
+<h3 style="margin-top:0">Estado: versión de pruebas</h3>
+<p>Funciona el circuito completo — formulario, conversación, protocolos de seguridad,
+base de datos y panel — pero <strong>los textos de los protocolos y el corpus siguen
+pendientes de validación clínica, psicooncológica, jurídica y de protección de datos</strong>,
+tal como exige la sección «Puertas obligatorias antes de lanzar» del documento.</p>
+</div>
+
+<h2>Los tres enlaces</h2>
+<a class="enlace" href="https://chat-acompanamiento.maria-marron.workers.dev/">Probar el chat
+<span>Muestra el aviso de versión interna. Las tres pantallas del formulario y la conversación.</span></a>
+<a class="enlace" href="https://chat-acompanamiento.maria-marron.workers.dev/admin">Panel de administración
+<span>Métricas, conversaciones, avisos de riesgo, cerebro y directorio. Pide clave.</span></a>
+<a class="enlace" href="https://chat-acompanamiento.maria-marron.workers.dev/widget.js">Widget incrustable
+<span>Una línea de código para meterlo en cualquier página de WordPress.</span></a>
+
+<h2>Qué hace, en una frase</h2>
+<p>Escucha sin juzgar, marca sus propios límites y ayuda a llegar a apoyo humano
+verificado. No diagnostica, no valora síntomas, no interpreta informes y no
+recomienda cambiar tratamientos.</p>
+
+<h2>El cerebro: cómo decide qué puede decir</h2>
+<p>La decisión que tomó Sara fue <strong>híbrido por tipo de tema</strong>, y así está construido:</p>
+<table>
+<thead><tr><th>Terreno</th><th>Qué puede hacer</th></tr></thead>
+<tbody>
+<tr><td><strong>Contenido sanitario</strong><br>tratamientos, síntomas, cifras, evidencia, pronósticos</td>
+<td>Solo puede afirmarlo si lo respalda un fragmento recuperado del corpus, y cita fuente y fecha.
+Sin fragmento, dice que no puede confirmarlo y deriva. Nunca da un porcentaje que no aparezca literalmente en una fuente.</td></tr>
+<tr><td><strong>Todo lo demás</strong><br>qué es MyCoco, la decisión corporal, trámites, escucha</td>
+<td>Habla con soltura y calidez, sin cifras y sin afirmaciones clínicas.</td></tr>
+</tbody></table>
+<p>El conocimiento no vive en el modelo: vive en una tabla con <strong>18 fragmentos</strong>
+(9 de ellos sanitarios, todos con fuente citable: REDECAN, estudio andaluz del SSPA,
+consenso SESPM, AEMPS, informe de supervivientes de la AECC). La recuperación es
+búsqueda de texto completo sobre esa tabla, no una búsqueda web improvisada, así que
+cada afirmación se puede trazar hasta la fila que la respalda.</p>
+
+<h2>Seguridad: reglas antes y después de la IA</h2>
+<p>La IA nunca decide sola qué es seguro. Antes de generar, un clasificador determinista
+lee el mensaje; después de generar, un revisor lee la respuesta.</p>
+<table>
+<thead><tr><th>Señal detectada</th><th>Qué ocurre</th></tr></thead>
+<tbody>
+<tr><td>Urgencia médica</td><td>No valora la gravedad. Deriva a emergencias y al equipo oncológico.</td></tr>
+<tr><td>Riesgo de autolesión</td><td>Protocolo de crisis con la línea 024 y el 112.</td></tr>
+<tr><td>Violencia o desprotección</td><td>Flujo separado con el 016, sin pedir detalles y sin prometer confidencialidad absoluta.</td></tr>
+<tr><td>Menor de edad</td><td>Detiene la conversación ordinaria sin pedir más datos.</td></tr>
+<tr><td>Petición clínica prohibida</td><td>Explica el límite en vez de responder al contenido clínico.</td></tr>
+</tbody></table>
+<p>El revisor de salida bloquea la respuesta si contiene una frase prohibida
+(«todo irá bien», «tienes que ser fuerte», «eres una luchadora»), una afirmación
+sanitaria sin fuente recuperada, o <strong>un teléfono que no esté en el directorio</strong>.
+Cuando algo falla, entra en modo seguro: no improvisa contenido sanitario.</p>
+
+<div class="caja ok">
+<h3 style="margin-top:0">Los teléfonos no se los inventa</h3>
+<p>Solo puede mostrar contactos que estén como <strong>activos</strong> en el directorio.
+Hoy hay tres verificados: <strong>112</strong> emergencias, <strong>024</strong> conducta
+suicida (Ministerio de Sanidad) y <strong>016</strong> violencia contra la mujer.</p>
+<p style="margin-bottom:0">AECC Infocáncer, FECMA y el teléfono de ANAR están cargados como
+<strong>por verificar</strong>: existen en la base de datos pero el bot no los menciona a nadie
+hasta que alguien confirme número y condiciones desde el panel. Es la cola de verificación editorial.</p>
+</div>
+
+<h2>Privacidad: qué se guarda y qué no</h2>
+<ul class="limpia">
+<li>No se piden nombre legal, DNI, historia clínica, informes ni ubicación por GPS. La zona la escribe la persona y solo si lo consiente.</li>
+<li>La IP y el navegador se guardan como huella irreversible, nunca en claro.</li>
+<li>Las conversaciones se <strong>borran automáticamente a los 90 días</strong> (tarea programada cada noche).</li>
+<li>«Hablemos sin guardar esta conversación» funciona de verdad: pasa a modo efímero y <strong>borra el texto ya escrito</strong>.</li>
+<li>«Borra los datos de esta sesión» elimina el contenido en el momento.</li>
+<li>«Quiero saber qué datos se están tratando» devuelve la lista concreta, no un texto legal.</li>
+<li>El atajo «solo quiero desahogarme» abre la conversación ya en modo sin guardar.</li>
+</ul>
+
+<h2>El panel de administración</h2>
+<ul class="limpia">
+<li><strong>Resumen</strong> — conversaciones por día, quién escribe, con qué necesidad entran, protocolos activados, zonas.</li>
+<li><strong>Conversaciones</strong> — la lista completa y cada conversación entera, con las fuentes que usó en cada respuesta y las respuestas que se bloquearon.</li>
+<li><strong>Avisos de riesgo</strong> — cada protocolo activado, para revisar <em>a posteriori</em> si el bot actuó bien. Nadie atiende esto en tiempo real, y el chat lo dice.</li>
+<li><strong>Cerebro</strong> — añadir y retirar fragmentos. No deja guardar un fragmento sanitario sin fuente.</li>
+<li><strong>Directorio</strong> — verificar o dar de baja recursos, con historial de cambios.</li>
+<li><strong>Exportar CSV</strong> — todas las conversaciones para analizarlas fuera.</li>
+</ul>
+
+<h2>Cómo se incrusta en la web</h2>
+<p>Una sola línea antes de <code>&lt;/body&gt;</code>, o en un bloque HTML de WordPress:</p>
+<pre>&lt;script src="https://chat-acompanamiento.maria-marron.workers.dev/widget.js"
+        data-texto="Hablemos" defer&gt;&lt;/script&gt;</pre>
+<p>Aparece un botón flotante que abre el chat en un marco aislado: no comparte cookies
+ni estilos con la web que lo aloja.</p>
+
+<h2>Qué falta antes de que lo use una persona real</h2>
+<p>Esto no es una lista de mejoras: son las puertas que el propio documento pone como
+obligatorias, y ninguna la puede cerrar un agente.</p>
+<ul class="limpia pendiente">
+<li>Validación de los protocolos de urgencia, suicidio, violencia y menores por especialistas.</li>
+<li>Revisión del formulario y de las respuestas por psicooncología y oncología.</li>
+<li>Evaluación de impacto en protección de datos, base jurídica por finalidad y política de retención y seguridad.</li>
+<li>Responsable editorial nominal del directorio, con fuentes aceptables y cadencia de revisión.</li>
+<li>Investigación con personas diagnosticadas y familiares, y co-diseño de los dos recorridos.</li>
+<li>Matriz de riesgos y pruebas de rechazo, falsos negativos, alucinaciones y caída de servicios.</li>
+<li>Decisión formal de arquitectura de marca: el documento advierte que «PPR Acompaña» no debe publicarse hasta resolverla.</li>
+<li>Definir qué territorios cubre el piloto y qué equipo humano responde cuando alguien pide hablar con una persona.</li>
+</ul>
+
+<p style="margin-top:2.5rem;font-size:.85rem;opacity:.7">Documento de trabajo interno de MyCoco ·
+Sara Gascón Durán · piloto desplegado el 7 de septiembre de 2026.</p>
+</div>
+</body>
+</html>

@@ -24,5 +24,12 @@
     "descripcion": "Propuestas visuales del folleto de MyCoco: renders y mockups para revisar la aplicación de la marca.",
     "categoria": "Marca",
     "fecha": "2026-07-24"
+  },
+  "chatbot-acompanamiento-piloto.html": {
+    "titulo": "Chatbot de acompañamiento (piloto)",
+    "descripcion": "El chat de escucha y recursos: cómo decide qué puede decir, los protocolos de seguridad, la privacidad, el panel de administración y las puertas que faltan antes de abrirlo.",
+    "categoria": "Producto",
+    "fecha": "2026-09-07",
+    "destacado": true
   }
 }
