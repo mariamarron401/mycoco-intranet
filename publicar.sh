@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 #
 # publicar.sh — Sincroniza los HTML de trabajo a la intranet, regenera el índice
-# y lo sube a GitHub Pages.
+# y la despliega en Cloudflare Pages (con copia versionada en GitHub).
 #
 # Uso:
 #   ./publicar.sh                          # sincroniza desde las carpetas FUENTE y publica
@@ -34,22 +34,34 @@ done
 echo "▸ Regenerando index.html (con marca + noindex)…"
 python3 generar-index.py
 
-echo "▸ Publicando en GitHub…"
+echo "▸ Preparando carpeta de despliegue…"
+BUILD="$(mktemp -d)/intranet"
+mkdir -p "$BUILD"
+cp index.html robots.txt _headers "$BUILD/"
+cp -R secciones "$BUILD/"
+cp -R assets "$BUILD/"
+find "$BUILD" -name '.DS_Store' -delete
+
+echo "▸ Publicando en Cloudflare Pages…"
+npx --yes wrangler@4 pages deploy "$BUILD" \
+  --project-name mycoco-intranet --branch main --commit-dirty=true
+rm -rf "$(dirname "$BUILD")"
+
+echo "▸ Guardando copia en GitHub (control de versiones)…"
 git add -A
 if git diff --cached --quiet; then
-  echo "  (sin cambios que publicar)"
+  echo "  (sin cambios que versionar)"
 else
-  MSG="Actualiza intranet ($(date '+%Y-%m-%d %H:%M'))"
-  git commit -m "$MSG"
-  # Otra sesión puede haber subido cambios: sincronizar antes de publicar.
-  # -X ours conserva los archivos nuevos del remoto y solo resuelve los
-  # conflictos de contenido a favor de nuestra versión (contenido + barra + noindex).
+  git commit -m "Actualiza intranet ($(date '+%Y-%m-%d %H:%M'))" --quiet
+  # Otra sesion puede haber subido cambios: sincronizar antes de publicar.
   git fetch origin main --quiet || true
   if ! git merge -X ours origin/main -m "Merge remoto antes de publicar" --quiet 2>/dev/null; then
     git merge --abort 2>/dev/null || true
-    echo "  ⚠ No se pudo fusionar automáticamente con el remoto; revisa a mano (git status)."
+    echo "  ⚠ No se pudo fusionar con el remoto; revisa a mano (git status)."
   fi
-  git push
-  echo "✓ Publicado. En 1-2 min estará visible en:"
-  echo "  https://mariamarron401.github.io/mycoco-intranet/"
+  git push --quiet || echo "  ⚠ Push a GitHub fallido (la web ya está publicada en Cloudflare)."
 fi
+
+echo ""
+echo "✓ Publicado. Ya está visible en:"
+echo "  https://mycoco-intranet.pages.dev/"
