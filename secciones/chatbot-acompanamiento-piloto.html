@@ -58,6 +58,24 @@ tal como exige la sección «Puertas obligatorias antes de lanzar» del document
 <a class="enlace" href="https://chat-acompanamiento.maria-marron.workers.dev/widget.js">Widget incrustable
 <span>Una línea de código para meterlo en cualquier página de WordPress.</span></a>
 
+<h2>El motor: qué modelo está hablando</h2>
+<div class="caja">
+<p>La decisión fue usar <strong>nuestro conocimiento + la API de OpenAI</strong>. La clave de OpenAI
+está cargada y la integración verificada, pero <strong>la cuenta de OpenAI no tiene saldo</strong>:
+devuelve <code>no credits remaining</code>. Mientras eso se resuelve, el chat funciona con
+<strong>Workers AI de Cloudflare</strong> (incluido en la cuenta, sin saldo ni claves), con el modelo
+<code>llama-3.3-70b</code>.</p>
+<p style="margin-bottom:0">Volver a OpenAI es cambiar una variable (<code>MOTOR_IA</code>) en cuanto haya crédito.
+Se compararon cuatro modelos de Workers AI con un mensaje real antes de elegir; el elegido es el que
+respeta la longitud, la estructura y la neutralidad corporal.</p>
+</div>
+
+<h3>Un detalle de ingeniería que importa</h3>
+<p>El modelo abría sistemáticamente con «entiendo que estás pasando por un momento muy difícil»,
+una de las fórmulas que el documento prohíbe. Ahora un revisor determinista lo detecta y
+<strong>reintenta la generación</strong> con la corrección explícita; si vuelve a fallar, elimina esa
+primera frase. No se bloquea la respuesta, porque es un problema de tono y no de seguridad.</p>
+
 <h2>Qué hace, en una frase</h2>
 <p>Escucha sin juzgar, marca sus propios límites y ayuda a llegar a apoyo humano
 verificado. No diagnostica, no valora síntomas, no interpreta informes y no
@@ -147,6 +165,8 @@ obligatorias, y ninguna la puede cerrar un agente.</p>
 <li>Matriz de riesgos y pruebas de rechazo, falsos negativos, alucinaciones y caída de servicios.</li>
 <li>Decisión formal de arquitectura de marca: el documento advierte que «PPR Acompaña» no debe publicarse hasta resolverla.</li>
 <li>Definir qué territorios cubre el piloto y qué equipo humano responde cuando alguien pide hablar con una persona.</li>
+<li><strong>Cargar el directorio de verdad:</strong> hoy solo hay teléfonos de emergencia verificados. Sin psicooncología ni asociaciones por provincia, el bot cumple su regla —no inventa— pero no puede ofrecer el recurso que la persona busca.</li>
+<li>Añadir saldo en OpenAI si se quiere ese motor, y volver a comparar modelos con el prompt real.</li>
 </ul>
 
 <p style="margin-top:2.5rem;font-size:.85rem;opacity:.7">Documento de trabajo interno de MyCoco ·
