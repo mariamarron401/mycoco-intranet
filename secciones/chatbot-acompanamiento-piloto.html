@@ -76,6 +76,42 @@ una de las fórmulas que el documento prohíbe. Ahora un revisor determinista lo
 <strong>reintenta la generación</strong> con la corrección explícita; si vuelve a fallar, elimina esa
 primera frase. No se bloquea la respuesta, porque es un problema de tono y no de seguridad.</p>
 
+<h2>Integrarlo en la web</h2>
+<p>Los dos sitios (<code>mycoco.es</code> y <code>positivasperorealistas.com</code>) llevan
+<strong>Elementor Pro</strong>, <strong>Wordfence</strong> y <strong>Complianz</strong>. Hay dos vías,
+y las dos dejan el chat visible <strong>solo para quien tenga sesión abierta en WordPress</strong>
+mientras el piloto siga interno.</p>
+
+<h3>Vía 1 — El plugin (recomendada)</h3>
+<a class="enlace" href="../assets/descargas/mycoco-chat.zip" download>Descargar el plugin · mycoco-chat.zip
+<span>Se instala subiendo el archivo. No hace falta tocar código ni la plantilla.</span></a>
+<ol>
+<li>WordPress → <strong>Plugins → Añadir nuevo → Subir plugin</strong> → elige el .zip → Instalar → Activar.</li>
+<li><strong>Ajustes → Chat MyCoco</strong>.</li>
+<li>Deja «Quién lo ve» en <strong>solo personas con sesión abierta</strong> y guarda.</li>
+</ol>
+<p>Aparece un botón flotante que abre el chat. El plugin permite además cambiar el texto del botón,
+ponerlo a la izquierda, excluir páginas concretas, y usar el shortcode
+<code>[mycoco_chat]</code> si además quieres una <strong>página dedicada</strong> con el chat a
+tamaño completo. Cuando se cierren las validaciones, pasar a «todo el mundo» es un desplegable.</p>
+
+<h3>Vía 2 — Elementor, sin instalar nada</h3>
+<p>Elementor Pro trae <strong>Elementor → Custom Code</strong>. Añade un código nuevo, ubicación
+<em>&lt;/body&gt; — End</em>, y pega:</p>
+<pre>&lt;script src="https://chat-acompanamiento.maria-marron.workers.dev/widget.js"
+        data-texto="Hablemos" defer&gt;&lt;/script&gt;</pre>
+<p>Es más rápido, pero <strong>lo verá todo el mundo</strong>: Elementor no filtra por usuaria conectada.
+Para el piloto, mejor la vía 1.</p>
+
+<div class="caja">
+<h3 style="margin-top:0">Solo se puede incrustar desde nuestras webs</h3>
+<p style="margin-bottom:0">El chat rechaza ser embebido desde cualquier otro dominio
+(<code>frame-ancestors</code> limitado a <code>mycoco.es</code>, <code>positivasperorealistas.com</code>
+y la intranet), el panel de administración no se puede embeber en ninguna parte, y ninguna de las dos
+páginas es indexable. El chat vive en un marco aislado: no comparte cookies ni estilos con la web,
+no escribe nada en el navegador de la visitante y no interfiere con el aviso de cookies de Complianz.</p>
+</div>
+
 <h2>Qué hace, en una frase</h2>
 <p>Escucha sin juzgar, marca sus propios límites y ayuda a llegar a apoyo humano
 verificado. No diagnostica, no valora síntomas, no interpreta informes y no
@@ -167,6 +203,10 @@ obligatorias, y ninguna la puede cerrar un agente.</p>
 <li>Definir qué territorios cubre el piloto y qué equipo humano responde cuando alguien pide hablar con una persona.</li>
 <li><strong>Cargar el directorio de verdad:</strong> hoy solo hay teléfonos de emergencia verificados. Sin psicooncología ni asociaciones por provincia, el bot cumple su regla —no inventa— pero no puede ofrecer el recurso que la persona busca.</li>
 <li>Añadir saldo en OpenAI si se quiere ese motor, y volver a comparar modelos con el prompt real.</li>
+<li><strong>Acceso por API a WordPress:</strong> hoy no funciona. La contraseña guardada no es una
+<em>application password</em> (tiene 13 caracteres; las de WordPress tienen 24) y ninguno de los dos
+sitios anuncia ese método de autenticación, probablemente porque Wordfence lo tiene desactivado.
+Sin eso, cualquier cambio en la web hay que hacerlo a mano desde el panel de WordPress.</li>
 </ul>
 
 <p style="margin-top:2.5rem;font-size:.85rem;opacity:.7">Documento de trabajo interno de MyCoco ·
