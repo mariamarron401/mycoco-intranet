@@ -79,7 +79,7 @@
       background:radial-gradient(120% 120% at 50% 0%,var(--beige) 0%,var(--beige-claro) 55%,var(--beige-suave) 100%);
       text-align:center;padding:72px 24px 84px;position:relative;overflow:hidden;
     }
-    .hero__logo{height:96px;width:auto;margin-bottom:26px}
+    .hero__logo{height:96px;width:auto;max-width:100%;margin-bottom:26px}
     .hero h1{
       font-size:clamp(2.4rem,6vw,4rem);font-weight:700;line-height:1.06;
       max-width:900px;margin:0 auto;letter-spacing:.4px;
@@ -259,7 +259,7 @@
       section{padding:56px 0}
       .contenedor{padding:0 18px}
       .hero{padding:44px 18px 56px}
-      .hero__logo{height:70px;margin-bottom:20px}
+      .hero__logo{height:auto;max-height:70px;max-width:88%;margin-bottom:20px}
       .hero__frase{font-size:1rem}
       .hero__cta{flex-direction:column;align-items:stretch}
       .btn{text-align:center}
@@ -277,6 +277,76 @@
     @media (max-width:360px){
       .paleta{grid-template-columns:1fr}
       .logos-grid{grid-template-columns:1fr}
+    }
+
+    /* ==================================================================
+       CAPA DE MOVIMIENTO
+       Aplicada con la skill "adding-motion-and-effects" (Skiper UI).
+       Presupuesto respetado: micro-interacciones libres + UNA transición
+       de entrada + UN efecto de lucimiento (el reveal de las tarjetas).
+       Curva estándar .4,0,.2,1 y duraciones dentro de las bandas de la skill.
+       ================================================================== */
+    :root{ --curva:cubic-bezier(.4,0,.2,1); --mi:.22s; --estado:.32s; }
+
+    /* --- micro-interacciones: hover Y su equivalente de teclado ---------
+       La skill audita esto: un efecto solo en :hover deja fuera a quien
+       navega con tabulador. Cada regla va duplicada con :focus-visible. */
+    .tarjeta{transition:transform var(--mi) var(--curva), box-shadow var(--mi) var(--curva)}
+    .tarjeta:hover,
+    .tarjeta:focus-visible{transform:translateY(-4px);box-shadow:var(--sombra-fuerte)}
+    .tarjeta:focus-visible{outline:3px solid var(--teja);outline-offset:3px}
+    .tarjeta__flecha{transition:transform var(--mi) var(--curva)}
+    .tarjeta:hover .tarjeta__flecha,
+    .tarjeta:focus-visible .tarjeta__flecha{transform:translateX(4px)}
+    .tarjeta:active{transform:translateY(-1px)}
+
+    .nav__links a{transition:background var(--mi) var(--curva), color var(--mi) var(--curva)}
+    .nav__links a:focus-visible{background:var(--beige);color:var(--marron);
+      outline:2px solid var(--teja);outline-offset:2px}
+
+    .btn{transition:background var(--mi) var(--curva), color var(--mi) var(--curva),
+      transform var(--mi) var(--curva)}
+    .btn--primario:focus-visible{background:var(--marron);transform:translateY(-2px)}
+    .btn--fantasma:focus-visible{background:var(--teja);color:#fff}
+    .btn:focus-visible{outline:3px solid var(--marron);outline-offset:3px}
+    .btn:active{transform:translateY(0)}
+
+    .chip-eco{transition:transform var(--mi) var(--curva), box-shadow var(--mi) var(--curva)}
+    .chip-eco:hover{transform:translateY(-2px);box-shadow:var(--sombra-fuerte)}
+
+    /* --- la transición de entrada (una sola, al cargar) ---------------- */
+    @keyframes mc-entra{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+    .hero__logo,.hero h1,.hero .tagline,.hero__frase,.hero__cta{
+      animation:mc-entra .5s var(--curva) both;
+    }
+    .hero h1{animation-delay:.07s}
+    .hero .tagline{animation-delay:.14s}
+    .hero__frase{animation-delay:.21s}
+    .hero__cta{animation-delay:.28s}
+
+    /* --- el único efecto de lucimiento: reveal conducido por scroll ----
+       Estado base = estado final LEGIBLE. El @supports solo AÑADE el
+       movimiento. Al revés (base opacity:0) el contenido no aparecería
+       nunca en Safari ni Firefox: es el error clásico de esta familia. */
+    @supports (animation-timeline: view()){
+      @media (prefers-reduced-motion: no-preference){
+        .tarjeta, .principio, .marca-card, .tipo-card, .card{
+          animation:mc-entra .55s var(--curva) both;
+          animation-timeline:view();
+          animation-range:entry 5% cover 28%;
+        }
+      }
+    }
+
+    /* --- el apagado. La skill lo exige y ninguno de sus 37 componentes
+           lo trae: hay que ponerlo siempre a mano. ------------------- */
+    @media (prefers-reduced-motion: reduce){
+      *,*::before,*::after{
+        animation-duration:.01ms !important;
+        animation-iteration-count:1 !important;
+        transition-duration:.01ms !important;
+        scroll-behavior:auto !important;
+      }
     }
   </style>
 </head>
