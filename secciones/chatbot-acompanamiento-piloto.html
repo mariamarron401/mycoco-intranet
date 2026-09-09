@@ -58,6 +58,40 @@ tal como exige la sección «Puertas obligatorias antes de lanzar» del document
 <a class="enlace" href="https://chat-acompanamiento.maria-marron.workers.dev/widget.js">Widget incrustable
 <span>Una línea de código para meterlo en cualquier página de WordPress.</span></a>
 
+<h2>Cómo se ve y se usa</h2>
+<p>Es una <strong>app de mensajería, no un formulario</strong>, y está pensada primero para el móvil:
+el <a href="https://chat-acompanamiento.maria-marron.workers.dev/">chat</a> ocupa la pantalla completa,
+las burbujas van a izquierda y derecha, hay indicador de «escribiendo», y las respuestas llegan con un
+retardo humano en vez de aparecer de golpe.</p>
+
+<div class="caja">
+<h3 style="margin-top:0">El formulario ahora es conversación</h3>
+<p>Las tres pantallas de preguntas del documento (aceptación, «sobre ti» y «qué necesitas ahora»)
+ya no son campos: <strong>son mensajes del bot con respuestas de un toque</strong>. La persona
+puede tocar una opción o escribir lo que quiera.</p>
+<p style="margin-bottom:0">Solo la mayoría de edad es obligatoria. Todo lo demás se puede saltar:
+desde el saludo hasta empezar a hablar hay <strong>tres toques</strong>, y quien quiera contar más
+elige «te cuento algo de mí» y entonces se le pregunta nombre, relación con el cáncer y zona.</p>
+</div>
+
+<h3>Detalles pensados para el móvil</h3>
+<ul class="limpia">
+<li>Altura <code>100dvh</code> y ajuste al teclado: el último mensaje nunca queda tapado.</li>
+<li>Campo de texto a 16&nbsp;px, que es lo que evita que iOS haga zoom al escribir.</li>
+<li>Respeta el notch y la barra inferior del iPhone (<code>safe-area-inset</code>).</li>
+<li>Zonas de toque de 40-44&nbsp;px en botones y respuestas rápidas.</li>
+<li>Los mensajes se apoyan en la parte de abajo, como en cualquier mensajería.</li>
+<li>El aviso «nadie lee esto en tiempo real» está en la cabecera, visible siempre y sin recortar.</li>
+<li>Las opciones de privacidad viven en una hoja inferior que se abre con el botón ⋯.</li>
+<li>Respeta <code>prefers-reduced-motion</code> para quien tenga las animaciones desactivadas.</li>
+</ul>
+
+<h3>La privacidad, por defecto</h3>
+<p>La conversación <strong>nace sin guardarse</strong>. Solo se almacena el texto si la persona
+dice que sí cuando se le pregunta, y la zona solo se guarda si consiente compartirla —comprobado
+que sin ese consentimiento la provincia no llega a la base de datos—. Es lo que pide el documento:
+consentimientos separados, opcionales, y que no condicionen la escucha.</p>
+
 <h2>El motor: qué modelo está hablando</h2>
 <div class="caja">
 <p>La decisión fue usar <strong>nuestro conocimiento + la API de OpenAI</strong>. La clave de OpenAI
