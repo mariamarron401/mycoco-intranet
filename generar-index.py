@@ -524,19 +524,17 @@ PLANTILLA = r"""<!doctype html>
     .hero__frase{animation-delay:.21s}
     .hero__cta{animation-delay:.28s}
 
-    /* --- el único efecto de lucimiento: reveal conducido por scroll ----
-       Estado base = estado final LEGIBLE. El @supports solo AÑADE el
-       movimiento. Al revés (base opacity:0) el contenido no aparecería
-       nunca en Safari ni Firefox: es el error clásico de esta familia. */
-    @supports (animation-timeline: view()){
-      @media (prefers-reduced-motion: no-preference){
-        .tarjeta, .principio, .marca-card, .tipo-card, .card{
-          animation:mc-entra .55s var(--curva) both;
-          animation-timeline:view();
-          animation-range:entry 5% cover 28%;
-        }
-      }
-    }
+    /* --- el único efecto de lucimiento: reveal al entrar en pantalla ---
+       Regla de oro de esta familia: el estado base es el estado FINAL
+       legible. Aquí se cumple de forma estricta: la clase que esconde la
+       pone JavaScript, así que sin JS, sin IntersectionObserver o con
+       movimiento reducido, las tarjetas están visibles desde el principio.
+       (La receta con animation-timeline:view() de la skill es más limpia,
+       pero deja el contenido en opacidad 0 mientras espera el scroll: si la
+       línea de tiempo no engancha, el contenido no aparece. En la jerarquía
+       datos > accesibilidad > ... > elegancia, eso pierde.) */
+    .mc-revelable{transition:opacity .55s var(--curva), transform .55s var(--curva)}
+    html.mc-reveal .mc-revelable:not(.mc-visto){opacity:0;transform:translateY(16px)}
 
     /* --- el apagado. La skill lo exige y ninguno de sus 37 componentes
            lo trae: hay que ponerlo siempre a mano. ------------------- */
@@ -830,6 +828,40 @@ PLANTILLA = r"""<!doctype html>
     <p class="aviso">Documento de trabajo interno. Contenido en desarrollo, no destinado a difusión pública. Las cifras de salud recogidas requieren verificación con su fuente antes de cualquier publicación. MyCoco no ofrece consejo médico individual: ante dudas clínicas, consulta con profesionales sanitarios.</p>
   </footer>
 
+  <script>
+  /* Reveal de entrada (skill "adding-motion-and-effects").
+     Se activa solo si el navegador puede observarlo y la persona no ha
+     pedido menos movimiento. Cualquier fallo deja el contenido visible. */
+  (function () {
+    var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduce || !('IntersectionObserver' in window)) return;
+
+    var sel = '.tarjeta, .principio, .marca-card, .tipo-card, .card';
+    var nodos = document.querySelectorAll(sel);
+    if (!nodos.length) return;
+
+    document.documentElement.classList.add('mc-reveal');
+    var obs = new IntersectionObserver(function (entradas) {
+      entradas.forEach(function (e) {
+        if (e.isIntersecting) { e.target.classList.add('mc-visto'); obs.unobserve(e.target); }
+      });
+    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
+
+    Array.prototype.forEach.call(nodos, function (n) {
+      n.classList.add('mc-revelable');
+      obs.observe(n);
+    });
+
+    /* Red de seguridad CONDICIONAL: lo que está en pantalla al cargar debe
+       revelarse de inmediato. Si a los 2,5 s no se ha revelado NADA, el
+       observador no está funcionando y se muestra todo. Ojo: no vale
+       revelarlo todo sin más, eso anularía el efecto en una página larga. */
+    setTimeout(function () {
+      if (document.querySelector('.mc-visto')) return;   // funciona: no tocar
+      document.documentElement.classList.remove('mc-reveal');
+    }, 2500);
+  })();
+  </script>
 </body>
 </html>
 """.replace("__NOINDEX__", NOINDEX)
