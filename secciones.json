@@ -31,5 +31,12 @@
     "categoria": "Producto",
     "fecha": "2026-09-07",
     "destacado": true
+  },
+  "mycoco-landing-2026.html": {
+    "titulo": "Landing 2026 — propuesta de rediseño de mycoco.es",
+    "descripcion": "La home del movimiento: titular a pantalla completa, selector de momento, las cinco opciones con el mismo peso visual y el observatorio de datos con fuente. Propuesta para revisar, no publicada.",
+    "categoria": "Marca",
+    "fecha": "2026-09-15",
+    "destacado": true
   }
 }
