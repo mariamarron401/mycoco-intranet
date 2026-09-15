@@ -5,25 +5,22 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>MyCoco · Propuesta de landing 2026</title>
-<meta name="description" content="Propuesta de rediseño de la home de mycoco.es: el movimiento por delante del producto, el selector de momento, las cinco opciones con el mismo peso y el observatorio de datos.">
+<meta name="description" content="Propuesta de rediseño de la home de mycoco.es: el movimiento por delante del producto, selector de momento, las cinco opciones con el mismo peso y el observatorio de datos con fuente.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Poppins:wght@300;400;500;600&display=swap">
 <style>
-/* ============================================================
+/* ===========================================================================
    MyCoco · landing 2026
-   Paleta oficial (Recursos/LOGOTIPOS/DIGITAL/paleta-mycoco-HEX.jpg)
-   Cormorant (títulos) + Poppins (cuerpo)
-   ============================================================ */
+   Paleta oficial · Cormorant (títulos) + Poppins (cuerpo)
+   =========================================================================== */
 :root{
   --ground:#EED8C1; --paper:#FBF3EA; --deep:#3F1910; --deep-2:#54251A;
   --ink:#3F1910; --soft:#6B473C; --faint:#8C6E5F; --rule:#DCC0A4;
   --teja:#99492C; --salmon:#E3A175; --malva:#C6979D; --verde:#5B7352;
   --on-deep:#F2DEC8;
-  --grain:.035;
-  --ease:cubic-bezier(.4,0,.2,1);
-  --u:76rem;
-  --navtop:0px;
+  --card:#FBF3EA; --shadow:34 14 8;
+  --grain:.032; --ease:cubic-bezier(.4,0,.2,1); --u:78rem; --navtop:0px;
   color-scheme:light;
 }
 @media (prefers-color-scheme:dark){
@@ -31,7 +28,7 @@
     --ground:#1D0B06; --paper:#2B120D; --deep:#0F0503; --deep-2:#20100B;
     --ink:#F3DFC9; --soft:#CDAD95; --faint:#A38470; --rule:#4A231A;
     --teja:#E2A386; --salmon:#E3A175; --malva:#D8B0B5; --verde:#9FB794;
-    --on-deep:#F2DEC8; --grain:.05;
+    --on-deep:#F2DEC8; --card:#2B120D; --shadow:0 0 0; --grain:.05;
     color-scheme:dark;
   }
 }
@@ -39,96 +36,99 @@
   --ground:#1D0B06; --paper:#2B120D; --deep:#0F0503; --deep-2:#20100B;
   --ink:#F3DFC9; --soft:#CDAD95; --faint:#A38470; --rule:#4A231A;
   --teja:#E2A386; --salmon:#E3A175; --malva:#D8B0B5; --verde:#9FB794;
-  --on-deep:#F2DEC8; --grain:.05;
+  --on-deep:#F2DEC8; --card:#2B120D; --shadow:0 0 0; --grain:.05;
   color-scheme:dark;
 }
 
 *{box-sizing:border-box}
-html{scroll-behavior:smooth;scroll-padding-top:6rem;overflow-x:clip}
-body{
-  margin:0;background:var(--ground);color:var(--ink);
+html{scroll-behavior:smooth;scroll-padding-top:7rem;overflow-x:clip}
+body{margin:0;background:var(--ground);color:var(--ink);overflow-x:clip;
   font-family:"Poppins",system-ui,Helvetica,Arial,sans-serif;font-weight:300;
-  font-size:16px;line-height:1.65;-webkit-font-smoothing:antialiased;
-  overflow-x:clip;
-}
-h1,h2,h3{font-family:"Cormorant",Georgia,serif;font-weight:600;margin:0;line-height:1.06;text-wrap:balance}
+  font-size:16px;line-height:1.65;-webkit-font-smoothing:antialiased}
+h1,h2,h3,h4.disp{font-family:"Cormorant",Georgia,serif;font-weight:600;margin:0;line-height:1.06;text-wrap:balance}
 p{margin:0;text-wrap:pretty}
 img{max-width:100%;display:block}
 [hidden]{display:none!important}
 a{color:inherit}
-:where(a,button,.chip,.opt):focus-visible{outline:2px solid var(--teja);outline-offset:3px;border-radius:3px}
-.u{max-width:var(--u);margin:0 auto;padding-inline:clamp(1.1rem,4vw,2rem)}
+button{font-family:inherit}
+:where(a,button,summary,input,textarea,select):focus-visible{outline:2px solid var(--teja);outline-offset:3px;border-radius:4px}
+.u{max-width:var(--u);margin:0 auto;padding-inline:clamp(1.1rem,4vw,2.2rem)}
 .sr{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+.skip{position:absolute;left:-999px;top:0;z-index:100;background:var(--deep);color:var(--on-deep);padding:.7rem 1.2rem}
+.skip:focus{left:.5rem;top:.5rem}
 
-/* grano de papel: da temperatura sin tocar el contraste del texto */
-body::after{
-  content:"";position:fixed;inset:0;z-index:9;pointer-events:none;opacity:var(--grain);
+body::after{content:"";position:fixed;inset:0;z-index:9;pointer-events:none;opacity:var(--grain);
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E");
-  mix-blend-mode:multiply;
-}
-@media (prefers-color-scheme:dark){
-  :root:not([data-theme="light"]) body::after{mix-blend-mode:screen}
-}
+  mix-blend-mode:multiply}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) body::after{mix-blend-mode:screen}}
 :root[data-theme="dark"] body::after{mix-blend-mode:screen}
 
-/* ---------- aviso de propuesta (solo para la revisión interna) ---------- */
+/* ---------- aviso de propuesta ---------- */
 .aviso{background:var(--deep);color:var(--on-deep);font-size:.78rem;line-height:1.5}
 .aviso .u{display:flex;flex-wrap:wrap;gap:.6rem 1.2rem;align-items:center;justify-content:space-between;padding-block:.7rem}
 .aviso b{font-weight:500}
-.aviso .ctrl{display:flex;gap:.45rem;flex-wrap:wrap}
-.tgl{font:inherit;font-size:.74rem;font-weight:400;padding:.3rem .85rem;border-radius:999px;
-     border:1px solid rgba(242,222,200,.32);background:transparent;color:var(--on-deep);cursor:pointer;
-     transition:background .3s var(--ease),color .3s var(--ease),border-color .3s var(--ease)}
+.ctrl{display:flex;gap:.45rem;flex-wrap:wrap}
+.tgl{font-size:.74rem;font-weight:400;padding:.3rem .85rem;border-radius:999px;
+  border:1px solid rgba(242,222,200,.32);background:transparent;color:var(--on-deep);cursor:pointer;
+  transition:background .3s var(--ease),color .3s var(--ease),border-color .3s var(--ease)}
 .tgl:hover{border-color:var(--on-deep)}
 .tgl[aria-pressed="true"]{background:var(--on-deep);color:var(--deep);border-color:var(--on-deep);font-weight:500}
 
 /* ---------- marquesina ---------- */
-.ticker{background:var(--deep-2);color:var(--on-deep);overflow:hidden;white-space:nowrap;
-        border-block:1px solid rgba(242,222,200,.12)}
-.ticker div{display:inline-block;padding-block:.5rem;animation:slide 40s linear infinite;
-            font-size:.71rem;letter-spacing:.14em;text-transform:uppercase}
+.ticker{background:var(--deep-2);color:var(--on-deep);overflow:hidden;white-space:nowrap;border-block:1px solid rgba(242,222,200,.12)}
+.ticker div{display:inline-block;padding-block:.5rem;animation:slide 44s linear infinite;
+  font-size:.71rem;letter-spacing:.14em;text-transform:uppercase}
 .ticker span{padding-inline:1.5rem;opacity:.82}
 .ticker b{font-weight:500;opacity:1}
 @keyframes slide{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 
 /* ---------- navegación ---------- */
-nav.site{position:sticky;top:var(--navtop);z-index:40;background:color-mix(in srgb,var(--ground) 88%,transparent);
-         backdrop-filter:blur(14px) saturate(1.1);-webkit-backdrop-filter:blur(14px) saturate(1.1);
-         border-bottom:1px solid transparent;transition:border-color .3s var(--ease),box-shadow .3s var(--ease)}
-nav.site.stuck{border-bottom-color:var(--rule);box-shadow:0 10px 30px -22px rgba(63,25,16,.8)}
-nav.site .u{display:flex;align-items:center;gap:1.2rem;padding-block:.85rem}
+nav.site{position:sticky;top:var(--navtop);z-index:40;
+  background:color-mix(in srgb,var(--ground) 86%,transparent);
+  backdrop-filter:blur(16px) saturate(1.1);-webkit-backdrop-filter:blur(16px) saturate(1.1);
+  border-bottom:1px solid transparent;transition:border-color .3s var(--ease),box-shadow .3s var(--ease)}
+nav.site.stuck{border-bottom-color:var(--rule);box-shadow:0 12px 34px -26px rgb(var(--shadow) / .85)}
+nav.site .u{display:flex;align-items:center;gap:1rem;padding-block:.8rem}
 .brand{display:flex;align-items:center;gap:.6rem;text-decoration:none;flex:0 0 auto}
 .brand img{height:2.1rem;width:auto}
-.brand .word{font-family:"Cormorant",Georgia,serif;font-size:1.5rem;font-weight:600;letter-spacing:.01em;line-height:1}
-.links{display:none;gap:1.35rem;font-size:.82rem;color:var(--soft);margin-inline:auto}
+.links{display:none;gap:1.25rem;font-size:.82rem;color:var(--soft);margin-inline:auto}
 .links a{text-decoration:none;position:relative;padding-block:.2rem;transition:color .3s var(--ease)}
 .links a::after{content:"";position:absolute;left:0;right:0;bottom:0;height:1px;background:var(--teja);
-                transform:scaleX(0);transform-origin:left;transition:transform .3s var(--ease)}
-.links a:hover{color:var(--teja)}
-.links a:hover::after{transform:scaleX(1)}
-@media(min-width:68rem){.links{display:flex}}
+  transform:scaleX(0);transform-origin:left;transition:transform .3s var(--ease)}
+.links a:hover,.links a.act{color:var(--teja)}
+.links a:hover::after,.links a.act::after{transform:scaleX(1)}
+@media(min-width:70rem){.links{display:flex}}
 .navbtns{display:flex;gap:.5rem;align-items:center;margin-left:auto}
-@media(min-width:68rem){.navbtns{margin-left:0}}
-@media(max-width:34rem){
-  .navbtns .btn.ghost{display:none}
-  .brand img{height:1.75rem}
-  nav.site .u{gap:.6rem}
-}
-.icobtn{width:2.1rem;height:2.1rem;border-radius:999px;border:1px solid var(--rule);background:transparent;
-        color:var(--ink);cursor:pointer;display:grid;place-items:center;font-size:.95rem;flex:0 0 auto;
-        transition:border-color .3s var(--ease),color .3s var(--ease)}
-.icobtn:hover{border-color:var(--teja);color:var(--teja)}
-/* línea de progreso de lectura */
-.prog{position:absolute;left:0;bottom:-1px;height:2px;background:var(--teja);width:0;transition:width .12s linear}
+@media(min-width:70rem){.navbtns{margin-left:0}}
+.burger{display:grid;place-items:center;width:2.4rem;height:2.4rem;border-radius:999px;
+  border:1px solid var(--rule);background:transparent;color:var(--ink);cursor:pointer;flex:0 0 auto}
+@media(min-width:70rem){.burger{display:none}}
+.burger span{display:block;width:1rem;height:1.5px;background:currentColor;position:relative;transition:transform .3s var(--ease)}
+.burger span::before,.burger span::after{content:"";position:absolute;left:0;width:1rem;height:1.5px;background:currentColor;transition:transform .3s var(--ease)}
+.burger span::before{top:-5px}.burger span::after{top:5px}
+.burger[aria-expanded="true"] span{transform:rotate(45deg)}
+.burger[aria-expanded="true"] span::before{transform:translateY(5px) rotate(-90deg)}
+.burger[aria-expanded="true"] span::after{opacity:0}
+.prog{position:absolute;left:0;bottom:-1px;height:2px;background:var(--teja);width:0}
+
+/* cajón móvil */
+.drawer{position:fixed;inset:0;z-index:60;background:var(--ground);padding:5rem 1.5rem 2rem;
+  display:flex;flex-direction:column;gap:.2rem;overflow-y:auto;
+  transform:translateY(-100%);transition:transform .35s var(--ease);visibility:hidden}
+.drawer.on{transform:none;visibility:visible}
+.drawer a{text-decoration:none;font-family:"Cormorant",Georgia,serif;font-size:1.9rem;font-weight:600;
+  padding-block:.5rem;border-bottom:1px solid var(--rule)}
+.drawer .cta-row{margin-top:1.5rem}
+.drawer .x{position:absolute;top:1.2rem;right:1.2rem;width:2.4rem;height:2.4rem;border-radius:999px;
+  border:1px solid var(--rule);background:transparent;color:var(--ink);cursor:pointer;font-size:1.1rem}
 
 /* ---------- botones ---------- */
 .btn{display:inline-flex;align-items:center;gap:.5rem;padding:.75rem 1.5rem;border-radius:999px;
-     font-size:.87rem;font-weight:500;letter-spacing:.01em;text-decoration:none;cursor:pointer;
-     border:1.5px solid transparent;font-family:inherit;
-     transition:transform .3s var(--ease),background .3s var(--ease),color .3s var(--ease),border-color .3s var(--ease),box-shadow .3s var(--ease)}
+  font-size:.87rem;font-weight:500;text-decoration:none;cursor:pointer;border:1.5px solid transparent;
+  transition:transform .3s var(--ease),background .3s var(--ease),color .3s var(--ease),border-color .3s var(--ease),box-shadow .3s var(--ease)}
 .btn:hover{transform:translateY(-2px)}
 .btn.a{background:var(--teja);color:var(--paper)}
-.btn.a:hover{box-shadow:0 12px 26px -14px var(--teja)}
+.btn.a:hover{box-shadow:0 14px 28px -14px var(--teja)}
 .btn.b{background:var(--deep);color:var(--on-deep)}
 .btn.ghost{border-color:var(--teja);color:var(--teja)}
 .btn.ghost:hover{background:var(--teja);color:var(--paper)}
@@ -136,79 +136,92 @@ nav.site .u{display:flex;align-items:center;gap:1.2rem;padding-block:.85rem}
 .btn.on-deep{background:var(--on-deep);color:var(--deep)}
 .btn.ghost-deep{border-color:rgba(242,222,200,.45);color:var(--on-deep)}
 .btn.ghost-deep:hover{background:var(--on-deep);color:var(--deep);border-color:var(--on-deep)}
+.cta-row{display:flex;flex-wrap:wrap;gap:.65rem;align-items:center}
 
 /* ---------- secciones ---------- */
-section.s{padding-block:clamp(3.5rem,8vw,6rem);position:relative}
+section.s{padding-block:clamp(3.5rem,8vw,6.5rem);position:relative}
 section.s.tight{padding-block:clamp(2.5rem,5vw,3.75rem)}
-.kicker{display:inline-block;font-size:.67rem;font-weight:500;letter-spacing:.22em;
-        text-transform:uppercase;color:var(--teja)}
-.h2{font-size:clamp(2rem,5vw,3.4rem);margin-top:.6rem}
+.kicker{display:inline-block;font-size:.67rem;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:var(--teja)}
+.h2{font-size:clamp(2rem,5vw,3.3rem);margin-top:.6rem}
 .h2.sm{font-size:clamp(1.7rem,3.4vw,2.2rem)}
-.lead{font-size:clamp(1.02rem,1.6vw,1.16rem);color:var(--soft);max-width:46ch}
+.lead{font-size:clamp(1.02rem,1.6vw,1.16rem);color:var(--soft);max-width:48ch}
+.micro{font-size:.78rem;color:var(--faint)}
 
-/* ---------- reveal conducido por scroll ---------- */
-/* Estado base = estado final legible. El movimiento solo se añade donde el
-   navegador sabe hacerlo; en Safari y Firefox el contenido se ve igual. */
+/* ---------- movimiento conducido por scroll ---------- */
+/* El estado base es el estado final legible; el movimiento sólo se añade
+   donde el navegador lo soporta y el usuario no ha pedido reducirlo. */
 @supports (animation-timeline:view()){
   @media (prefers-reduced-motion:no-preference){
-    .rev{animation:entra linear both;animation-timeline:view();animation-range:entry 4% cover 26%}
+    .rev{animation:entra linear both;animation-timeline:view();animation-range:entry 3% cover 24%}
+    .rev-s>*{animation:entra linear both;animation-timeline:view();animation-range:entry 2% cover 30%}
+    .par{animation:paral linear both;animation-timeline:view();animation-range:cover}
   }
-  @keyframes entra{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:none}}
+  @keyframes entra{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:none}}
+  @keyframes paral{from{transform:translateY(-4%) scale(1.1)}to{transform:translateY(4%) scale(1.1)}}
 }
 
 /* ---------- hero ---------- */
-.hero{padding-block:clamp(3rem,9vw,6.5rem) clamp(2.5rem,6vw,4.5rem);position:relative;overflow:clip}
+.hero{position:relative;min-height:min(86vh,52rem);display:flex;align-items:flex-end;
+  padding-block:clamp(5rem,14vw,9rem) clamp(7rem,12vw,10rem);overflow:clip;isolation:isolate}
+.hero-bg{position:absolute;inset:0;z-index:-2;overflow:hidden}
+.hero-bg img{width:100%;height:100%;object-fit:cover;transform:scale(1.1)}
+.hero::before{content:"";position:absolute;inset:0;z-index:-1;
+  background:linear-gradient(105deg,var(--ground) 4%,color-mix(in srgb,var(--ground) 82%,transparent) 42%,color-mix(in srgb,var(--ground) 30%,transparent) 72%,transparent 100%)}
+@media(max-width:56rem){.hero::before{background:linear-gradient(180deg,color-mix(in srgb,var(--ground) 86%,transparent) 30%,color-mix(in srgb,var(--ground) 62%,transparent) 100%)}}
 .hero h1{font-size:clamp(2.8rem,7.6vw,7rem);letter-spacing:-.025em}
 .hero h1 em{font-style:italic;font-weight:400;color:var(--teja)}
 .hero h1 .ln{display:block;overflow:hidden;padding-bottom:.1em;margin-bottom:-.07em}
-.hero h1 .ln > span{display:block;animation:sube .9s var(--ease) both}
-.hero h1 .ln:nth-child(2) > span{animation-delay:.09s}
-.hero h1 .ln:nth-child(3) > span{animation-delay:.18s}
+.hero h1 .ln>span{display:block;animation:sube .9s var(--ease) both}
+.hero h1 .ln:nth-child(2)>span{animation-delay:.09s}
+.hero h1 .ln:nth-child(3)>span{animation-delay:.18s}
 @keyframes sube{from{transform:translateY(105%)}to{transform:none}}
-.hero .row{display:grid;grid-template-columns:1fr;gap:2.2rem;margin-top:clamp(1.8rem,4vw,2.8rem)}
-@media(min-width:56rem){.hero .row{grid-template-columns:1.08fr .92fr;align-items:end;gap:3.5rem}}
-.hero .col2{display:flex;flex-direction:column;gap:1.4rem;animation:fade 1s var(--ease) .35s both}
+.hero .row{display:grid;grid-template-columns:1fr;gap:2rem;margin-top:clamp(1.6rem,4vw,2.4rem)}
+@media(min-width:56rem){.hero .row{grid-template-columns:1.05fr .95fr;align-items:end;gap:3rem}}
+.hero .col2{display:flex;flex-direction:column;gap:1.3rem;animation:fade 1s var(--ease) .35s both}
 @keyframes fade{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
-.cta-row{display:flex;flex-wrap:wrap;gap:.65rem;align-items:center}
-.micro{font-size:.78rem;color:var(--faint)}
-/* filigrana del lazo, muy al fondo */
-.lazo{position:absolute;right:-6%;top:-8%;width:min(42vw,30rem);opacity:.13;pointer-events:none;
-      z-index:-1;transform:translateY(calc(var(--sy,0) * -.06px))}
-@media(max-width:56rem){.lazo{width:70vw;right:-18%;top:auto;bottom:-4%;opacity:.09}}
 
-/* ---------- marcadores de foto ---------- */
-.ph{border-radius:5px;position:relative;overflow:hidden;display:flex;align-items:flex-end;padding:1rem;
-    min-height:14rem;background:linear-gradient(145deg,var(--salmon) 0%,var(--malva) 55%,var(--teja) 100%)}
-.ph::after{content:"";position:absolute;inset:0;background:radial-gradient(120% 90% at 20% 10%,rgba(255,255,255,.28),transparent 60%)}
-.ph em{position:relative;z-index:1;font-style:normal;font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;
-       color:rgba(63,25,16,.75);background:rgba(251,243,234,.85);padding:.3rem .6rem;border-radius:2px}
-.ph.alt{background:linear-gradient(200deg,var(--verde) 0%,var(--salmon) 70%,var(--malva) 100%)}
-.ph.tall{min-height:22rem}
-.card .ph{transition:transform .5s var(--ease)}
-.card:hover .ph{transform:scale(1.02)}
+/* insignia flotante sobre la foto */
+.badge{position:absolute;right:clamp(1rem,4vw,3rem);top:clamp(6rem,14vw,9rem);z-index:2;
+  background:color-mix(in srgb,var(--card) 88%,transparent);backdrop-filter:blur(12px);
+  border:1px solid var(--rule);border-radius:14px;padding:1rem 1.2rem;max-width:14rem;
+  box-shadow:0 26px 50px -30px rgb(var(--shadow) / .8);animation:flot 7s ease-in-out infinite}
+.badge .n{font-family:"Cormorant",Georgia,serif;font-size:2.1rem;font-weight:600;line-height:1;color:var(--teja);
+  font-variant-numeric:lining-nums tabular-nums}
+.badge p{font-size:.76rem;color:var(--soft);margin-top:.35rem}
+.badge .src{font-size:.64rem;color:var(--faint);margin-top:.5rem;display:block}
+@keyframes flot{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
+@media(max-width:56rem){.badge{display:none}}
 
-/* ---------- selector de momento ---------- */
-.selector{background:var(--paper);border:1px solid var(--rule);border-radius:8px;
-          padding:clamp(1.4rem,4vw,2.4rem)}
+/* ---------- tarjeta flotante (selector) ---------- */
+.float-up{margin-top:clamp(-6rem,-8vw,-4rem);position:relative;z-index:5}
+.card-f{background:var(--card);border:1px solid var(--rule);border-radius:16px;
+  padding:clamp(1.4rem,4vw,2.4rem);box-shadow:0 34px 70px -44px rgb(var(--shadow) / .75)}
 .chips{display:flex;flex-wrap:wrap;gap:.55rem;margin-top:1.3rem}
 .chip{border:1.5px solid var(--rule);background:transparent;color:var(--ink);border-radius:999px;
-      padding:.6rem 1.15rem;font:inherit;font-size:.86rem;cursor:pointer;
-      transition:border-color .3s var(--ease),color .3s var(--ease),background .3s var(--ease),transform .3s var(--ease)}
+  padding:.6rem 1.15rem;font-size:.86rem;cursor:pointer;
+  transition:border-color .3s var(--ease),color .3s var(--ease),background .3s var(--ease),transform .3s var(--ease)}
 .chip:hover{border-color:var(--teja);color:var(--teja);transform:translateY(-1px)}
 .chip[aria-pressed="true"]{background:var(--teja);border-color:var(--teja);color:var(--paper)}
-.chip-out{margin-top:1.3rem;font-size:.92rem;color:var(--soft);min-height:3rem;
-          display:flex;align-items:center;gap:.7rem;padding-top:1.1rem;border-top:1px solid var(--rule)}
-.chip-out b{color:var(--ink);font-weight:500}
-.chip-out .fl{flex:0 0 auto;color:var(--teja);font-size:1.1rem}
+.ruta{margin-top:1.3rem;padding-top:1.2rem;border-top:1px solid var(--rule)}
+.ruta .ph{font-size:.92rem;color:var(--soft)}
+.ruta-c{display:grid;gap:1rem;grid-template-columns:1fr}
+@media(min-width:44rem){.ruta-c{grid-template-columns:1.3fr 1fr;align-items:start}}
+.ruta h4{font-family:"Cormorant",Georgia,serif;font-size:1.45rem;font-weight:600;margin:0 0 .4rem}
+.ruta p{font-size:.9rem;color:var(--soft)}
+.ruta ul{margin:.6rem 0 0;padding-left:1.05rem;font-size:.86rem;color:var(--soft);display:flex;flex-direction:column;gap:.3rem}
+.ruta ul li::marker{color:var(--malva)}
+
+/* ---------- tira de confianza ---------- */
+.trust{display:grid;grid-template-columns:repeat(auto-fit,minmax(11rem,1fr));gap:1.4rem}
+.trust div{font-size:.84rem;color:var(--soft);padding-top:.9rem;border-top:2px solid var(--rule)}
+.trust b{display:block;color:var(--ink);font-weight:500;font-size:.92rem;margin-bottom:.15rem}
 
 /* ---------- las cinco opciones ---------- */
-/* Misma anchura, mismo alto, sin iconos y sin orden que sugiera preferencia.
-   La neutralidad del movimiento, hecha rejilla. */
 .opts{display:grid;grid-template-columns:1fr;gap:1px;background:var(--rule);
-      border:1px solid var(--rule);border-radius:5px;overflow:hidden;margin-top:2.2rem}
+  border:1px solid var(--rule);border-radius:8px;overflow:hidden;margin-top:2.2rem}
 @media(min-width:64rem){.opts{grid-template-columns:repeat(5,1fr)}}
 .opt{background:var(--ground);padding:1.7rem 1.25rem;display:flex;flex-direction:column;gap:.6rem;
-     transition:background .3s var(--ease)}
+  transition:background .3s var(--ease)}
 .opt:hover{background:var(--paper)}
 .opt h3{font-size:1.3rem}
 .opt p{font-size:.85rem;color:var(--soft)}
@@ -217,92 +230,224 @@ section.s.tight{padding-block:clamp(2.5rem,5vw,3.75rem)}
 .deep{background:var(--deep);color:var(--on-deep)}
 .deep .kicker{color:var(--salmon)}
 .deep .lead,.deep p{color:rgba(242,222,200,.84)}
-.deep h2,.deep h3{color:var(--on-deep)}
+.deep h2,.deep h3,.deep h4.disp{color:var(--on-deep)}
 
 /* ---------- observatorio ---------- */
-.figs{display:grid;grid-template-columns:repeat(auto-fit,minmax(13.5rem,1fr));gap:1px;
-      background:rgba(242,222,200,.18);border:1px solid rgba(242,222,200,.18);
-      border-radius:5px;overflow:hidden;margin-top:2.5rem}
-.fig{background:var(--deep);padding:1.6rem 1.35rem;display:flex;flex-direction:column;gap:.55rem}
-.fig .n{font-family:"Cormorant",Georgia,serif;font-size:clamp(2.6rem,5.5vw,3.6rem);font-weight:600;
-        line-height:1;color:var(--salmon);font-variant-numeric:lining-nums tabular-nums}
-.fig .n.nd{color:rgba(242,222,200,.55);font-size:clamp(1.7rem,3vw,2.2rem);font-style:italic;font-weight:400}
-.fig p{font-size:.88rem}
-.fig .src{font-size:.7rem;color:rgba(242,222,200,.58);line-height:1.45;margin-top:auto;padding-top:.7rem;
-          border-top:1px solid rgba(242,222,200,.14)}
-.vacios{display:grid;grid-template-columns:repeat(auto-fit,minmax(15rem,1fr));gap:.9rem 1.8rem;margin-top:2.2rem;
-        list-style:none;padding:0}
-.vacios li{font-size:.88rem;color:rgba(242,222,200,.84);padding-left:1.1rem;position:relative}
-.vacios li::before{content:"";position:absolute;left:0;top:.62em;width:.42rem;height:.42rem;border-radius:999px;
-                   background:var(--malva)}
+.figs{display:grid;grid-template-columns:repeat(auto-fit,minmax(13rem,1fr));gap:1px;
+  background:rgba(242,222,200,.18);border:1px solid rgba(242,222,200,.18);border-radius:8px;overflow:hidden;margin-top:2.5rem}
+.fig{background:var(--deep);padding:1.6rem 1.35rem;display:flex;flex-direction:column;gap:.55rem;
+  transition:background .3s var(--ease)}
+.fig:hover{background:var(--deep-2)}
+.fig .n{font-family:"Cormorant",Georgia,serif;font-size:clamp(2.5rem,5.5vw,3.5rem);font-weight:600;
+  line-height:1;color:var(--salmon);font-variant-numeric:lining-nums tabular-nums}
+.fig .n.nd{color:rgba(242,222,200,.55);font-size:clamp(1.7rem,3vw,2.1rem);font-style:italic;font-weight:400}
+.fig p{font-size:.87rem}
+.fig .src{font-size:.69rem;color:rgba(242,222,200,.58);line-height:1.45;margin-top:auto;padding-top:.7rem;
+  border-top:1px solid rgba(242,222,200,.14)}
+.obs-grid{display:grid;grid-template-columns:1fr;gap:2.5rem;margin-top:3rem;align-items:center}
+@media(min-width:60rem){.obs-grid{grid-template-columns:1.1fr .9fr;gap:3.5rem}}
+/* barras de la distribución por edad */
+.bars{display:flex;flex-direction:column;gap:.9rem;margin-top:1.4rem}
+.bar-r{display:grid;grid-template-columns:5.5rem 1fr auto;gap:.8rem;align-items:center;font-size:.83rem}
+.bar-t{height:.55rem;border-radius:999px;background:rgba(242,222,200,.14);overflow:hidden}
+.bar-t i{display:block;height:100%;border-radius:999px;background:linear-gradient(90deg,var(--malva),var(--salmon));
+  width:var(--w);transform-origin:left;animation:crece 1.1s var(--ease) both}
+@keyframes crece{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+.bar-n{font-variant-numeric:lining-nums tabular-nums;color:var(--on-deep)}
+.vacios{display:grid;grid-template-columns:repeat(auto-fit,minmax(15rem,1fr));gap:.9rem 1.8rem;margin-top:2rem;list-style:none;padding:0}
+.vacios li{font-size:.87rem;color:rgba(242,222,200,.84);padding-left:1.1rem;position:relative}
+.vacios li::before{content:"";position:absolute;left:0;top:.62em;width:.42rem;height:.42rem;border-radius:999px;background:var(--malva)}
+.obs-img{border-radius:12px;overflow:hidden;position:relative}
+.obs-img img{width:100%;aspect-ratio:16/10;object-fit:cover}
+
+/* ---------- figuras con tarjeta flotante ---------- */
+.dual{display:grid;grid-template-columns:1fr;gap:2.5rem;align-items:center}
+@media(min-width:60rem){.dual{grid-template-columns:1fr 1fr;gap:4rem}.dual.rev-o>*:first-child{order:2}}
+.fig-w{position:relative}
+.fig-w>img{border-radius:12px;width:100%;aspect-ratio:4/3;object-fit:cover}
+.fig-w.tall>img{aspect-ratio:3/4}
+.over{position:absolute;background:color-mix(in srgb,var(--card) 92%,transparent);backdrop-filter:blur(12px);
+  border:1px solid var(--rule);border-radius:14px;padding:1.1rem 1.25rem;
+  box-shadow:0 30px 60px -38px rgb(var(--shadow) / .8);max-width:17rem}
+.over.br{right:-1rem;bottom:-1.5rem}
+.over.bl{left:-1rem;bottom:-1.5rem}
+@media(max-width:34rem){.over{position:static;max-width:none;margin-top:-1.5rem;margin-inline:.8rem}}
+.over h4{font-family:"Cormorant",Georgia,serif;font-size:1.15rem;font-weight:600;margin:0 0 .5rem}
+.steps{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:.55rem;font-size:.82rem;color:var(--soft)}
+.steps li{display:flex;gap:.6rem;align-items:flex-start}
+.steps i{flex:0 0 auto;width:1.25rem;height:1.25rem;border-radius:999px;background:var(--teja);color:var(--paper);
+  font-style:normal;font-size:.66rem;font-weight:500;display:grid;place-items:center;margin-top:.15rem}
+.over blockquote{margin:0;font-family:"Cormorant",Georgia,serif;font-size:1.15rem;font-style:italic;line-height:1.35}
+.over cite{display:block;margin-top:.6rem;font-style:normal;font-size:.74rem;color:var(--faint)}
+
+/* ---------- programas (carrusel con anclaje) ---------- */
+.rail{display:flex;gap:1.1rem;overflow-x:auto;scroll-snap-type:x mandatory;padding:.4rem .2rem 1.4rem;
+  margin-top:2rem;scrollbar-width:thin}
+.rail::-webkit-scrollbar{height:6px}
+.rail::-webkit-scrollbar-thumb{background:var(--rule);border-radius:99px}
+.prog-c{flex:0 0 min(20rem,78vw);scroll-snap-align:start;background:var(--card);border:1px solid var(--rule);
+  border-radius:14px;padding:1.5rem;display:flex;flex-direction:column;gap:.6rem;
+  transition:transform .3s var(--ease),box-shadow .3s var(--ease),border-color .3s var(--ease)}
+.prog-c:hover{transform:translateY(-4px);box-shadow:0 26px 48px -32px rgb(var(--shadow) / .7);border-color:var(--teja)}
+.prog-c .k{font-size:.64rem;letter-spacing:.18em;text-transform:uppercase;color:var(--teja);font-weight:500}
+.prog-c h3{font-size:1.35rem}
+.prog-c p{font-size:.85rem;color:var(--soft)}
+.rail-nav{display:flex;gap:.5rem;margin-top:.4rem}
+.rail-nav button{width:2.3rem;height:2.3rem;border-radius:999px;border:1px solid var(--rule);background:transparent;
+  color:var(--ink);cursor:pointer;transition:border-color .3s var(--ease),color .3s var(--ease)}
+.rail-nav button:hover{border-color:var(--teja);color:var(--teja)}
+.rail-nav button[disabled]{opacity:.35;cursor:default}
 
 /* ---------- rejilla de tarjetas ---------- */
 .grid3{display:grid;grid-template-columns:repeat(auto-fit,minmax(16rem,1fr));gap:1.6rem;margin-top:2.5rem}
 .card{display:flex;flex-direction:column;gap:.7rem}
-.card h3{font-size:1.45rem}
-.card p{font-size:.89rem;color:var(--soft)}
+.card .imgw{border-radius:12px;overflow:hidden}
+.card img{width:100%;aspect-ratio:4/5;object-fit:cover;transition:transform .5s var(--ease)}
+.card:hover img{transform:scale(1.04)}
+.card h3{font-size:1.4rem}
+.card p{font-size:.88rem;color:var(--soft)}
 .card .more{font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--teja);font-weight:500;
-            display:inline-flex;gap:.4rem;align-items:center;text-decoration:none}
+  display:inline-flex;gap:.4rem;align-items:center;text-decoration:none}
 .card .more span{transition:transform .3s var(--ease)}
 .card:hover .more span{transform:translateX(4px)}
 
+/* ---------- modelo 3D / realidad aumentada ---------- */
+.ar{display:grid;grid-template-columns:1fr;gap:1.6rem;margin-top:2.2rem;align-items:center}
+@media(min-width:48rem){.ar{grid-template-columns:.85fr 1.15fr;gap:2.5rem}}
+.ar-v{position:relative;border-radius:14px;overflow:hidden;background:var(--paper);border:1px solid var(--rule);
+  display:block;text-decoration:none;transition:transform .3s var(--ease),box-shadow .3s var(--ease)}
+.ar-v:hover{transform:translateY(-3px);box-shadow:0 28px 52px -34px rgb(var(--shadow) / .75)}
+.ar-v img{width:100%;aspect-ratio:4/3;object-fit:cover}
+.ar-v .tag{position:absolute;left:.9rem;bottom:.9rem;background:color-mix(in srgb,var(--card) 92%,transparent);
+  backdrop-filter:blur(10px);border:1px solid var(--rule);border-radius:999px;padding:.45rem 1rem;
+  font-size:.78rem;font-weight:500;color:var(--ink);display:inline-flex;gap:.45rem;align-items:center}
+.ar-v .tag b{font-weight:500;color:var(--teja)}
+.ar-note{font-size:.78rem;color:var(--faint);margin-top:.8rem}
+
+/* ---------- banco de huellas ---------- */
+.huella{background:var(--deep);color:var(--on-deep);border-radius:18px;padding:clamp(1.6rem,4.5vw,3rem);
+  position:relative;overflow:hidden}
+.huella .kicker{color:var(--salmon)}
+.huella h2,.huella h3{color:var(--on-deep)}
+.huella p{color:rgba(242,222,200,.84)}
+.huella::after{content:"";position:absolute;right:-8%;top:-30%;width:26rem;height:26rem;border-radius:50%;
+  background:radial-gradient(circle,rgba(227,161,117,.22),transparent 68%);pointer-events:none}
+.pasos3{display:grid;grid-template-columns:repeat(auto-fit,minmax(13rem,1fr));gap:1.6rem;margin-top:2.4rem;
+  position:relative;z-index:1}
+.pasos3 div{border-top:2px solid rgba(242,222,200,.25);padding-top:1rem}
+.pasos3 .k{font-family:"Cormorant",Georgia,serif;font-size:2rem;font-weight:600;color:var(--salmon);line-height:1;
+  display:block;margin-bottom:.5rem}
+.pasos3 b{display:block;font-weight:500;color:var(--on-deep);font-size:.98rem;margin-bottom:.25rem}
+.pasos3 p{font-size:.85rem}
+.aviso-rgpd{margin-top:2.2rem;padding:1.1rem 1.3rem;border-radius:12px;background:rgba(242,222,200,.08);
+  border:1px solid rgba(242,222,200,.18);font-size:.85rem;color:rgba(242,222,200,.88);position:relative;z-index:1;max-width:62ch}
+.aviso-rgpd b{color:var(--on-deep);font-weight:500}
+
+/* ---------- encuesta ---------- */
+.enc{display:grid;grid-template-columns:1fr;gap:1.8rem;align-items:center}
+@media(min-width:54rem){.enc{grid-template-columns:1.25fr .75fr;gap:3rem}}
+.enc-box{background:var(--card);border:1px solid var(--rule);border-radius:14px;padding:1.5rem}
+.enc-box ul{list-style:none;margin:.9rem 0 0;padding:0;display:flex;flex-direction:column;gap:.55rem;font-size:.85rem;color:var(--soft)}
+.enc-box li{display:flex;gap:.6rem;align-items:flex-start}
+.enc-box li::before{content:"";flex:0 0 auto;width:.4rem;height:.4rem;border-radius:999px;background:var(--malva);margin-top:.55rem}
+
+/* ---------- recursos ---------- */
+.res{display:grid;grid-template-columns:repeat(auto-fit,minmax(15rem,1fr));gap:1.2rem;margin-top:2.2rem}
+.res a{background:var(--card);border:1px solid var(--rule);border-radius:14px;padding:1.4rem;text-decoration:none;
+  display:flex;flex-direction:column;gap:.5rem;transition:transform .3s var(--ease),border-color .3s var(--ease),box-shadow .3s var(--ease)}
+.res a:hover{transform:translateY(-3px);border-color:var(--teja);box-shadow:0 24px 44px -32px rgb(var(--shadow) / .7)}
+.res h3{font-size:1.2rem}
+.res p{font-size:.83rem;color:var(--soft)}
+.res .t{font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;color:var(--teja);font-weight:500}
+
+/* ---------- preguntas frecuentes ---------- */
+.faq{margin-top:2rem;border-top:1px solid var(--rule)}
+.faq details{border-bottom:1px solid var(--rule)}
+.faq summary{list-style:none;cursor:pointer;padding-block:1.15rem;display:flex;gap:1rem;align-items:flex-start;
+  font-family:"Cormorant",Georgia,serif;font-size:1.3rem;font-weight:600;line-height:1.25}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";margin-left:auto;flex:0 0 auto;font-family:"Poppins",sans-serif;font-weight:300;
+  font-size:1.4rem;line-height:1;color:var(--teja);transition:transform .3s var(--ease)}
+.faq details[open] summary::after{transform:rotate(45deg)}
+.faq .a{padding-bottom:1.3rem;font-size:.92rem;color:var(--soft);max-width:62ch}
+.faq .a .fuente{display:block;margin-top:.6rem;font-size:.74rem;color:var(--faint)}
+
 /* ---------- medios ---------- */
 .media{display:flex;flex-wrap:wrap;gap:.7rem;margin-top:1.6rem;align-items:center}
-.logo{border:1px solid var(--rule);border-radius:3px;padding:.75rem 1.3rem;font-family:"Cormorant",Georgia,serif;
-      font-size:1.15rem;font-weight:600;color:var(--soft);letter-spacing:.02em;
-      transition:border-color .3s var(--ease),color .3s var(--ease)}
+.logo{border:1px solid var(--rule);border-radius:4px;padding:.75rem 1.3rem;font-family:"Cormorant",Georgia,serif;
+  font-size:1.15rem;font-weight:600;color:var(--soft);transition:border-color .3s var(--ease),color .3s var(--ease)}
 .logo:hover{border-color:var(--teja);color:var(--teja)}
-.logo.ghost{border-style:dashed;color:var(--faint);font-family:"Poppins",sans-serif;font-size:.76rem;
-            font-weight:300;letter-spacing:.06em}
-
-/* ---------- historia ---------- */
-blockquote{margin:0;padding-left:1.5rem;border-left:2px solid var(--malva);font-family:"Cormorant",Georgia,serif;
-           font-size:clamp(1.5rem,3.2vw,2rem);font-style:italic;line-height:1.28;color:var(--ink)}
-.sign{display:flex;gap:1rem;align-items:center;margin-top:2rem}
-.sign .av{width:3.2rem;height:3.2rem;border-radius:999px;flex:none;
-          background:linear-gradient(150deg,var(--salmon),var(--malva))}
-.sign div{font-size:.85rem;color:var(--soft)}
-.sign b{display:block;color:var(--ink);font-weight:500;font-size:.94rem}
 
 /* ---------- bandas ---------- */
 .band{background:var(--paper);border-block:1px solid var(--rule)}
 .split{display:flex;flex-wrap:wrap;gap:1.6rem;align-items:center;justify-content:space-between}
+blockquote.big{margin:0;padding-left:1.5rem;border-left:2px solid var(--malva);font-family:"Cormorant",Georgia,serif;
+  font-size:clamp(1.5rem,3.2vw,2rem);font-style:italic;line-height:1.28;color:var(--ink)}
+.sign{display:flex;gap:1rem;align-items:center;margin-top:2rem}
+.sign .av{width:3.2rem;height:3.2rem;border-radius:999px;flex:none;background:linear-gradient(150deg,var(--salmon),var(--malva))}
+.sign div{font-size:.85rem;color:var(--soft)}
+.sign b{display:block;color:var(--ink);font-weight:500;font-size:.94rem}
+
+/* ---------- formulario ---------- */
+.form{display:grid;grid-template-columns:1fr;gap:1rem;margin-top:2rem;max-width:40rem}
+@media(min-width:44rem){.form .two{display:grid;grid-template-columns:1fr 1fr;gap:1rem}}
+.f{display:flex;flex-direction:column;gap:.35rem}
+.f label{font-size:.78rem;font-weight:500;color:var(--soft)}
+.f input,.f select,.f textarea{font-family:inherit;font-size:.92rem;font-weight:300;color:var(--ink);
+  background:var(--card);border:1px solid var(--rule);border-radius:9px;padding:.7rem .9rem;
+  transition:border-color .3s var(--ease)}
+.f input:focus,.f select:focus,.f textarea:focus{border-color:var(--teja)}
+.f textarea{min-height:7rem;resize:vertical}
+.f .err{font-size:.74rem;color:var(--teja);min-height:1.1rem}
+.f.bad input,.f.bad select,.f.bad textarea{border-color:var(--teja)}
+.check{display:flex;gap:.6rem;align-items:flex-start;font-size:.8rem;color:var(--soft)}
+.check input{margin-top:.2rem;accent-color:var(--teja);width:1rem;height:1rem;flex:0 0 auto}
+.form-ok{background:var(--card);border:1px solid var(--verde);border-left-width:3px;border-radius:10px;
+  padding:1rem 1.2rem;font-size:.88rem;color:var(--ink)}
 
 /* ---------- pie ---------- */
 footer.site{background:var(--deep-2);color:var(--on-deep);padding-block:clamp(3rem,6vw,4rem) 2.5rem}
 footer.site .cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(11rem,1fr));gap:2rem}
 footer.site h4{font-size:.67rem;letter-spacing:.18em;text-transform:uppercase;color:var(--salmon);
-               margin:0 0 .85rem;font-weight:500;font-family:"Poppins",sans-serif}
-footer.site ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:.45rem;
-               font-size:.84rem;color:rgba(242,222,200,.78)}
+  margin:0 0 .85rem;font-weight:500;font-family:"Poppins",sans-serif}
+footer.site ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:.45rem;font-size:.84rem;color:rgba(242,222,200,.78)}
 footer.site li{transition:color .3s var(--ease)}
 footer.site li:hover{color:var(--on-deep)}
 footer.site .legal{margin-top:2.5rem;padding-top:1.5rem;border-top:1px solid rgba(242,222,200,.15);
-                   font-size:.76rem;color:rgba(242,222,200,.62);display:flex;flex-direction:column;gap:.55rem}
+  font-size:.76rem;color:rgba(242,222,200,.62);display:flex;flex-direction:column;gap:.55rem}
 footer.site .legal b{color:rgba(242,222,200,.85);font-weight:500}
-.flogo{display:flex;align-items:center;gap:.7rem;margin-bottom:1.6rem}
-.flogo img{height:2.4rem;width:auto}
+.flogo img{height:2.4rem;width:auto;margin-bottom:1.6rem}
+
+/* ---------- acciones flotantes ---------- */
+.fab{position:fixed;right:1.1rem;bottom:calc(1.1rem + env(safe-area-inset-bottom,0px));z-index:45;
+  display:flex;flex-direction:column;gap:.55rem;align-items:flex-end;
+  opacity:0;transform:translateY(14px);pointer-events:none;transition:opacity .35s var(--ease),transform .35s var(--ease)}
+.fab.on{opacity:1;transform:none;pointer-events:auto}
+.fab .top{width:2.7rem;height:2.7rem;border-radius:999px;border:1px solid var(--rule);background:var(--card);
+  color:var(--ink);cursor:pointer;box-shadow:0 18px 36px -22px rgb(var(--shadow) / .8)}
+.fab .btn{box-shadow:0 18px 36px -18px rgb(var(--shadow) / .9)}
 
 /* ---------- notas de diseño ---------- */
-.note{max-width:var(--u);margin:0 auto;padding:1.05rem clamp(1.1rem,4vw,2rem);border-left:3px solid var(--malva);
-      background:var(--paper);font-size:.85rem;color:var(--soft);display:none}
+.note{max-width:var(--u);margin:0 auto;padding:1.05rem clamp(1.1rem,4vw,2.2rem);border-left:3px solid var(--malva);
+  background:var(--paper);font-size:.85rem;color:var(--soft);display:none}
 .note b{color:var(--ink);font-weight:500}
 .note.warn{border-left-color:var(--teja)}
 body.notes .note{display:block}
 
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
-  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;
-                       transition-duration:.01ms!important}
-  .btn:hover,.chip:hover{transform:none}
-  .rev{animation:none!important}
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+  .rev,.rev-s>*,.par,.badge,.bar-t i{animation:none!important}
+  .btn:hover,.chip:hover,.prog-c:hover,.res a:hover{transform:none}
+  .hero-bg img{transform:scale(1)}
 }
 </style>
 </head>
 <body>
 <div id="mycoco-topbar" style="position:sticky;top:0;z-index:2147483647;display:flex;align-items:center;gap:12px;padding:8px 16px;background:#3F1910;color:#EED8C1;font-family:'Poppins',system-ui,sans-serif;box-shadow:0 2px 14px rgba(63,25,16,.28);border-bottom:1px solid rgba(238,216,193,.15)"><a href="../index.html" target="_self" style="display:flex;align-items:center;gap:8px;color:#EED8C1;text-decoration:none;border:0;flex:0 0 auto"><img src="../assets/logo-redondo.png" alt="MyCoco" style="height:30px;width:30px;border-radius:50%;display:block"><span style="font-family:'Cormorant',serif;font-weight:700;font-size:1.2rem;line-height:1">MyCoco</span></a><a href="../index.html" target="_self" style="color:#EED8C1;text-decoration:none;border:0;font-size:.82rem;opacity:.85;flex:0 0 auto">&larr; Intranet</a><nav style="margin-left:auto;display:flex;gap:2px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;max-width:64%"><a href="../index.html#movimiento" target="_self" style="color:#EED8C1;text-decoration:none;border:0;white-space:nowrap;font-size:.82rem;padding:6px 11px;border-radius:999px">El movimiento</a><a href="../index.html#marca" target="_self" style="color:#EED8C1;text-decoration:none;border:0;white-space:nowrap;font-size:.82rem;padding:6px 11px;border-radius:999px">Identidad</a><a href="../index.html#datos" target="_self" style="color:#EED8C1;text-decoration:none;border:0;white-space:nowrap;font-size:.82rem;padding:6px 11px;border-radius:999px">Observatorio</a><a href="../index.html#secciones" target="_self" style="color:#EED8C1;text-decoration:none;border:0;white-space:nowrap;font-size:.82rem;padding:6px 11px;border-radius:999px">Secciones</a></nav></div>
+<a class="skip" href="#contenido">Saltar al contenido</a>
 
-<!-- ===================== AVISO DE PROPUESTA ===================== -->
+<!-- ============ AVISO DE PROPUESTA ============ -->
 <div class="aviso">
   <div class="u">
     <span><b>Propuesta de rediseño</b> · home de mycoco.es · no publicada</span>
@@ -313,49 +458,68 @@ body.notes .note{display:block}
   </div>
 </div>
 
-<!-- ===================== MARQUESINA ===================== -->
+<!-- ============ MARQUESINA ============ -->
 <div class="ticker" aria-hidden="true">
   <div>
     <span><b>No defendemos una decisión.</b> Defendemos que puedas decidir.</span><span>·</span>
     <span>Prótesis externas de pezón donadas</span><span>·</span>
     <span>Acompañamiento entre mujeres que han pasado por lo mismo</span><span>·</span>
-    <span>Observatorio: lo que en España no se mide</span><span>·</span>
+    <span>Dona la huella de tu pezón</span><span>·</span>
     <span><b>No defendemos una decisión.</b> Defendemos que puedas decidir.</span><span>·</span>
     <span>Prótesis externas de pezón donadas</span><span>·</span>
     <span>Acompañamiento entre mujeres que han pasado por lo mismo</span><span>·</span>
-    <span>Observatorio: lo que en España no se mide</span><span>·</span>
+    <span>Dona la huella de tu pezón</span><span>·</span>
   </div>
 </div>
 
-<!-- ===================== NAVEGACIÓN ===================== -->
+<!-- ============ NAVEGACIÓN ============ -->
 <nav class="site" id="nav">
   <div class="u">
-    <a class="brand" href="#top">
-      <img src="../assets/logos/logo-completo-horizontal-color.png" alt="My Coco" id="brandimg">
-      <span class="sr">My Coco — inicio</span>
-    </a>
-    <span class="links">
+    <a class="brand" href="#top"><img src="../assets/logos/logo-completo-horizontal-color.png" alt="My Coco" id="brandimg"><span class="sr">My Coco — inicio</span></a>
+    <span class="links" id="links">
       <a href="#apoyo">Necesito apoyo</a>
       <a href="#opciones">Decidir sobre mi cuerpo</a>
-      <a href="#protesis">Prótesis de pezón</a>
-      <a href="#sexualidad">Sexualidad</a>
       <a href="#observatorio">Observatorio</a>
-      <a href="#historia">Sobre My Coco</a>
+      <a href="#protesis">Prótesis de pezón</a>
+      <a href="#huella">Banco de huellas</a>
+      <a href="#programas">Programas</a>
+      <a href="#faq">Preguntas</a>
+      <a href="#contacto">Contacto</a>
     </span>
     <span class="navbtns">
       <a class="btn a sm" href="#apoyo">Necesito apoyo</a>
-      <a class="btn ghost sm" href="#empresas">Financiar</a>
+      <button class="burger" id="burger" aria-expanded="false" aria-controls="drawer" aria-label="Abrir menú"><span></span></button>
     </span>
   </div>
   <div class="prog" id="prog"></div>
 </nav>
 
-<div class="note"><b>De la referencia tomo tres cosas:</b> la marquesina superior, la escala del titular y una navegación mínima. <b>No tomo el registro.</b> Teta &amp; Teta grita a la sociedad y le sale bien. My Coco le habla a una mujer a la que diagnosticaron el martes. Mismo feminismo, trabajo distinto: si esta web grita, falla justo a quien tiene que servir.</div>
+<div class="drawer" id="drawer" aria-hidden="true">
+  <button class="x" id="closeDrawer" aria-label="Cerrar menú">✕</button>
+  <a href="#apoyo">Necesito apoyo</a>
+  <a href="#opciones">Decidir sobre mi cuerpo</a>
+  <a href="#observatorio">Observatorio</a>
+  <a href="#protesis">Prótesis de pezón</a>
+  <a href="#huella">Banco de huellas</a>
+  <a href="#encuesta">La encuesta</a>
+  <a href="#programas">Programas</a>
+  <a href="#recursos">Recursos</a>
+  <a href="#faq">Preguntas frecuentes</a>
+  <a href="#contacto">Contacto</a>
+  <div class="cta-row"><a class="btn a" href="#empresas">Quiero financiar una donación</a></div>
+</div>
 
-<!-- ===================== HERO ===================== -->
+<div class="note"><b>De la referencia tomo tres cosas:</b> la marquesina, la escala del titular y una navegación mínima. <b>No tomo el registro.</b> Teta &amp; Teta grita a la sociedad y le sale bien. My Coco le habla a una mujer a la que diagnosticaron el martes. Mismo feminismo, trabajo distinto: si esta web grita, falla justo a quien tiene que servir.</div>
+
+<!-- ============ HERO ============ -->
 <header class="hero" id="top">
-  <img class="lazo" id="lazo" src="../assets/logos/lazo-color.png" alt="" aria-hidden="true">
-  <div class="u">
+  <div class="hero-bg"><img class="par" src="../assets/img/hero.jpg" alt="" aria-hidden="true" fetchpriority="high"></div>
+  <div class="badge">
+    <span class="n" data-val="37682">37.682</span>
+    <p>nuevos casos de cáncer de mama femenino estimados en España.</p>
+    <span class="src">REDECAN, 2025</span>
+  </div>
+  <div class="u" id="contenido">
     <span class="kicker">Autonomía corporal después del cáncer de mama</span>
     <div class="row">
       <div>
@@ -377,30 +541,44 @@ body.notes .note{display:block}
   </div>
 </header>
 
-<div class="note"><b>El titular ocupa la pantalla</b>, pero en Cormorant sobre beige en lugar de una condensada negra sobre blanco. La escala da la confianza; la paleta cálida evita que suene a campaña de denuncia. «Tu decisión» va en cursiva y en teja: es la única palabra que cambia de color en toda la portada. Las tres líneas suben desde su propia caja al cargar — 0,9 s, escalonadas 90 ms. Es el único efecto de entrada de la página.</div>
+<div class="note"><b>El titular ocupa la pantalla</b>, en Cormorant sobre una foto cálida y no una condensada negra sobre blanco. La escala da confianza; la paleta evita que suene a campaña de denuncia. «Tu decisión» va en cursiva y en teja: la única palabra que cambia de color. La foto hace <em>parallax</em> conducido por scroll y el degradado lateral garantiza el contraste del texto en cualquier punto.</div>
 
-<!-- ===================== SELECTOR DE MOMENTO ===================== -->
-<section class="s tight" id="apoyo">
-  <div class="u">
-    <div class="selector rev">
+<!-- ============ SELECTOR DE MOMENTO (flotante) ============ -->
+<section class="s tight" id="apoyo" style="padding-top:0">
+  <div class="u float-up">
+    <div class="card-f">
       <span class="kicker">Empieza por aquí</span>
       <h2 class="h2 sm">¿Dónde estás ahora mismo?</h2>
-      <div class="chips" id="chips">
-        <button class="chip" aria-pressed="false" data-r="Te llevamos a <b>Me lo acaban de decir</b> — qué va a pasar las próximas dos semanas, con el vocabulario que vas a necesitar.">Me lo acaban de decir</button>
-        <button class="chip" aria-pressed="false" data-r="Te llevamos a <b>Decidir sobre mi cuerpo</b> — las cinco opciones y las preguntas para llevar a consulta.">Estoy decidiendo sobre la cirugía</button>
-        <button class="chip" aria-pressed="false" data-r="Te llevamos a <b>Los primeros días en casa</b> — drenajes, ropa, la primera vez frente al espejo.">Ya me han operado</button>
-        <button class="chip" aria-pressed="false" data-r="Te llevamos a <b>Volver a tu cuerpo</b> — sexualidad, imagen y las decisiones que aplazaste.">Terminé el tratamiento</button>
-        <button class="chip" aria-pressed="false" data-r="Te llevamos a <b>Acompaño a alguien</b> — qué digo y qué no digo, y cómo cuidarte tú.">Acompaño a alguien</button>
-        <button class="chip" aria-pressed="false" data-r="Te llevamos al <b>kit de decisión compartida</b> para consulta y a los criterios de derivación.">Soy profesional sanitario</button>
+      <div class="chips" id="chips" role="group" aria-label="Elige tu momento">
+        <button class="chip" aria-pressed="false" data-k="diag">Me lo acaban de decir</button>
+        <button class="chip" aria-pressed="false" data-k="decid">Estoy decidiendo sobre la cirugía</button>
+        <button class="chip" aria-pressed="false" data-k="post">Ya me han operado</button>
+        <button class="chip" aria-pressed="false" data-k="fin">Terminé el tratamiento</button>
+        <button class="chip" aria-pressed="false" data-k="acom">Acompaño a alguien</button>
+        <button class="chip" aria-pressed="false" data-k="prof">Soy profesional sanitario</button>
       </div>
-      <p class="chip-out" id="out" role="status" aria-live="polite">Elige una y la web se ordena para ti. No preguntamos nada más.</p>
+      <div class="ruta" id="ruta" role="region" aria-live="polite">
+        <p class="ph">Elige una y la web se ordena para ti. No preguntamos nada más.</p>
+      </div>
     </div>
   </div>
 </section>
 
-<div class="note warn"><b>Esta es la pieza más importante de la portada</b> y la más barata de construir. Es el selector de momento del funnel: una sola pregunta que decide a qué página entra y qué secuencia de correos recibe. Sin fecha de diagnóstico, sin tipo de tumor, sin estadio — nada que sea dato de salud identificable. En WordPress es un bloque con seis enlaces; no necesita plugin.</div>
+<div class="note warn"><b>Esta es la pieza más importante de la portada</b> y la más barata de construir. Es el selector de momento del funnel: una sola pregunta que decide a qué página entra y qué secuencia de correos recibe. Sin fecha de diagnóstico, sin tipo de tumor, sin estadio — <b>nada que sea dato de salud identificable.</b> Flota sobre el hero porque es la acción principal de la página, no un bloque más. En WordPress es un bloque con seis enlaces; no necesita plugin.</div>
 
-<!-- ===================== LAS OPCIONES ===================== -->
+<!-- ============ TIRA DE CONFIANZA ============ -->
+<section class="s tight">
+  <div class="u">
+    <div class="trust rev-s">
+      <div><b>Gratuito siempre</b>Ni cuotas ni registro para leer nada.</div>
+      <div><b>Revisado por profesionales</b>Cada página con autora, revisora y fecha.</div>
+      <div><b>Sin recomendar opciones</b>Información y preguntas, no consejos.</div>
+      <div><b>Datos mínimos</b>Los de salud, con tratamiento aparte.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ LAS OPCIONES ============ -->
 <section class="s" id="opciones">
   <div class="u">
     <span class="kicker">Las opciones</span>
@@ -414,13 +592,16 @@ body.notes .note{display:block}
       <div class="opt"><h3>Decidir después</h3><p>Cuando clínicamente sea posible, y cuando tú quieras. Aplazar también es decidir.</p></div>
     </div>
     <p style="margin-top:2rem;max-width:58ch;color:var(--soft)">My Coco no recomienda ninguna. Te damos la información y las preguntas para que la decisión la tomes tú con tu equipo médico.</p>
-    <div class="cta-row" style="margin-top:1.5rem"><a class="btn b" href="#">Descargar la guía de opciones</a></div>
+    <div class="cta-row" style="margin-top:1.5rem">
+      <a class="btn b" href="#recursos">Descargar la guía de opciones</a>
+      <a class="btn ghost" href="#recursos">Preguntas para llevar a consulta</a>
+    </div>
   </div>
 </section>
 
-<div class="note warn"><b>Las cinco columnas miden exactamente lo mismo.</b> Mismo ancho, mismo alto, misma longitud de texto, sin iconos, sin una destacada, sin numerar y sin orden que sugiera preferencia. Es la regla de neutralidad convertida en rejilla: si una opción ocupa más, el diseño ya ha decidido por ella. Por eso en pantallas medianas pasan a una sola columna y no a dos: dos columnas con cinco tarjetas dejan una huérfana, y la huérfana destaca. Esto hay que defenderlo con quien maquete.</div>
+<div class="note warn"><b>Las cinco columnas miden exactamente lo mismo.</b> Mismo ancho, mismo alto, misma longitud de texto, sin iconos, sin una destacada, sin numerar y sin orden que sugiera preferencia. Es la regla de neutralidad convertida en rejilla. Por eso en pantallas medianas pasan a una sola columna y no a dos: dos columnas con cinco tarjetas dejan una huérfana, y la huérfana destaca. Esto hay que defenderlo con quien maquete.</div>
 
-<!-- ===================== OBSERVATORIO ===================== -->
+<!-- ============ OBSERVATORIO ============ -->
 <section class="s deep" id="observatorio">
   <div class="u">
     <span class="kicker">Observatorio</span>
@@ -455,7 +636,21 @@ body.notes .note{display:block}
       </div>
     </div>
 
-    <h3 style="font-size:1.4rem;margin-top:3rem">Lo que nadie ha medido todavía</h3>
+    <div class="obs-grid">
+      <div>
+        <h3 class="h2 sm">Los nuevos casos, por edad</h3>
+        <p style="margin-top:.8rem;max-width:44ch">La mastectomía no es una cuestión de mujeres mayores. Casi una de cada nueve tiene menos de 45 años, y ahí la decisión corporal pesa distinto.</p>
+        <div class="bars" id="bars">
+          <div class="bar-r"><span>0 a 44</span><span class="bar-t"><i style="--w:22%"></i></span><span class="bar-n">4.099</span></div>
+          <div class="bar-r"><span>45 a 64</span><span class="bar-t"><i style="--w:100%"></i></span><span class="bar-n">18.381</span></div>
+          <div class="bar-r"><span>65 o más</span><span class="bar-t"><i style="--w:83%"></i></span><span class="bar-n">15.203</span></div>
+        </div>
+        <p class="micro" style="color:rgba(242,222,200,.55);margin-top:1rem">REDECAN, estimación 2025. Barras proporcionales al grupo mayor.</p>
+      </div>
+      <div class="obs-img rev"><img src="../assets/img/observatorio.jpg" alt="Documentos de investigación y notas manuscritas sobre una mesa" loading="lazy"></div>
+    </div>
+
+    <h3 class="h2 sm" style="margin-top:3.5rem">Lo que nadie ha medido todavía</h3>
     <ul class="vacios">
       <li>Uso real de prótesis externas: frecuencia, coste y satisfacción.</li>
       <li>Porcentaje que aplaza la decisión, y demora decisional por comunidad autónoma.</li>
@@ -463,75 +658,249 @@ body.notes .note{display:block}
       <li>Desglose entre mastectomía terapéutica y preventiva, unilateral y bilateral.</li>
       <li>Listas de espera para reconstrucción: no hay serie pública homogénea.</li>
     </ul>
-
     <div class="cta-row" style="margin-top:2.2rem">
       <a class="btn on-deep" href="#">Entrar en el observatorio</a>
-      <a class="btn ghost-deep" href="#">Participar en la encuesta</a>
+      <a class="btn ghost-deep" href="#encuesta">Participar en la encuesta</a>
     </div>
   </div>
 </section>
 
-<div class="note warn"><b>Esta sección no está en la maqueta y es la que más cambia el negocio.</b> Es el activo de posicionamiento: ser la fuente que ChatGPT, Perplexity y los resúmenes de Google citan cuando alguien pregunta por la reconstrucción en España. Para eso las cifras van en texto, no en imagen, cada una con su fuente al lado, y el bloque irá con datos estructurados <em>Dataset</em> de Schema.org. <b>«Sin dato» es deliberado:</b> declarar el vacío es lo que convierte una web en observatorio. Las cifras salen de <em>.agent/knowledge/observatorio-datos.md</em>, no de la web actual: las de mycoco.es (16.000 mastectomías/año de SECPRE, 20.000 de ECIR 2019) están sin fechar o desactualizadas.</div>
+<div class="note warn"><b>Esta sección no estaba en la maqueta y es la que más cambia el negocio.</b> Es el activo de posicionamiento: ser la fuente que ChatGPT, Perplexity y los resúmenes de Google citan cuando alguien pregunta por la reconstrucción en España. Por eso las cifras van en texto, no en imagen, cada una con su fuente al lado, y el bloque irá con datos estructurados <em>Dataset</em> de Schema.org. <b>«Sin dato» es deliberado:</b> declarar el vacío es lo que convierte una web en observatorio. Las cifras salen de <em>.agent/knowledge/observatorio-datos.md</em>, no de la web actual: las de mycoco.es (16.000 mastectomías/año de SECPRE, 20.000 de ECIR 2019) están sin fechar o desactualizadas.</div>
 
-<!-- ===================== PRÓTESIS ===================== -->
+<!-- ============ ENCUESTA ============ -->
+<section class="s band" id="encuesta">
+  <div class="u">
+    <div class="enc">
+      <div>
+        <span class="kicker">La primera encuesta</span>
+        <h2 class="h2 sm">¿Qué podemos mejorar?</h2>
+        <p class="lead" style="margin-top:1rem">Queremos escuchar tu experiencia. Esta encuesta está dirigida a pacientes de cáncer de mama, para conocer mejor la realidad actual de un proceso de mastectomía o reconstrucción y detectar necesidades que todavía no están siendo atendidas.</p>
+        <p class="micro" style="margin-top:.9rem">Las respuestas son anónimas y se utilizan únicamente con fines de investigación y desarrollo. Puedes dejarla a medias y no pasa nada.</p>
+        <div class="cta-row" style="margin-top:1.8rem">
+          <a class="btn a" href="https://docs.google.com/forms/d/e/1FAIpQLSclMKgp5lbImZTfaf6hkdrU94XNryrIB8-Gqp0t2cOczq88rQ/viewform" target="_blank" rel="noopener">Responder la encuesta</a>
+          <a class="btn ghost" href="#observatorio">Ver los datos que ya hay</a>
+        </div>
+      </div>
+      <div class="enc-box">
+        <h3 class="h2 sm" style="font-size:1.25rem;margin:0">Lo que preguntamos</h3>
+        <ul>
+          <li>Tu edad y tu localidad, para poder mirar el territorio.</li>
+          <li>Si usas prótesis mamaria externa y cómo te va con ella.</li>
+          <li>Cómo fue la decisión: qué te explicaron y qué no.</li>
+          <li>Qué echaste de menos en el proceso.</li>
+        </ul>
+        <p class="micro" style="margin-top:1rem">Sin nombre, sin correo obligatorio, sin historia clínica.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="note warn"><b>Esta encuesta ya existe y es de Sara</b> («¿Qué podemos mejorar?», 18 páginas). Es la que convierte el observatorio en algo vivo: hasta ahora la sección de datos sólo recopilaba fuentes ajenas, y con esto empieza a generar dato propio. <b>Va enlazada, no incrustada</b> a propósito: un iframe de Google Forms mete cookies de terceros en la portada y obliga a pasar por el banner de consentimiento antes de que nadie pueda leer nada. <b>Dos cosas que revisar antes de enlazarla en abierto:</b> pide talla de sujetador y uso de prótesis, que son datos de salud aunque la encuesta sea anónima — conviene que la política de privacidad lo recoja; y el aviso de anonimato debe estar dentro del propio formulario, no sólo en esta página.</div>
+
+<!-- ============ PRÓTESIS ============ -->
 <section class="s" id="protesis">
   <div class="u">
-    <div class="split" style="align-items:stretch">
-      <div style="flex:1 1 22rem;min-width:min(100%,22rem)">
+    <div class="dual">
+      <div>
         <span class="kicker">El programa</span>
         <h2 class="h2 sm">Prótesis externas de pezón, donadas</h2>
         <p style="margin-top:1.2rem;max-width:46ch;color:var(--soft)">Se coloca sobre la piel y se puede quitar. No es cirugía y no es permanente. Para algunas mujeres resuelve algo concreto; para otras no hace falta. Las dos respuestas están bien.</p>
-        <p style="margin-top:1rem;max-width:46ch;color:var(--ink);font-weight:400">Las financian empresas. Tú no pagas nada.</p>
+        <p style="margin-top:1rem;max-width:46ch;font-weight:400">Las financian empresas. Tú no pagas nada.</p>
         <div class="cta-row" style="margin-top:2rem">
-          <a class="btn a" href="#">Solicitar una prótesis donada</a>
-          <a class="btn ghost" href="#">Qué es y cómo se usa</a>
+          <a class="btn a" href="#contacto">Solicitar una prótesis donada</a>
+          <a class="btn ghost" href="#faq">Qué es y cómo se usa</a>
         </div>
       </div>
-      <div style="flex:1 1 20rem;min-width:min(100%,20rem)">
-        <div class="ph alt" style="height:100%;min-height:17rem"><em>Foto — producto sobre fondo neutro, sin cuerpo</em></div>
+      <div class="fig-w rev">
+        <img src="../assets/img/protesis.jpg" alt="Prótesis externa de pezón sobre lino beige doblado" loading="lazy">
+        <div class="over br">
+          <h4>Cómo funciona</h4>
+          <ul class="steps">
+            <li><i>1</i><span>Escribes y te llamamos, sin formulario médico.</span></li>
+            <li><i>2</i><span>Tomamos la referencia de forma y tono.</span></li>
+            <li><i>3</i><span>Llega a tu casa, sin coste y sin marca visible.</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="ar">
+      <a class="ar-v" id="arLink" rel="ar" href="../assets/3d/protesis-pezon-mycoco.usdz">
+        <img src="../assets/img/protesis.jpg" alt="Vista del modelo tridimensional de la prótesis de pezón">
+        <span class="tag"><b>◆</b> Ver en tu espacio</span>
+      </a>
+      <div>
+        <span class="kicker">Modelo tridimensional</span>
+        <h3 class="h2 sm">Míralo a tamaño real antes de pedirlo</h3>
+        <p style="margin-top:1rem;max-width:44ch;color:var(--soft)">El modelo de la prótesis, con su relieve y su textura reales. En iPhone o iPad se abre en tu propia habitación y puedes verlo a escala; en ordenador se descarga el archivo.</p>
+        <div class="cta-row" style="margin-top:1.4rem">
+          <a class="btn ghost" href="../assets/3d/protesis-pezon-mycoco.usdz" download>Descargar el modelo (USDZ · 2,9 MB)</a>
+        </div>
+        <p class="ar-note" id="arNote">La vista en realidad aumentada funciona en Safari sobre iOS y iPadOS.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ===================== SEXUALIDAD Y APOYO ===================== -->
+<div class="note warn"><b>El modelo 3D es el de <em>Recursos/mettle nervios rebajados.usdz</em></b>, tal cual. USDZ es el formato de Apple: se abre en realidad aumentada en iPhone y iPad, y en el resto de dispositivos se ofrece la descarga. <b>Para que lo vea todo el mundo dentro de la web</b> hace falta además una versión GLB y el componente <em>model-viewer</em>; la conversión necesita Blender o las herramientas USD de Pixar, que no están en esta máquina. Es un paso pequeño cuando lo decidáis.</div>
+
+<!-- ============ BANCO DE HUELLAS ============ -->
+<section class="s" id="huella">
+  <div class="u">
+    <div class="huella rev">
+      <span class="kicker">Banco de huellas</span>
+      <h2 class="h2" style="max-width:17ch">Dona la huella de tu pezón</h2>
+      <p class="lead" style="margin-top:1.2rem;color:rgba(242,222,200,.86)">Las prótesis externas que existen se moldean sobre una forma estándar. Ninguna mujer tiene una forma estándar. Si donas tu huella, esa forma entra en un banco anónimo del que salen prótesis para otras mujeres.</p>
+      <div class="pasos3">
+        <div><span class="k">01</span><b>Pides el kit</b><p>Te llega a casa un kit de molde, gratuito y con el envío de vuelta pagado. Nada de consulta ni de cita.</p></div>
+        <div><span class="k">02</span><b>Haces la huella</b><p>Cinco minutos en tu baño, con las instrucciones dentro. Si no sale a la primera, el kit trae material de sobra.</p></div>
+        <div><span class="k">03</span><b>Entra en el banco</b><p>La digitalizamos, se separa de tus datos y pasa a ser una forma más del banco del que salen las prótesis donadas.</p></div>
+      </div>
+      <div class="aviso-rgpd">
+        <b>Qué pasa con tu huella.</b> Se separa de tu nombre en cuanto llega y se guarda sin ningún dato que permita identificarte. No se publica, no se vende y no se cede. Puedes pedir que se retire en cualquier momento, y se retira. No hace falta que te hayan operado para donar.
+      </div>
+      <div class="cta-row" style="margin-top:2rem;position:relative;z-index:1">
+        <a class="btn on-deep" href="#contacto">Quiero donar mi huella</a>
+        <a class="btn ghost-deep" href="#faq">Cómo se usa mi huella</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="note warn"><b>Esta sección necesita una decisión legal antes de existir.</b> Un molde del cuerpo de una persona identificada es, como mínimo, un dato personal, y según cómo se recoja y con qué se cruce puede caer en categoría especial o en biometría. El texto ya promete lo correcto —separación del nombre, no publicación, retirada a petición—, pero <b>esas promesas hay que poder cumplirlas</b>: hace falta consentimiento específico por escrito, un procedimiento de anonimización real y saber quién custodia los moldes físicos. Escrito así a propósito, para que la conversación con asesoría sea concreta. <b>También falta el dato de cuántas huellas hay:</b> no lo invento, se pone cuando exista.</div>
+
+<!-- ============ PROGRAMAS ============ -->
+<section class="s" id="programas">
+  <div class="u">
+    <div class="split" style="align-items:flex-end">
+      <div>
+        <span class="kicker">Los programas</span>
+        <h2 class="h2 sm">Nueve formas de que no decidas sola</h2>
+      </div>
+      <div class="rail-nav">
+        <button id="railPrev" aria-label="Anterior">←</button>
+        <button id="railNext" aria-label="Siguiente">→</button>
+      </div>
+    </div>
+    <div class="rail" id="rail" tabindex="0" aria-label="Programas del movimiento">
+      <article class="prog-c"><span class="k">Comunidad</span><h3>Red de madrinas</h3><p>Mujeres mastectomizadas que acompañan a otras desde la experiencia vivida, emparejadas por trayectoria corporal y no por edad.</p></article>
+      <article class="prog-c"><span class="k">Divulgación</span><h3>Charlas y talleres</h3><p>Mastectomía, reconstrucción y no reconstrucción, prótesis, sexualidad, autoestima, duelo corporal y toma de decisiones.</p></article>
+      <article class="prog-c"><span class="k">Red</span><h3>Profesionales</h3><p>Psicología, sexología, fisioterapia, oncología, cirugía, enfermería y terapia ocupacional. Derivamos cuando corresponde.</p></article>
+      <article class="prog-c"><span class="k">Comunidad</span><h3>Club de lectura</h3><p>Cáncer, cuerpo, feminismo, autonomía, cicatriz, duelo y reparación. Leer juntas también es acompañarse.</p></article>
+      <article class="prog-c"><span class="k">Materiales</span><h3>Guías de decisión</h3><p>Materiales en lenguaje claro para la toma de decisiones compartida, conectados con hospitales y sociedades científicas.</p></article>
+      <article class="prog-c"><span class="k">Datos</span><h3>Observatorio</h3><p>Medir los vacíos de información en España: no reconstrucción, cierre plano, prótesis externa, demora decisional y satisfacción.</p></article>
+      <article class="prog-c"><span class="k">Impacto</span><h3>Prótesis donadas</h3><p>Prótesis externas de pezón financiadas por empresas y entregadas sin coste para quien las pide.</p></article>
+      <article class="prog-c"><span class="k">Alianzas</span><h3>Empresas comprometidas</h3><p>Salud femenina, innovación social y RSC, con el dato de impacto por delante de la foto de octubre.</p></article>
+      <article class="prog-c"><span class="k">Incidencia</span><h3>Decisión compartida real</h3><p>Llevar la conversación a hospitales, asociaciones e instituciones para que la decisión compartida se practique, no se enuncie.</p></article>
+    </div>
+    <p class="micro">Arrastra, usa las flechas del teclado o los botones. Las nueve líneas salen del documento de estrategia del movimiento.</p>
+  </div>
+</section>
+
+<div class="note"><b>Los nueve programas son los de la estrategia</b> (<em>estrategia-y-posicionamiento.md</em>), no invento ninguno. Van en carrusel con anclaje porque nueve tarjetas en rejilla ocupan media página y aquí no son la decisión principal: la decisión principal es el selector de arriba.</div>
+
+<!-- ============ SEXUALIDAD ============ -->
 <section class="s" id="sexualidad" style="border-top:1px solid var(--rule)">
   <div class="u">
     <span class="kicker">Lo que casi nadie cuenta</span>
     <h2 class="h2" style="max-width:18ch">La sexualidad también forma parte de esto</h2>
     <p class="lead" style="margin-top:1.2rem">Más de la mitad de las supervivientes de cáncer de mama refiere problemas sexuales, y la mitad, preocupación por su apariencia. Casi ninguna lo habló antes con un profesional.</p>
     <p class="micro" style="margin-top:.7rem">Informe de supervivientes de cáncer de mama de la AECC (n = 1.293): problemas sexuales 52,9%; preocupación por la apariencia 50,8%.</p>
-    <div class="grid3 rev">
-      <div class="card">
-        <div class="ph"><em>Foto — manos, gesto cotidiano</em></div>
+    <div class="grid3 rev-s">
+      <article class="card">
+        <div class="imgw"><img src="../assets/img/manos.jpg" alt="Dos manos sosteniendo una taza de cerámica sobre una mesa de madera" loading="lazy"></div>
         <h3>Deseo e intimidad</h3>
         <p>Qué cambia, qué tiene tratamiento y cómo empezar la conversación. Sin dar por hecho que tienes pareja.</p>
         <a class="more" href="#">Entrar <span>→</span></a>
-      </div>
-      <div class="card">
-        <div class="ph alt"><em>Foto — torso con cicatriz, luz suave</em></div>
+      </article>
+      <article class="card">
+        <div class="imgw"><img src="../assets/img/cuerpo.jpg" alt="Mujer de espaldas junto a una ventana, envuelta en una sábana de lino" loading="lazy"></div>
         <h3>Habitar tu cuerpo</h3>
         <p>No hay obligación de quererte el torso, ni plazo para conseguirlo. Tampoco de lo contrario.</p>
         <a class="more" href="#">Entrar <span>→</span></a>
-      </div>
-      <div class="card">
-        <div class="ph"><em>Foto — dos mujeres hablando</em></div>
+      </article>
+      <article class="card">
+        <div class="imgw"><img src="../assets/img/hablar.jpg" alt="Dos mujeres conversando sentadas en un sofá con luz natural" loading="lazy"></div>
         <h3>Hablar con alguien</h3>
         <p>Acompañamiento entre mujeres emparejadas por trayectoria corporal parecida, no por edad.</p>
         <a class="more" href="#">Entrar <span>→</span></a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<div class="note warn"><b>Estas fotos son de IA y son provisionales.</b> Sirven para ver el diseño en pie, no para publicar. <b>Deliberadamente no hay ningún torso con cicatriz ni ningún retrato de paciente generado:</b> una web cuya premisa es la representación real de cuerpos reales no puede ilustrarse con cuerpos inventados. Esas dos fotos —el torso y el retrato de Sara— tienen que ser reales, con consentimiento escrito, luz natural y revelado cálido. Lo demás (atmósfera, manos, objetos) puede sustituirse con calma.</div>
+
+<!-- ============ COMUNIDAD ============ -->
+<section class="s band">
+  <div class="u">
+    <div class="dual rev-o">
+      <div class="fig-w rev">
+        <img src="../assets/img/comunidad.jpg" alt="Grupo de mujeres de distintas edades conversando en círculo en una sala luminosa" loading="lazy">
+        <div class="over bl">
+          <blockquote>Detrás de cada diagnóstico hay una persona, una familia y cientos de decisiones que nadie debería afrontar en soledad.</blockquote>
+          <cite>Sara Gascón, fundadora</cite>
+        </div>
+      </div>
+      <div>
+        <span class="kicker">La comunidad</span>
+        <h2 class="h2 sm">Nadie explica esto mejor que quien ya ha pasado por ello</h2>
+        <p style="margin-top:1.2rem;max-width:44ch;color:var(--soft)">La red de madrinas empareja a mujeres por trayectoria corporal parecida, no por edad ni por diagnóstico. No sustituye a tu equipo médico: cubre lo que la consulta no llega a cubrir.</p>
+        <div class="cta-row" style="margin-top:2rem">
+          <a class="btn a" href="#contacto">Quiero que me acompañen</a>
+          <a class="btn ghost" href="#contacto">Quiero ser madrina</a>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<div class="note"><b>La fotografía es donde esta web se juega la credibilidad.</b> Piel real y textura. Nada de stock sonriente con pañuelo en la cabeza, nada de lazo rosa, nada de flores. Cuerpos reales con consentimiento escrito, luz natural y revelado cálido coherente con la paleta. Los tres rectángulos de color son marcadores de posición, no diseño final.</div>
+<!-- ============ RECURSOS ============ -->
+<section class="s" id="recursos">
+  <div class="u">
+    <span class="kicker">Recursos</span>
+    <h2 class="h2 sm">Para llevar contigo a la consulta</h2>
+    <p class="lead" style="margin-top:1rem">Todo en lenguaje claro, con autora, revisora y fecha. Descarga libre, sin dejar el correo.</p>
+    <div class="res rev-s">
+      <a href="#"><span class="t">Guía · PDF</span><h3>Las cinco opciones</h3><p>Qué implica cada una, qué preguntar y qué depende de tu situación clínica. Sin recomendar ninguna.</p></a>
+      <a href="#"><span class="t">Ficha · PDF</span><h3>Preguntas para consulta</h3><p>Una hoja para llevar impresa el día que te expliquen la cirugía, con espacio para anotar.</p></a>
+      <a href="#"><span class="t">Glosario</span><h3>El vocabulario que nadie te enseña</h3><p>Cierre plano, colgajo, expansor, diferida, inmediata. Lo que se dice en consulta, traducido.</p></a>
+    </div>
+  </div>
+</section>
 
-<!-- ===================== HISTORIA ===================== -->
-<section class="s band" id="historia">
+<!-- ============ PREGUNTAS FRECUENTES ============ -->
+<section class="s band" id="faq">
+  <div class="u">
+    <span class="kicker">Preguntas frecuentes</span>
+    <h2 class="h2 sm">Lo que más nos preguntáis</h2>
+    <div class="faq" id="faq-list">
+      <details><summary>¿My Coco me va a decir qué debo hacer con mi cuerpo?</summary>
+        <div class="a">No. No recomendamos ninguna opción corporal ni desaconsejamos ningún tratamiento. Te damos la información y las preguntas para que decidas tú con tu equipo médico. Si buscas una recomendación clínica personalizada, esa conversación es con tu cirujana o tu oncóloga.</div></details>
+      <details><summary>¿Qué es un cierre plano estético?</summary>
+        <div class="a">Es una mastectomía en la que se acuerda con cirugía un resultado plano y liso, sin exceso de piel, como objetivo buscado y no como consecuencia. En España no existe una serie pública que mida cuántas mujeres lo piden ni cuántas lo obtienen: es uno de los vacíos que el observatorio quiere medir.<span class="fuente">No hay fuente nacional consolidada. Referencias internacionales: Not Putting on a Shirt, Flat Friends UK.</span></div></details>
+      <details><summary>¿Puedo esperar y decidir más adelante?</summary>
+        <div class="a">Cuando sea clínicamente posible, sí: aplazar también es decidir. Conviene saber que la reconstrucción diferida tiene sus propios tiempos — en el mejor estudio español disponible la demora media fue de 763 días — y que la radioterapia condiciona la técnica y el momento. Es una conversación que toca tener con tu equipo.<span class="fuente">Estudio del SSPA de Andalucía, mastectomías 2010-2013. Consenso SESPM sobre reconstrucción y radioterapia.</span></div></details>
+      <details><summary>¿La prótesis de pezón cuesta algo?</summary>
+        <div class="a">No. La financian empresas a través del programa de donación y llega sin coste para quien la pide. No es cirugía, se coloca sobre la piel y se puede quitar cuando quieras.</div></details>
+      <details><summary>¿Para qué sirve donar la huella de mi pezón?</summary>
+        <div class="a">Las prótesis externas se moldean sobre formas estándar, y ninguna mujer tiene una forma estándar. Cada huella donada amplía el banco de formas del que salen las prótesis que entregamos. Tu huella se separa de tu nombre en cuanto llega, se guarda sin ningún dato identificativo, no se publica y no se cede. Puedes pedir que se retire cuando quieras. No hace falta que te hayan operado para donar.</div></details>
+      <details><summary>¿Qué hacéis con mis datos?</summary>
+        <div class="a">Pedimos los datos mínimos y nunca preguntamos diagnóstico, estadio ni fecha de cirugía para navegar por la web. Los datos de salud son categoría especial y tienen un tratamiento aparte, con base legal e información específica. Puedes ejercer tus derechos escribiendo a la dirección del pie.</div></details>
+      <details><summary>¿Sois una asociación? ¿De dónde sale el dinero?</summary>
+        <div class="a">My Coco es un movimiento impulsado por Sara Gascón, fundadora también del podcast Positiv@s pero Realistas. El programa de prótesis se financia con aportaciones de empresas; los contenidos y la comunidad, con convocatorias de impacto social y alianzas. La forma jurídica y el CIF se publicarán aquí en cuanto estén validados.</div></details>
+      <details><summary>Acompaño a alguien. ¿Qué digo y qué no digo?</summary>
+        <div class="a">Tenemos una guía específica para familiares y parejas, porque influyen en la decisión más de lo que suelen creer. La regla corta: preguntar antes de opinar, no adelantarse a nombrar «lo mejor» y cuidar también de ti.</div></details>
+    </div>
+  </div>
+</section>
+
+<!-- ============ HISTORIA ============ -->
+<section class="s" id="historia">
   <div class="u">
     <span class="kicker">Sobre My Coco</span>
     <h2 class="h2 sm" style="max-width:24ch">Esto empezó acompañando a mi madre</h2>
-    <blockquote style="margin-top:2rem">Empezamos diseñando una prótesis. Escuchando a las mujeres entendimos que había mucho más que diseñar.</blockquote>
+    <blockquote class="big" style="margin-top:2rem">Empezamos diseñando una prótesis. Escuchando a las mujeres entendimos que había mucho más que diseñar.</blockquote>
     <div class="split" style="margin-top:1.5rem">
       <div class="sign">
         <span class="av"></span>
@@ -542,35 +911,29 @@ body.notes .note{display:block}
   </div>
 </section>
 
-<div class="note warn"><b>La historia va en página propia, no aquí.</b> En la portada solo entra la cita y la firma. Si el relato personal y la información sanitaria comparten página, la web pierde el E-E-A-T entero. Y antes de publicar esa página hace falta <b>el consentimiento por escrito de la familia</b> sobre qué se cuenta y qué no: es la única página que expone a una persona real que no es Sara. El texto largo sale de <em>Recursos/Hola, soy Sara….docx</em>.</div>
+<div class="note warn"><b>La historia va en página propia, no aquí.</b> En la portada sólo entra la cita y la firma. Si el relato personal y la información sanitaria comparten página, la web pierde el E-E-A-T entero. Y antes de publicar esa página hace falta <b>el consentimiento por escrito de la familia</b> sobre qué se cuenta y qué no: es la única página que expone a una persona real que no es Sara. El avatar sigue siendo un círculo de color a propósito — el retrato tiene que ser una foto real de ella.</div>
 
-<!-- ===================== MEDIOS ===================== -->
+<!-- ============ MEDIOS ============ -->
 <section class="s tight">
   <div class="u">
     <span class="kicker">Nos han contado</span>
     <div class="media">
-      <span class="logo">Aragón TV</span>
-      <span class="logo">Antena 3</span>
-      <span class="logo">La Razón</span>
-      <span class="logo">Heraldo</span>
-      <span class="logo">ConSalud</span>
-      <span class="logo">GoAragón</span>
-      <span class="logo">ITA Innova</span>
-      <span class="logo">Women Tech</span>
-      <span class="logo">Flor de Vida</span>
+      <span class="logo">Aragón TV</span><span class="logo">Antena 3</span><span class="logo">La Razón</span>
+      <span class="logo">Heraldo</span><span class="logo">ConSalud</span><span class="logo">GoAragón</span>
+      <span class="logo">ITA Innova</span><span class="logo">Women Tech</span><span class="logo">Flor de Vida</span>
     </div>
     <p class="micro" style="margin-top:1.3rem;max-width:54ch">Cada pieza con su enlace y su fecha. Las apariciones se listan, no se presumen: quien llega aquí está comprobando si puede fiarse.</p>
   </div>
 </section>
 
-<div class="note warn"><b>Estos nueve son los que constan hoy en mycoco.es</b>, así que los doy por publicados. Lo que falta es el enlace y la fecha de cada pieza — <b>sin eso no van con logo, van en una lista de texto.</b> Un logo de más en una web de salud es un problema, no un adorno. Pásame la lista y la monto entera.</div>
+<div class="note warn"><b>Estos nueve son los que constan hoy en mycoco.es</b>, así que los doy por publicados. Lo que falta es el enlace y la fecha de cada pieza — <b>sin eso no van con logo, van en una lista de texto.</b> Un logo de más en una web de salud es un problema, no un adorno.</div>
 
-<!-- ===================== CÓMO TRABAJAMOS ===================== -->
+<!-- ============ CÓMO TRABAJAMOS ============ -->
 <section class="s">
   <div class="u">
     <span class="kicker">Cómo trabajamos</span>
     <h2 class="h2 sm">Las reglas con las que se escribe esta web</h2>
-    <div class="grid3 rev" style="margin-top:2rem">
+    <div class="grid3 rev-s" style="margin-top:2rem">
       <div class="card"><h3>Revisión profesional</h3><p>Los contenidos nacen de lo que cuentan las mujeres y los revisa un profesional. Cada página lleva autora, revisora y fecha.</p></div>
       <div class="card"><h3>Neutralidad</h3><p>No recomendamos ninguna opción corporal. Damos información y preguntas.</p></div>
       <div class="card"><h3>Privacidad</h3><p>Pedimos los datos mínimos. Los de salud tienen un tratamiento aparte.</p></div>
@@ -579,7 +942,7 @@ body.notes .note{display:block}
   </div>
 </section>
 
-<!-- ===================== EMPRESAS ===================== -->
+<!-- ============ EMPRESAS ============ -->
 <section class="s tight band" id="empresas">
   <div class="u split">
     <div style="max-width:42ch">
@@ -587,44 +950,73 @@ body.notes .note{display:block}
       <h2 class="h2 sm">Las empresas financian cada prótesis</h2>
       <p style="margin-top:.8rem;font-size:.95rem;color:var(--soft)">Recibes el dato de cuántas se han entregado gracias a tu aportación, no una foto para octubre.</p>
     </div>
-    <a class="btn ghost" href="#">Quiero financiar una donación</a>
+    <a class="btn ghost" href="#contacto">Quiero financiar una donación</a>
   </div>
 </section>
 
 <div class="note"><b>Empresas va en contorno, abajo y sobre otro fondo.</b> Nunca compitiendo con el CTA de apoyo. Una mujer y una empresa no pueden sentir que están en la misma conversación.</div>
 
-<!-- ===================== PPR ===================== -->
-<section class="s tight">
-  <div class="u split">
-    <div style="max-width:40ch">
-      <span class="kicker" style="color:var(--verde)">Positiv@s pero Realistas</span>
-      <h2 class="h2 sm">Hablamos de esto cada semana</h2>
-      <p style="margin-top:.8rem;font-size:.95rem;color:var(--soft)">El podcast donde se habla del cáncer de mama sin miedo y sin adornos. Un espacio seguro y libre de juicios.</p>
-    </div>
-    <div class="cta-row">
-      <img src="../assets/logos/logo-ppr-24.png" alt="Positivas pero Realistas" style="height:3.2rem;width:auto">
-      <a class="btn ghost" style="border-color:var(--verde);color:var(--verde)" href="https://positivasperorealistas.com">Escuchar el podcast</a>
+<!-- ============ PPR ============ -->
+<section class="s">
+  <div class="u">
+    <div class="dual">
+      <div>
+        <span class="kicker" style="color:var(--verde)">Positiv@s pero Realistas</span>
+        <h2 class="h2 sm">Hablamos de esto cada semana</h2>
+        <p style="margin-top:1rem;max-width:42ch;color:var(--soft)">El podcast donde se habla del cáncer de mama sin miedo y sin adornos. Un espacio seguro y libre de juicios. Se escucha en iVoox, Spotify, Apple Podcasts y YouTube.</p>
+        <div class="cta-row" style="margin-top:1.8rem">
+          <img src="../assets/logos/logo-ppr-24.png" alt="Positiv@s pero Realistas" style="height:3rem;width:auto" loading="lazy">
+          <a class="btn ghost" style="border-color:var(--verde);color:var(--verde)" href="https://positivasperorealistas.com">Escuchar el podcast</a>
+        </div>
+      </div>
+      <div class="fig-w rev"><img src="../assets/img/podcast.jpg" alt="Micrófono de estudio y auriculares sobre una mesa de madera" loading="lazy"></div>
     </div>
   </div>
 </section>
 
-<!-- ===================== PIE ===================== -->
+<!-- ============ CONTACTO ============ -->
+<section class="s band" id="contacto">
+  <div class="u">
+    <span class="kicker">Contacto</span>
+    <h2 class="h2 sm">Escríbenos y te contestamos</h2>
+    <p class="lead" style="margin-top:1rem">No hace falta que cuentes nada médico. Con decirnos en qué momento estás, basta.</p>
+    <form class="form" id="form" novalidate>
+      <div class="two">
+        <div class="f"><label for="n">Nombre</label><input id="n" name="n" type="text" autocomplete="name" required><span class="err" data-for="n"></span></div>
+        <div class="f"><label for="e">Correo electrónico</label><input id="e" name="e" type="email" autocomplete="email" required><span class="err" data-for="e"></span></div>
+      </div>
+      <div class="f"><label for="m">¿En qué podemos ayudarte?</label>
+        <select id="m" name="m" required>
+          <option value="">Elige una opción</option>
+          <option>Quiero información sobre mis opciones</option>
+          <option>Quiero solicitar una prótesis de pezón</option>
+          <option>Quiero donar la huella de mi pezón</option>
+          <option>Quiero que me acompañen</option>
+          <option>Quiero ser madrina</option>
+          <option>Soy profesional sanitario</option>
+          <option>Soy una empresa y quiero financiar</option>
+          <option>Prensa</option>
+        </select><span class="err" data-for="m"></span></div>
+      <div class="f"><label for="t">Mensaje</label><textarea id="t" name="t" required></textarea><span class="err" data-for="t"></span></div>
+      <label class="check"><input type="checkbox" id="r" name="r" required><span>He leído y acepto la política de privacidad. Responsable: Sara Gascón Durán. Finalidad: responder a tu consulta. Conservación: 12 meses desde la última comunicación. <b>No incluyas datos de salud en este formulario.</b></span></label>
+      <span class="err" data-for="r"></span>
+      <div class="cta-row"><button class="btn a" type="submit">Enviar</button><span class="micro">O escribe a info@mycoco.es</span></div>
+    </form>
+    <div class="form-ok" id="formOk" hidden></div>
+  </div>
+</section>
+
+<div class="note warn"><b>El formulario valida de verdad pero no envía nada:</b> es una maqueta. Fíjate en dos cosas que sí son decisiones de producto: el desplegable coloca «prensa» y «empresa» al final, detrás de las opciones de quien necesita ayuda; y la casilla de RGPD <b>pide expresamente que no se escriban datos de salud</b>, porque un mensaje libre en un formulario es la vía más fácil de acabar tratando categoría especial sin base legal.</div>
+
+<!-- ============ PIE ============ -->
 <footer class="site">
   <div class="u">
-    <div class="flogo">
-      <img src="../assets/logos/logo-completo-horizontal-blanco.png" alt="My Coco">
-    </div>
+    <div class="flogo"><img src="../assets/logos/logo-completo-horizontal-blanco.png" alt="My Coco" loading="lazy"></div>
     <div class="cols">
-      <div><h4>Necesito apoyo</h4><ul>
-        <li>Me lo acaban de decir</li><li>Decidir sobre mi cuerpo</li><li>Los primeros días en casa</li>
-        <li>Sexualidad y bienestar</li><li>Hablar con alguien</li></ul></div>
-      <div><h4>Programas</h4><ul>
-        <li>Prótesis de pezón</li><li>Observatorio</li><li>Acompaño a alguien</li><li>Profesionales</li></ul></div>
-      <div><h4>Sobre My Coco</h4><ul>
-        <li>El proyecto</li><li>La historia</li><li>Quién está detrás</li><li>Cómo nos financiamos</li>
-        <li>Política editorial</li></ul></div>
-      <div><h4>Empresas</h4><ul>
-        <li>Financiar prótesis</li><li>Impacto y transparencia</li><li>Contra el pinkwashing</li></ul></div>
+      <div><h4>Necesito apoyo</h4><ul><li>Me lo acaban de decir</li><li>Decidir sobre mi cuerpo</li><li>Los primeros días en casa</li><li>Sexualidad y bienestar</li><li>Hablar con alguien</li></ul></div>
+      <div><h4>Programas</h4><ul><li>Prótesis de pezón</li><li>Banco de huellas</li><li>Observatorio</li><li>Red de madrinas</li><li>Charlas y talleres</li><li>Profesionales</li></ul></div>
+      <div><h4>Sobre My Coco</h4><ul><li>El proyecto</li><li>La historia</li><li>Quién está detrás</li><li>Cómo nos financiamos</li><li>Política editorial</li></ul></div>
+      <div><h4>Empresas</h4><ul><li>Financiar prótesis</li><li>Impacto y transparencia</li><li>Contra el pinkwashing</li></ul></div>
     </div>
     <div class="legal">
       <p>La información de esta web no sustituye la valoración de tu equipo médico. Si tienes síntomas o dudas clínicas, consúltalo con profesionales sanitarios.</p>
@@ -634,23 +1026,31 @@ body.notes .note{display:block}
   </div>
 </footer>
 
+<div class="fab" id="fab">
+  <button class="top" id="toTop" aria-label="Volver arriba">↑</button>
+  <a class="btn a sm" href="#apoyo">Necesito apoyo</a>
+</div>
+
 <script>
 (function(){
   "use strict";
-  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var $ = function(s){ return document.querySelector(s); };
 
-  /* --- notas de diseño --- */
-  var tn = document.getElementById('tnotes');
+  /* ---------- notas de diseño ---------- */
+  var tn = $('#tnotes');
   tn.addEventListener('click', function(){
     var on = document.body.classList.toggle('notes');
     tn.setAttribute('aria-pressed', String(on));
     tn.textContent = on ? 'Ocultar notas de diseño' : 'Ver notas de diseño';
   });
 
-  /* --- tema claro / oscuro --- */
-  var tt = document.getElementById('ttheme');
-  var brand = document.getElementById('brandimg');
-  var oscuro = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  /* ---------- tema ---------- */
+  var tt = $('#ttheme'), brand = $('#brandimg'), oscuro;
+  try { oscuro = localStorage.getItem('mycoco-tema'); } catch(e){}
+  oscuro = oscuro === null || oscuro === undefined
+    ? matchMedia('(prefers-color-scheme: dark)').matches
+    : oscuro === 'dark';
   function pintaTema(){
     document.documentElement.setAttribute('data-theme', oscuro ? 'dark' : 'light');
     tt.setAttribute('aria-pressed', String(oscuro));
@@ -658,78 +1058,172 @@ body.notes .note{display:block}
     brand.src = '../assets/logos/logo-completo-horizontal-' + (oscuro ? 'blanco' : 'color') + '.png';
   }
   pintaTema();
-  tt.addEventListener('click', function(){ oscuro = !oscuro; pintaTema(); });
+  tt.addEventListener('click', function(){
+    oscuro = !oscuro; pintaTema();
+    try { localStorage.setItem('mycoco-tema', oscuro ? 'dark' : 'light'); } catch(e){}
+  });
 
-  /* --- la barra de la intranet es sticky: la nav del sitio se coloca debajo --- */
+  /* ---------- la barra de la intranet es sticky: la nav se coloca debajo ---------- */
   function offsetNav(){
     var bar = document.getElementById('mycoco-topbar');
     var h = bar ? bar.getBoundingClientRect().height : 0;
     document.documentElement.style.setProperty('--navtop', h + 'px');
   }
-  offsetNav();
-  window.addEventListener('resize', offsetNav);
+  offsetNav(); addEventListener('resize', offsetNav);
 
-  /* --- estado de la nav + progreso de lectura + parallax del lazo --- */
-  var nav = document.getElementById('nav');
-  var prog = document.getElementById('prog');
-  var lazo = document.getElementById('lazo');
+  /* ---------- cajón móvil ---------- */
+  var burger = $('#burger'), drawer = $('#drawer');
+  function setDrawer(on){
+    drawer.classList.toggle('on', on);
+    drawer.setAttribute('aria-hidden', String(!on));
+    burger.setAttribute('aria-expanded', String(on));
+    burger.setAttribute('aria-label', on ? 'Cerrar menú' : 'Abrir menú');
+    document.body.style.overflow = on ? 'hidden' : '';
+    if (on) { var a = drawer.querySelector('a'); if (a) a.focus(); } else { burger.focus(); }
+  }
+  burger.addEventListener('click', function(){ setDrawer(!drawer.classList.contains('on')); });
+  $('#closeDrawer').addEventListener('click', function(){ setDrawer(false); });
+  drawer.addEventListener('click', function(ev){ if (ev.target.tagName === 'A') setDrawer(false); });
+  addEventListener('keydown', function(ev){ if (ev.key === 'Escape' && drawer.classList.contains('on')) setDrawer(false); });
+
+  /* ---------- scroll: nav, progreso, botones flotantes, sección activa ---------- */
+  var nav = $('#nav'), prog = $('#prog'), fab = $('#fab');
+  var enlaces = [].slice.call(document.querySelectorAll('#links a'));
+  var secciones = enlaces.map(function(a){ return document.querySelector(a.getAttribute('href')); });
   var pend = false;
   function pinta(){
     pend = false;
-    var y = window.scrollY || 0;
+    var y = scrollY || 0;
     nav.classList.toggle('stuck', y > 40);
-    var alto = document.documentElement.scrollHeight - window.innerHeight;
+    var alto = document.documentElement.scrollHeight - innerHeight;
     prog.style.width = (alto > 0 ? Math.min(y / alto, 1) * 100 : 0) + '%';
-    if (lazo && !reduce) lazo.style.setProperty('--sy', String(y));
+    fab.classList.toggle('on', y > innerHeight * 0.9);
+    var act = -1, lim = y + innerHeight * 0.35;
+    for (var i = 0; i < secciones.length; i++){
+      if (secciones[i] && secciones[i].offsetTop <= lim) act = i;
+    }
+    enlaces.forEach(function(a, i){ a.classList.toggle('act', i === act); });
   }
-  window.addEventListener('scroll', function(){
-    if (!pend){ pend = true; window.requestAnimationFrame(pinta); }
-  }, {passive:true});
-  pinta();
+  addEventListener('scroll', function(){ if (!pend){ pend = true; requestAnimationFrame(pinta); } }, {passive:true});
+  addEventListener('resize', pinta); pinta();
+  $('#toTop').addEventListener('click', function(){
+    scrollTo({top:0, behavior: reduce ? 'auto' : 'smooth'});
+  });
 
-  /* --- selector de momento --- */
-  var out = document.getElementById('out');
-  var chips = document.querySelectorAll('#chips .chip');
-  chips.forEach(function(c){
+  /* ---------- selector de momento ---------- */
+  var RUTAS = {
+    diag:{t:'Me lo acaban de decir', p:'Qué va a pasar las próximas dos semanas, con el vocabulario que vas a necesitar antes de la primera consulta de cirugía.',
+      l:['Quién es quién en tu equipo médico','Qué preguntar en la primera consulta','Palabras que vas a oír y qué significan']},
+    decid:{t:'Decidir sobre mi cuerpo', p:'Las cinco opciones explicadas sin recomendar ninguna, y las preguntas para llevar impresas a consulta.',
+      l:['Las cinco opciones, con lo que implica cada una','Qué condiciona la radioterapia','Ficha de preguntas para la consulta']},
+    post:{t:'Los primeros días en casa', p:'Lo práctico de las primeras semanas, que es justo lo que nadie te cuenta en el alta.',
+      l:['Drenajes, movilidad y descanso','Ropa y sujetadores que sirven de verdad','La primera vez frente al espejo']},
+    fin:{t:'Volver a tu cuerpo', p:'El problema no termina con la cirugía. Sexualidad, imagen corporal y las decisiones que aplazaste.',
+      l:['Deseo e intimidad','Habitar tu cuerpo, sin plazos','Retomar una decisión aplazada']},
+    acom:{t:'Acompaño a alguien', p:'Para familiares y parejas, que influyen en la decisión más de lo que suelen creer.',
+      l:['Qué digo y qué no digo','Cómo acompañar sin decidir por ella','Cuidarte tú también']},
+    prof:{t:'Para profesionales sanitarios', p:'Kit de decisión compartida para consulta y criterios de derivación al acompañamiento.',
+      l:['Materiales de decisión compartida','Cuándo derivar a la red de madrinas','Datos del observatorio para tu servicio']}
+  };
+  var ruta = $('#ruta');
+  [].forEach.call(document.querySelectorAll('#chips .chip'), function(c){
     c.addEventListener('click', function(){
-      chips.forEach(function(o){ o.setAttribute('aria-pressed', String(o === c)); });
-      out.innerHTML = '<span class="fl" aria-hidden="true">→</span><span>' + c.dataset.r + '</span>';
+      [].forEach.call(document.querySelectorAll('#chips .chip'), function(o){
+        o.setAttribute('aria-pressed', String(o === c));
+      });
+      var d = RUTAS[c.dataset.k];
+      if (!d) return;
+      ruta.innerHTML =
+        '<div class="ruta-c">' +
+          '<div><h4>' + d.t + '</h4><p>' + d.p + '</p></div>' +
+          '<ul>' + d.l.map(function(x){ return '<li>' + x + '</li>'; }).join('') + '</ul>' +
+        '</div>' +
+        '<div class="cta-row" style="margin-top:1.2rem"><a class="btn a sm" href="#">Ir a «' + d.t + '»</a></div>';
     });
   });
 
-  /* --- cifras del observatorio ---
-     El número mostrado ES el dato: la cuenta tarda en llegar, el valor final
-     es exactamente el que había en el HTML. Nada de redondear. --- */
-  function formatea(v, dec){
-    return v.toLocaleString('es-ES', {minimumFractionDigits:dec, maximumFractionDigits:dec});
+  /* ---------- carrusel de programas ---------- */
+  var rail = $('#rail'), prev = $('#railPrev'), next = $('#railNext');
+  function paso(){ var c = rail.querySelector('.prog-c'); return c ? c.getBoundingClientRect().width + 18 : 320; }
+  function mueve(d){ rail.scrollBy({left: d * paso(), behavior: reduce ? 'auto' : 'smooth'}); }
+  prev.addEventListener('click', function(){ mueve(-1); });
+  next.addEventListener('click', function(){ mueve(1); });
+  rail.addEventListener('keydown', function(ev){
+    if (ev.key === 'ArrowRight'){ ev.preventDefault(); mueve(1); }
+    if (ev.key === 'ArrowLeft'){ ev.preventDefault(); mueve(-1); }
+  });
+  function estadoRail(){
+    prev.disabled = rail.scrollLeft < 8;
+    next.disabled = rail.scrollLeft > rail.scrollWidth - rail.clientWidth - 8;
   }
-  var cifras = document.querySelectorAll('.fig .n[data-val]');
+  rail.addEventListener('scroll', estadoRail, {passive:true});
+  addEventListener('resize', estadoRail); estadoRail();
+
+  /* ---------- realidad aumentada: sólo iOS/iPadOS la abren en el sitio ---------- */
+  var arLink = $('#arLink'), arNote = $('#arNote');
+  var a = document.createElement('a');
+  var soportaAR = !!(a.relList && a.relList.supports && a.relList.supports('ar'));
+  if (!soportaAR){
+    arLink.removeAttribute('rel');
+    arLink.setAttribute('download', '');
+    var tag = arLink.querySelector('.tag');
+    if (tag) tag.innerHTML = '<b>◆</b> Descargar el modelo 3D';
+    arNote.textContent = 'Tu navegador no abre realidad aumentada: el enlace descarga el modelo, que se abre con el visor 3D del sistema.';
+  }
+
+  /* ---------- preguntas frecuentes: sólo una abierta ---------- */
+  var faqs = [].slice.call(document.querySelectorAll('#faq-list details'));
+  faqs.forEach(function(d){
+    d.addEventListener('toggle', function(){
+      if (d.open) faqs.forEach(function(o){ if (o !== d) o.open = false; });
+    });
+  });
+
+  /* ---------- formulario: valida de verdad, no envía nada ---------- */
+  var form = $('#form'), ok = $('#formOk');
+  function err(campo, texto){
+    var s = form.querySelector('.err[data-for="' + campo + '"]');
+    if (s) s.textContent = texto || '';
+    var el = document.getElementById(campo);
+    if (el && el.closest('.f')) el.closest('.f').classList.toggle('bad', !!texto);
+  }
+  form.addEventListener('submit', function(ev){
+    ev.preventDefault();
+    var malo = null;
+    var n = $('#n').value.trim(), e = $('#e').value.trim(), m = $('#m').value, t = $('#t').value.trim(), r = $('#r').checked;
+    err('n', n ? '' : (malo = malo || 'n', 'Dinos cómo te llamamos.'));
+    err('e', /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(e) ? '' : (malo = malo || 'e', 'Revisa el correo: falta algo.'));
+    err('m', m ? '' : (malo = malo || 'm', 'Elige una opción.'));
+    err('t', t.length >= 10 ? '' : (malo = malo || 't', 'Cuéntanos un poco más (10 caracteres mínimo).'));
+    err('r', r ? '' : (malo = malo || 'r', 'Necesitamos que aceptes la política de privacidad.'));
+    if (malo){ var f = document.getElementById(malo); if (f) f.focus(); return; }
+    form.hidden = true;
+    ok.hidden = false;
+    ok.textContent = 'Gracias, ' + n + '. En la web real recibirías respuesta en menos de 48 horas. Esto es una maqueta: no se ha enviado ni guardado nada.';
+    ok.setAttribute('tabindex','-1'); ok.focus();
+  });
+
+  /* ---------- cifras: el número mostrado ES el dato ---------- */
   if (reduce || !('IntersectionObserver' in window)) return;
-  var io = new IntersectionObserver(function(entradas){
-    entradas.forEach(function(e){
+  var io = new IntersectionObserver(function(es){
+    es.forEach(function(e){
       if (!e.isIntersecting) return;
       io.unobserve(e.target);
-      var el = e.target;
-      var fin = parseFloat(el.dataset.val);
-      var dec = parseInt(el.dataset.dec || '0', 10);
-      var suf = el.dataset.suf || '';
-      var texto = el.textContent;
-      var t0 = null, dur = 1000;
-      function paso(t){
+      var el = e.target, fin = parseFloat(el.dataset.val);
+      var dec = parseInt(el.dataset.dec || '0', 10), suf = el.dataset.suf || '', texto = el.textContent;
+      var t0 = null;
+      requestAnimationFrame(function anim(t){
         if (t0 === null) t0 = t;
-        var p = Math.min((t - t0) / dur, 1);
-        var e2 = 1 - Math.pow(1 - p, 3);
+        var p = Math.min((t - t0) / 1000, 1);
         if (p < 1){
-          el.textContent = formatea(fin * e2, dec) + suf;
-          requestAnimationFrame(paso);
-        } else {
-          el.textContent = texto;   /* el valor exacto del HTML */
-        }
-      }
-      requestAnimationFrame(paso);
+          el.textContent = (fin * (1 - Math.pow(1 - p, 3))).toLocaleString('es-ES',
+            {minimumFractionDigits:dec, maximumFractionDigits:dec}) + suf;
+          requestAnimationFrame(anim);
+        } else { el.textContent = texto; }
+      });
     });
   }, {threshold:.4});
-  cifras.forEach(function(c){ io.observe(c); });
+  [].forEach.call(document.querySelectorAll('.n[data-val]'), function(c){ io.observe(c); });
 })();
 </script>
 </body>
