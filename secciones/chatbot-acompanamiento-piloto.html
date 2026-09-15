@@ -205,6 +205,33 @@ a provincia se hace dentro del servidor, contra una tabla de capitales—, así 
 cumple las dos cosas.</p>
 </div>
 
+<h3>Qué hay hoy en el directorio</h3>
+<table>
+<thead><tr><th>Recurso</th><th>Zona</th><th>Contacto</th><th>Estado</th></tr></thead>
+<tbody>
+<tr><td><strong>Infocáncer</strong> — Asociación Contra el Cáncer<br><span style="font-size:.85em">Información, apoyo psicológico y orientación social y jurídico-laboral</span></td>
+<td>España</td><td>900 100 036 · gratuito · 24 h todos los días</td><td>activo</td></tr>
+<tr><td><strong>Asociación Contra el Cáncer — sede de Zaragoza</strong><br><span style="font-size:.85em">Psicooncología, atención social, fisioterapia y nutrición</span></td>
+<td>Zaragoza</td><td>976 29 55 56 · L-J 8-19, V 8-14</td><td>activo</td></tr>
+<tr><td><strong>Asociación Contra el Cáncer — sede de Madrid</strong></td><td>Madrid</td><td>91 398 59 00</td><td>activo</td></tr>
+<tr><td><strong>FECMA</strong><br><span style="font-size:.85em">Puerta de entrada a las asociaciones locales de cada territorio</span></td>
+<td>España</td><td>fecma.org</td><td>activo</td></tr>
+<tr><td><strong>AMAC-GEMA</strong> (Zaragoza)</td><td>Zaragoza</td><td>976 297 764</td><td>por verificar</td></tr>
+<tr><td>112 · 024 · 016</td><td>España</td><td>emergencias, conducta suicida, violencia</td><td>activo</td></tr>
+</tbody></table>
+<p>Cada ficha guarda de dónde salió el dato y cuándo se miró. AMAC-GEMA está <strong>por
+verificar</strong> y por eso el bot no la menciona: los datos vienen del registro municipal,
+su email es de un proveedor cerrado y su web no carga con certificado válido. Hay que llamar
+antes de recomendarla.</p>
+<div class="caja aviso">
+<h3 style="margin-top:0">Por qué no busca en Google en caliente</h3>
+<p style="margin-bottom:0">El documento lo descarta expresamente: «el buscador no debe ser una
+búsqueda web improvisada» y la búsqueda web abierta sin revisión queda fuera del piloto. Dar a
+una persona recién operada el primer enlace que salga, sin comprobar colegiación ni si el centro
+existe, es justo lo que la especificación quiere evitar. La búsqueda se hace <strong>antes</strong>,
+se verifica y se carga en el directorio; el bot solo recomienda lo que está dentro.</p>
+</div>
+
 <h2>Seguridad: reglas antes y después de la IA</h2>
 <p>La IA nunca decide sola qué es seguro. Antes de generar, un clasificador determinista
 lee el mensaje; después de generar, un revisor lee la respuesta.</p>
@@ -277,7 +304,8 @@ obligatorias, y ninguna la puede cerrar un agente.</p>
 <li>Matriz de riesgos y pruebas de rechazo, falsos negativos, alucinaciones y caída de servicios.</li>
 <li>Decisión formal de arquitectura de marca: el documento advierte que «PPR Acompaña» no debe publicarse hasta resolverla.</li>
 <li>Definir qué territorios cubre el piloto y qué equipo humano responde cuando alguien pide hablar con una persona.</li>
-<li><strong>Cargar el directorio de verdad:</strong> hoy solo hay teléfonos de emergencia verificados. Sin psicooncología ni asociaciones por provincia, el bot cumple su regla —no inventa— pero no puede ofrecer el recurso que la persona busca.</li>
+<li><strong>Ampliar el directorio:</strong> la Asociación Contra el Cáncer tiene sede en las 52 provincias y solo están cargadas Zaragoza y Madrid. Falta también el resto de asociaciones federadas en FECMA y las unidades de psicooncología de los hospitales públicos.</li>
+<li><strong>Firma editorial:</strong> las fichas cargadas dicen «pendiente de firma editorial». Tienen fuente y fecha, pero les falta el responsable nominal que el documento exige.</li>
 <li>Añadir saldo en OpenAI si se quiere ese motor, y volver a comparar modelos con el prompt real.</li>
 <li><strong>Acceso por API a WordPress:</strong> hoy no funciona. La contraseña guardada no es una
 <em>application password</em> (tiene 13 caracteres; las de WordPress tienen 24) y ninguno de los dos
