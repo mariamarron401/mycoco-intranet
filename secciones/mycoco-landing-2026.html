@@ -311,6 +311,23 @@ section.s.tight{padding-block:clamp(2.5rem,5vw,3.75rem)}
 .card .more span{transition:transform .3s var(--ease)}
 .card:hover .more span{transform:translateX(4px)}
 
+/* ---------- vídeo ---------- */
+.vid{position:relative;border-radius:12px;overflow:hidden;background:var(--paper)}
+.vid video{width:100%;height:100%;object-fit:cover;display:block}
+.vid.r43 video{aspect-ratio:4/3}
+.vid.r11 video{aspect-ratio:1/1}
+.vid .cap{position:absolute;left:.8rem;bottom:.8rem;background:color-mix(in srgb,var(--card) 88%,transparent);
+  backdrop-filter:blur(10px);border:1px solid var(--rule);border-radius:999px;padding:.35rem .85rem;
+  font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;color:var(--soft)}
+
+/* ---------- cómo se hace ---------- */
+.taller{display:grid;grid-template-columns:repeat(auto-fit,minmax(14rem,1fr));gap:1.3rem;margin-top:2.3rem}
+.taller figure{margin:0;display:flex;flex-direction:column;gap:.7rem}
+.taller img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:12px;transition:transform .5s var(--ease)}
+.taller figure:hover img{transform:scale(1.03)}
+.taller figcaption{font-size:.84rem;color:var(--soft)}
+.taller b{display:block;color:var(--ink);font-weight:500;font-size:.92rem;margin-bottom:.15rem}
+
 /* ---------- modelo 3D / realidad aumentada ---------- */
 .ar{display:grid;grid-template-columns:1fr;gap:1.6rem;margin-top:2.2rem;align-items:center}
 @media(min-width:48rem){.ar{grid-template-columns:.85fr 1.15fr;gap:2.5rem}}
@@ -703,8 +720,8 @@ body.notes .note{display:block}
     <div class="dual">
       <div>
         <span class="kicker">El programa</span>
-        <h2 class="h2 sm">Prótesis externas de pezón, donadas</h2>
-        <p style="margin-top:1.2rem;max-width:46ch;color:var(--soft)">Se coloca sobre la piel y se puede quitar. No es cirugía y no es permanente. Para algunas mujeres resuelve algo concreto; para otras no hace falta. Las dos respuestas están bien.</p>
+        <h2 class="h2 sm">Prótesis externas, donadas</h2>
+        <p style="margin-top:1.2rem;max-width:46ch;color:var(--soft)">Mamaria, de pezón o ambas. Se colocan sobre la piel y se pueden quitar. No es cirugía y no es permanente. Para algunas mujeres resuelven algo concreto; para otras no hacen falta. Las dos respuestas están bien.</p>
         <p style="margin-top:1rem;max-width:46ch;font-weight:400">Las financian empresas. Tú no pagas nada.</p>
         <div class="cta-row" style="margin-top:2rem">
           <a class="btn a" href="#contacto">Solicitar una prótesis donada</a>
@@ -712,7 +729,11 @@ body.notes .note{display:block}
         </div>
       </div>
       <div class="fig-w rev">
-        <img src="../assets/img/protesis.jpg" alt="Prótesis externa de pezón sobre lino beige doblado" loading="lazy">
+        <div class="vid r11">
+          <video src="../assets/video/producto.mp4" poster="../assets/img/producto-poster.jpg"
+                 muted loop playsinline preload="metadata" aria-label="Giro del modelo de la prótesis mamaria externa de My Coco" data-auto></video>
+          <span class="cap">Modelo real · My Coco</span>
+        </div>
         <div class="over br">
           <h4>Cómo funciona</h4>
           <ul class="steps">
@@ -726,13 +747,13 @@ body.notes .note{display:block}
 
     <div class="ar">
       <a class="ar-v" id="arLink" rel="ar" href="../assets/3d/protesis-pezon-mycoco.usdz">
-        <img src="../assets/img/protesis.jpg" alt="Vista del modelo tridimensional de la prótesis de pezón">
+        <img src="../assets/img/producto-render.jpg" alt="Prótesis mamarias externas de My Coco en varios acabados">
         <span class="tag"><b>◆</b> Ver en tu espacio</span>
       </a>
       <div>
         <span class="kicker">Modelo tridimensional</span>
         <h3 class="h2 sm">Míralo a tamaño real antes de pedirlo</h3>
-        <p style="margin-top:1rem;max-width:44ch;color:var(--soft)">El modelo de la prótesis, con su relieve y su textura reales. En iPhone o iPad se abre en tu propia habitación y puedes verlo a escala; en ordenador se descarga el archivo.</p>
+        <p style="margin-top:1rem;max-width:44ch;color:var(--soft)">El modelo real de la prótesis mamaria, con su estructura interna y su textura. En iPhone o iPad se abre en tu propia habitación y puedes verlo a escala; en ordenador se descarga el archivo.</p>
         <div class="cta-row" style="margin-top:1.4rem">
           <a class="btn ghost" href="../assets/3d/protesis-pezon-mycoco.usdz" download>Descargar el modelo (USDZ · 2,9 MB)</a>
         </div>
@@ -768,6 +789,27 @@ body.notes .note{display:block}
 </section>
 
 <div class="note warn"><b>Esta sección necesita una decisión legal antes de existir.</b> Un molde del cuerpo de una persona identificada es, como mínimo, un dato personal, y según cómo se recoja y con qué se cruce puede caer en categoría especial o en biometría. El texto ya promete lo correcto —separación del nombre, no publicación, retirada a petición—, pero <b>esas promesas hay que poder cumplirlas</b>: hace falta consentimiento específico por escrito, un procedimiento de anonimización real y saber quién custodia los moldes físicos. Escrito así a propósito, para que la conversación con asesoría sea concreta. <b>También falta el dato de cuántas huellas hay:</b> no lo invento, se pone cuando exista.</div>
+
+<!-- ============ CÓMO SE HACE ============ -->
+<section class="s band" id="taller">
+  <div class="u">
+    <span class="kicker">El método</span>
+    <h2 class="h2 sm" style="max-width:26ch">Escuchar primero, diseñar después</h2>
+    <p class="lead" style="margin-top:1rem">Cada prótesis sale de un cuerpo real escaneado, no de una talla estándar. Este es el taller donde se hace, y es la prueba del método del que sale todo lo demás.</p>
+    <div class="taller rev-s">
+      <figure><img src="../assets/img/escaneo.jpg" alt="Escaneado tridimensional de una forma mamaria en el taller" loading="lazy">
+        <figcaption><b>Se escanea la forma</b>La geometría real entra al ordenador punto por punto, con su volumen y su caída.</figcaption></figure>
+      <figure><img src="../assets/img/impresora.jpg" alt="Impresora de resina en el taller" loading="lazy">
+        <figcaption><b>Se imprime en resina</b>Cada iteración se imprime y se prueba. Lo que no se prueba sobre un cuerpo, no vale.</figcaption></figure>
+      <figure><img src="../assets/img/prototipos.jpg" alt="Prototipo translúcido con estructura interna sobre la mesa de taller" loading="lazy">
+        <figcaption><b>Se abre por dentro</b>La estructura interna es lo que reparte el peso y deja pasar el aire. Es donde está el trabajo.</figcaption></figure>
+      <figure><img src="../assets/img/protesis-mano.jpg" alt="Prototipo de prótesis sostenido en la mano" loading="lazy">
+        <figcaption><b>Se vuelve a escuchar</b>Y se cambia. La versión que llega a una casa ha pasado por muchas manos antes.</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<div class="note warn"><b>Aviso de coherencia, y no es menor.</b> Todo el material real que hay en <em>Recursos nuevos</em> —el render, el vídeo, los prototipos, el modelo USDZ— es de la <b>prótesis mamaria</b>. La maqueta y el banco de huellas hablan de <b>prótesis de pezón</b>. Son dos productos distintos. He ajustado el texto a «prótesis externas: mamaria, de pezón o ambas» para que la página no afirme algo que las fotos desmienten, pero <b>hay que decidir cuál es el programa de donación</b>: si es el de pezón, faltan fotos de ese producto; si es el mamario, hay que reescribir el banco de huellas. Tal como está ahora, una lectora atenta ve la contradicción.</div>
 
 <!-- ============ PROGRAMAS ============ -->
 <section class="s" id="programas">
@@ -829,7 +871,7 @@ body.notes .note{display:block}
   </div>
 </section>
 
-<div class="note warn"><b>Estas fotos son de IA y son provisionales.</b> Sirven para ver el diseño en pie, no para publicar. <b>Deliberadamente no hay ningún torso con cicatriz ni ningún retrato de paciente generado:</b> una web cuya premisa es la representación real de cuerpos reales no puede ilustrarse con cuerpos inventados. Esas dos fotos —el torso y el retrato de Sara— tienen que ser reales, con consentimiento escrito, luz natural y revelado cálido. Lo demás (atmósfera, manos, objetos) puede sustituirse con calma.</div>
+<div class="note warn"><b>Estas tres fotos siguen siendo de IA y son provisionales</b> — el material real que llegó cubre producto, taller y a Sara, pero no estas escenas. Sirven para ver el diseño en pie, no para publicar. <b>Deliberadamente no hay ningún torso con cicatriz ni ningún retrato de paciente generado:</b> una web cuya premisa es la representación real de cuerpos reales no puede ilustrarse con cuerpos inventados. Esas dos fotos —el torso y el retrato de Sara— tienen que ser reales, con consentimiento escrito, luz natural y revelado cálido. Lo demás (atmósfera, manos, objetos) puede sustituirse con calma.</div>
 
 <!-- ============ COMUNIDAD ============ -->
 <section class="s band">
@@ -910,6 +952,8 @@ body.notes .note{display:block}
     </div>
   </div>
 </section>
+
+<div class="note warn"><b>Del material real sólo está publicado producto y taller.</b> En <em>Recursos/Recursos nuevos</em> hay además el retrato de Sara, su foto del podcast y una grabación de dos mujeres conversando — <b>y están fuera a propósito.</b> Cada persona identificable necesita firmar su cesión de imagen, y las mujeres del reportaje que llevan pañuelo son pacientes identificables: eso convierte su imagen en un dato que revela información de salud. Es el mismo estándar que aplicamos al consentimiento de la familia para la página de la historia. En cuanto estén las cesiones, entran: los archivos ya están recortados y optimizados.</div>
 
 <div class="note warn"><b>La historia va en página propia, no aquí.</b> En la portada sólo entra la cita y la firma. Si el relato personal y la información sanitaria comparten página, la web pierde el E-E-A-T entero. Y antes de publicar esa página hace falta <b>el consentimiento por escrito de la familia</b> sobre qué se cuenta y qué no: es la única página que expone a una persona real que no es Sara. El avatar sigue siendo un círculo de color a propósito — el retrato tiene que ser una foto real de ella.</div>
 
@@ -1158,6 +1202,18 @@ body.notes .note{display:block}
   }
   rail.addEventListener('scroll', estadoRail, {passive:true});
   addEventListener('resize', estadoRail); estadoRail();
+
+  /* ---------- vídeos: sólo se mueven a la vista, nunca bajo reduced-motion ---------- */
+  var videos = [].slice.call(document.querySelectorAll('video[data-auto]'));
+  if (videos.length && !reduce && 'IntersectionObserver' in window){
+    var vio = new IntersectionObserver(function(es){
+      es.forEach(function(e){
+        var v = e.target;
+        if (e.isIntersecting){ v.play().catch(function(){}); } else { v.pause(); }
+      });
+    }, {threshold:.25});
+    videos.forEach(function(v){ vio.observe(v); });
+  }
 
   /* ---------- realidad aumentada: sólo iOS/iPadOS la abren en el sitio ---------- */
   var arLink = $('#arLink'), arNote = $('#arNote');
