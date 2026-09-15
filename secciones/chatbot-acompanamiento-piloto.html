@@ -189,6 +189,22 @@ consenso SESPM, AEMPS, informe de supervivientes de la AECC). La recuperación e
 búsqueda de texto completo sobre esa tabla, no una búsqueda web improvisada, así que
 cada afirmación se puede trazar hasta la fila que la respalda.</p>
 
+<h2>Buscar apoyo cerca</h2>
+<p>Quien quiera puede compartir la ubicación del móvil para que el chat ordene los recursos
+por cercanía. Es <strong>opcional y alternativa</strong> a escribir la provincia a mano, y se
+ofrece también en mitad de la conversación: si alguien pide una psicóloga y no sabemos dónde
+está, el bot se lo pregunta en ese momento.</p>
+<div class="caja ok">
+<h3 style="margin-top:0">Las coordenadas no se guardan</h3>
+<p>Es una lectura única, nunca seguimiento. Las coordenadas llegan con la consulta, sirven para
+ordenar por distancia y <strong>se descartan</strong>: en la base de datos solo queda la provincia
+y si la dijo a mano o por GPS. No se llama a ningún servicio externo —la conversión de coordenadas
+a provincia se hace dentro del servidor, contra una tabla de capitales—, así que
+<strong>la ubicación no sale de aquí</strong>.</p>
+<p style="margin-bottom:0">El documento prohíbe la geolocalización continua y exigir GPS; esto
+cumple las dos cosas.</p>
+</div>
+
 <h2>Seguridad: reglas antes y después de la IA</h2>
 <p>La IA nunca decide sola qué es seguro. Antes de generar, un clasificador determinista
 lee el mensaje; después de generar, un revisor lee la respuesta.</p>
@@ -201,6 +217,11 @@ lee el mensaje; después de generar, un revisor lee la respuesta.</p>
 <tr><td>Menor de edad</td><td>Detiene la conversación ordinaria sin pedir más datos.</td></tr>
 <tr><td>Petición clínica prohibida</td><td>Explica el límite en vez de responder al contenido clínico.</td></tr>
 </tbody></table>
+<p>Además hay guardias para lo que el modelo se inventa cuando intenta ser cálido:
+si <strong>cita una fuente que no existe</strong> se elimina esa frase, y si
+<strong>promete un servicio de MyCoco o PPR que no existe</strong> —un grupo de apoyo,
+poner en contacto con alguien— la respuesta entra directamente en modo seguro. Lo segundo
+es lo más delicado: crea una expectativa que nadie va a atender.</p>
 <p>El revisor de salida bloquea la respuesta si contiene una frase prohibida
 («todo irá bien», «tienes que ser fuerte», «eres una luchadora»), una afirmación
 sanitaria sin fuente recuperada, o <strong>un teléfono que no esté en el directorio</strong>.
